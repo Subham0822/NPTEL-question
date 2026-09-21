@@ -128,11 +128,44 @@ async function startServer() {
     const filtered = currentQuestions.filter((q) => !idSet.has(q.id));
     writeJsonFile(QUESTIONS_FILE, filtered);
 
+    // Also update questions in data/questions directory files (week-*.json, all-questions.json, test-data.json)
+    const QUESTIONS_DIR = path.join(process.cwd(), 'data', 'questions');
+    let dirDeletedCount = 0;
+    if (fs.existsSync(QUESTIONS_DIR)) {
+      try {
+        const files = fs.readdirSync(QUESTIONS_DIR);
+        for (const file of files) {
+          if (file.endsWith('.json')) {
+            const filePath = path.join(QUESTIONS_DIR, file);
+            try {
+              const fileContent = fs.readFileSync(filePath, 'utf-8');
+              const list = JSON.parse(fileContent);
+              if (Array.isArray(list)) {
+                const updatedList = list.filter((q: any) => !idSet.has(q.id));
+                if (updatedList.length !== list.length) {
+                  dirDeletedCount += list.length - updatedList.length;
+                  fs.writeFileSync(filePath, JSON.stringify(updatedList, null, 2), 'utf-8');
+                }
+              }
+            } catch (err) {
+              console.error(`Error filtering file ${file}:`, err);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Error reading QUESTIONS_DIR:', err);
+      }
+    }
+
     const currentAttempts = readJsonFile<any[]>(ATTEMPTS_FILE, []);
     const filteredAttempts = currentAttempts.filter((a) => !idSet.has(a.questionId));
     writeJsonFile(ATTEMPTS_FILE, filteredAttempts);
 
-    res.json({ success: true, deleted: currentQuestions.length - filtered.length, remaining: filtered.length });
+    res.json({
+      success: true,
+      deleted: (currentQuestions.length - filtered.length) + dirDeletedCount,
+      remaining: filtered.length,
+    });
   });
 
   // Record an attempt in directory

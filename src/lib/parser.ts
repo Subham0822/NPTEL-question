@@ -174,7 +174,7 @@ export function resolveAnswerToLetter(
  * Main parser function to convert raw copy-pasted text into structured MCQ objects.
  * Produces questions matching the exact repository JSON format.
  */
-export function parseQuestions(text: string, targetWeek: number): ParseResult {
+export function parseQuestions(text: string, targetWeek: number | 'all'): ParseResult {
   const validQuestions: ParsedQuestionCandidate[] = [];
   const errors: ParseError[] = [];
 
@@ -388,8 +388,10 @@ export function parseQuestions(text: string, targetWeek: number): ParseResult {
     // Sort letters alphabetically: ['A', 'C']
     resolvedLetters.sort();
 
+    const idPrefix = targetWeek === 'all' ? 'all' : `w${targetWeek}`;
+
     validQuestions.push({
-      id: `w${targetWeek}-q${qIndex}`,
+      id: `${idPrefix}-q${qIndex}`,
       week: targetWeek,
       type: finalType,
       question: questionText,

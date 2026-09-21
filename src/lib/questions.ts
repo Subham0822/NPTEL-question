@@ -12,6 +12,7 @@ import week9 from '../../data/questions/week-9.json';
 import week10 from '../../data/questions/week-10.json';
 import week11 from '../../data/questions/week-11.json';
 import week12 from '../../data/questions/week-12.json';
+import allQuestionsData from '../../data/questions/all-questions.json';
 import testData from '../../data/questions/test-data.json';
 
 // Static mapping of repository week JSON files
@@ -43,20 +44,37 @@ export function getWeekQuestions(weekNumber: number): Question[] {
 }
 
 /**
- * Dynamically combines the contents of week-1.json through week-12.json.
- * No all-questions JSON file is created and no questions are duplicated.
+ * Returns questions from the separate "All Questions" section (data/questions/all-questions.json).
+ * This is an independent section with its own distinct question repository file.
  */
-export function getAllCourseQuestions(): Question[] {
-  const combined: Question[] = [];
-  for (let w = 1; w <= 12; w++) {
-    const weekQs = getWeekQuestions(w);
-    combined.push(...weekQs);
-  }
-  return combined;
+export function getAllQuestionsSection(): Question[] {
+  return (allQuestionsData as Question[]).map((q) => ({
+    ...q,
+    week: 'all', // Separate section
+  }));
 }
 
 /**
- * Test data kept completely separate from course questions.
+ * Returns count of questions in the separate "All Questions" section.
+ */
+export function getAllQuestionsCount(): number {
+  return (allQuestionsData as Question[]).length;
+}
+
+/**
+ * Returns all weekly questions (Weeks 1-12) if needed for global search.
+ */
+export function getAllWeeklyQuestions(): Question[] {
+  const list: Question[] = [];
+  for (let w = 1; w <= 12; w++) {
+    const weekQs = getWeekQuestions(w);
+    list.push(...weekQs);
+  }
+  return list;
+}
+
+/**
+ * Test data kept completely separate in test-data.json.
  * Test data does NOT appear in Week 1..12 or All Questions.
  */
 export function getTestData(): Question[] {
@@ -85,7 +103,8 @@ export function getTotalCourseQuestionCount(): number {
   return total;
 }
 
-// Aliases for convenience
+// Aliases for convenience & backward compatibility
 export const getQuestionsForWeek = getWeekQuestions;
+export const getAllCourseQuestions = getAllQuestionsSection; // Points to the separate All Questions section
 export const getTestDataQuestions = getTestData;
 export const getTotalCourseQuestionsCount = getTotalCourseQuestionCount;

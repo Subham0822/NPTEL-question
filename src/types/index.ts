@@ -7,7 +7,7 @@ export interface Question {
   options: [string, string, string, string] | string[];
   correctAnswers: string[]; // e.g. ["A"] or ["A", "C"]
   explanation?: string;
-  week?: number; // Optional week number (1-12) for course questions
+  week?: number | 'all'; // Week number (1-12) or 'all' for All Questions section
 }
 
 export interface ParsedQuestionCandidate {
@@ -17,7 +17,7 @@ export interface ParsedQuestionCandidate {
   options: [string, string, string, string];
   correctAnswers: string[];
   explanation?: string;
-  week?: number;
+  week?: number | 'all';
 }
 
 export interface ParseError {

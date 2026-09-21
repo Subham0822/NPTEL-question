@@ -22,7 +22,7 @@ import {
 
 interface QuestionImporterProps {
   existingQuestionsForWeek: Question[];
-  defaultWeek?: number;
+  defaultWeek?: number | 'all';
   onPracticeParsedQuestions?: (questions: Question[]) => void;
 }
 
@@ -86,10 +86,14 @@ WPA3 incorporates Dragonfly handshake (SAE) which protects against offline passw
 
 export const QuestionImporter: React.FC<QuestionImporterProps> = ({
   existingQuestionsForWeek,
-  defaultWeek = 1,
+  defaultWeek = 'all',
   onPracticeParsedQuestions,
 }) => {
-  const [selectedWeek, setSelectedWeek] = useState<number>(defaultWeek >= 1 && defaultWeek <= 12 ? defaultWeek : 1);
+  const [selectedWeek, setSelectedWeek] = useState<number | 'all'>(
+    defaultWeek === 'all' || (typeof defaultWeek === 'number' && defaultWeek >= 1 && defaultWeek <= 12)
+      ? defaultWeek
+      : 'all'
+  );
   const [inputText, setInputText] = useState<string>('');
   const [parsedQuestions, setParsedQuestions] = useState<ParsedQuestionCandidate[]>([]);
   const [errors, setErrors] = useState<ParseError[]>([]);
@@ -98,6 +102,9 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
   const [copiedJson, setCopiedJson] = useState<boolean>(false);
   const [showTemplateAccordion, setShowTemplateAccordion] = useState<boolean>(false);
   const [downloadSuccess, setDownloadSuccess] = useState<boolean>(false);
+
+  const targetFilename = selectedWeek === 'all' ? 'all-questions.json' : `week-${selectedWeek}.json`;
+  const targetIdPrefix = selectedWeek === 'all' ? 'all' : `w${selectedWeek}`;
 
   // Validate & Preview
   const handleValidateAndPreview = () => {
@@ -146,7 +153,7 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
   // Format questions into pure repository JSON structure
   const getFormattedJson = () => {
     const jsonObjects = parsedQuestions.map((q, idx) => ({
-      id: `w${selectedWeek}-q${idx + 1}`,
+      id: `${targetIdPrefix}-q${idx + 1}`,
       question: q.question,
       type: q.type,
       options: q.options,
@@ -164,7 +171,7 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `week-${selectedWeek}.json`;
+    link.download = targetFilename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -201,14 +208,15 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
             </p>
           </div>
 
-          {/* Target Week Selector */}
+          {/* Target Section / Week Selector */}
           <div className="flex items-center space-x-2 bg-white px-3 py-2 rounded-2xl border border-slate-200 shadow-xs">
-            <span className="text-xs font-semibold text-slate-600">Target Week:</span>
+            <span className="text-xs font-semibold text-slate-600">Target Section:</span>
             <select
               id="week-select-dropdown"
               value={selectedWeek}
               onChange={(e) => {
-                const newWeek = Number(e.target.value);
+                const val = e.target.value;
+                const newWeek: number | 'all' = val === 'all' ? 'all' : Number(val);
                 setSelectedWeek(newWeek);
                 if (hasPreviewed && parsedQuestions.length > 0) {
                   const updated = parsedQuestions.map((q) => ({
@@ -220,9 +228,10 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
               }}
               className="bg-slate-50 border border-slate-300 text-xs font-bold text-slate-800 rounded-xl px-2.5 py-1 focus:ring-2 focus:ring-indigo-500 cursor-pointer"
             >
+              <option value="all">All Questions Section (all-questions.json)</option>
               {Array.from({ length: 12 }, (_, i) => i + 1).map((w) => (
                 <option key={w} value={w}>
-                  Week {w}
+                  Week {w} (week-{w}.json)
                 </option>
               ))}
             </select>
@@ -387,7 +396,7 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
                   </h3>
                 </div>
                 <p className="text-xs text-slate-500 mt-1">
-                  Export as <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-indigo-700">week-{selectedWeek}.json</code> to include in repository.
+                  Export as <code className="bg-white px-1.5 py-0.5 rounded border border-slate-200 font-mono text-indigo-700">{targetFilename}</code> to include in repository.
                 </p>
               </div>
 
@@ -399,7 +408,7 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
                   className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 cursor-pointer shadow-xs transition-colors"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Download week-{selectedWeek}.json</span>
+                  <span>Download {targetFilename}</span>
                 </button>
 
                 <button
@@ -425,7 +434,7 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
                     type="button"
                     onClick={() => {
                       const questionsToPractice: Question[] = parsedQuestions.map((q, idx) => ({
-                        id: `w${selectedWeek}-q${idx + 1}`,
+                        id: `${targetIdPrefix}-q${idx + 1}`,
                         question: q.question,
                         type: q.type,
                         options: q.options,
@@ -453,7 +462,7 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
                   <span className="font-bold text-slate-800">How to save to repository: </span>
                   Download the file and save it to{' '}
                   <code className="font-mono bg-indigo-50 text-indigo-800 px-1.5 py-0.5 rounded font-semibold">
-                    data/questions/week-{selectedWeek}.json
+                    data/questions/{targetFilename}
                   </code>
                   . Commit and push to git. It will be loaded permanently and automatically.
                 </div>
@@ -463,7 +472,7 @@ export const QuestionImporter: React.FC<QuestionImporterProps> = ({
             {downloadSuccess && (
               <div className="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Downloaded <strong>week-{selectedWeek}.json</strong>! Place it into <code>data/questions/</code> in your repository.</span>
+                <span>Downloaded <strong>{targetFilename}</strong>! Place it into <code>data/questions/</code> in your repository.</span>
               </div>
             )}
           </div>

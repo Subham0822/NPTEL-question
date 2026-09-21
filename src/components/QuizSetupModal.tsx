@@ -51,7 +51,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
   };
 
   const getTargetTitle = () => {
-    if (targetWeek === 'all') return 'All Questions (Combined Weeks 1–12)';
+    if (targetWeek === 'all') return 'All Questions Section Practice Setup';
     if (targetWeek === 'test') return 'Test Data Sandbox Quiz';
     return `Week ${targetWeek} Practice Setup`;
   };

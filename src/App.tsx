@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Question, QuizConfig } from './types';
 import {
-  getAllCourseQuestions,
+  getAllQuestionsSection,
+  getAllQuestionsCount,
+  getAllWeeklyQuestions,
   getQuestionsForWeek,
   getCourseWeekCounts,
   getTestDataQuestions,
@@ -23,13 +25,22 @@ export default function App() {
   const [currentView, setCurrentView] = useState<
     'dashboard' | 'importer' | 'bank' | 'test_data' | 'quiz' | 'result'
   >('dashboard');
-  const [importerDefaultWeek, setImporterDefaultWeek] = useState<number>(1);
+  const [importerDefaultWeek, setImporterDefaultWeek] = useState<number | 'all'>('all');
 
-  // Read-only question repository data
-  const courseQuestions = useMemo(() => getAllCourseQuestions(), []);
-  const testQuestions = useMemo(() => getTestDataQuestions(), []);
-  const weekCounts = useMemo(() => getCourseWeekCounts(), []);
-  const totalCourseQuestions = useMemo(() => getTotalCourseQuestionsCount(), []);
+  // Stateful question repository data
+  const [allQuestions, setAllQuestions] = useState<Question[]>(() => getAllQuestionsSection());
+  const [weeklyQuestions, setWeeklyQuestions] = useState<Question[]>(() => getAllWeeklyQuestions());
+  const [testQuestions, setTestQuestions] = useState<Question[]>(() => getTestDataQuestions());
+
+  const allQuestionsCount = allQuestions.length;
+  const weekCounts = useMemo(() => {
+    const counts: Record<number, number> = {};
+    for (let w = 1; w <= 12; w++) {
+      counts[w] = weeklyQuestions.filter((q) => q.week === w).length;
+    }
+    return counts;
+  }, [weeklyQuestions]);
+  const totalWeeklyQuestions = weeklyQuestions.length;
 
   // Active in-memory quiz state (ephemeral, zero persistence)
   const [activeQuizConfig, setActiveQuizConfig] = useState<QuizConfig | null>(null);
@@ -103,9 +114,9 @@ export default function App() {
       } else if (config.week === 'test') {
         pool = testQuestions;
       } else if (config.week === 'all') {
-        pool = courseQuestions;
+        pool = allQuestions;
       } else {
-        pool = getQuestionsForWeek(config.week as number);
+        pool = weeklyQuestions.filter((q) => q.week === config.week);
       }
 
       if (pool.length === 0) {
@@ -134,8 +145,30 @@ export default function App() {
       setSetupModalTarget(null);
       setCurrentView('quiz');
     },
-    [courseQuestions, testQuestions]
+    [allQuestions, weeklyQuestions, testQuestions]
   );
+
+  // Delete questions in bulk or singly
+  const handleDeleteQuestions = useCallback(async (ids: string[]) => {
+    if (!ids || ids.length === 0) return;
+    const idSet = new Set(ids);
+
+    // Update in-memory state across all modules
+    setAllQuestions((prev) => prev.filter((q) => !idSet.has(q.id)));
+    setWeeklyQuestions((prev) => prev.filter((q) => !idSet.has(q.id)));
+    setTestQuestions((prev) => prev.filter((q) => !idSet.has(q.id)));
+
+    // Persist deletion to server directory files
+    try {
+      await fetch('/api/questions/bulk-delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids }),
+      });
+    } catch (err) {
+      console.warn('Server delete call failed, deleted in memory:', err);
+    }
+  }, []);
 
   // Quick practice launcher for a week or all questions
   const handleQuickPracticeWeek = useCallback(
@@ -155,14 +188,14 @@ export default function App() {
   // Open Quiz Setup Modal
   const handleOpenSetupModal = useCallback(
     (week: number | 'all', initialMode: 'practice' | 'exam' = 'practice') => {
-      const count = week === 'all' ? totalCourseQuestions : weekCounts[week] || 0;
+      const count = week === 'all' ? allQuestionsCount : weekCounts[week] || 0;
       setSetupModalTarget({
         week,
         availableCount: count,
         initialMode,
       });
     },
-    [totalCourseQuestions, weekCounts]
+    [allQuestionsCount, weekCounts]
   );
 
   // Option selection in Quiz
@@ -301,14 +334,14 @@ export default function App() {
           currentView === 'quiz' || currentView === 'result' ? 'dashboard' : currentView
         }
         onNavigate={(view) => setCurrentView(view)}
-        totalCourseQuestions={totalCourseQuestions}
+        totalCourseQuestions={allQuestionsCount + totalWeeklyQuestions}
       />
 
       {/* Main Content Area */}
       <main className="flex-1">
         {currentView === 'dashboard' && (
           <Dashboard
-            totalCourseQuestions={totalCourseQuestions}
+            allQuestionsCount={allQuestionsCount}
             weekCounts={weekCounts}
             onQuickPractice={handleQuickPracticeWeek}
             onOpenSetup={handleOpenSetupModal}
@@ -322,7 +355,11 @@ export default function App() {
         {currentView === 'importer' && (
           <QuestionImporter
             existingQuestionsForWeek={
-              importerDefaultWeek ? getQuestionsForWeek(importerDefaultWeek) : []
+              importerDefaultWeek === 'all'
+                ? allQuestions
+                : typeof importerDefaultWeek === 'number'
+                ? weeklyQuestions.filter((q) => q.week === importerDefaultWeek)
+                : []
             }
             defaultWeek={importerDefaultWeek}
             onPracticeParsedQuestions={(questionsToPractice) => {
@@ -343,10 +380,12 @@ export default function App() {
 
         {currentView === 'bank' && (
           <QuestionBank
-            courseQuestions={courseQuestions}
+            allQuestions={allQuestions}
+            weeklyQuestions={weeklyQuestions}
             testQuestions={testQuestions}
             onPracticeSingle={handlePracticeSingle}
             onPracticeFiltered={handlePracticeFiltered}
+            onDeleteQuestions={handleDeleteQuestions}
           />
         )}
 

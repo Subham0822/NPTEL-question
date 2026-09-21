@@ -3,15 +3,15 @@ import { WeekCard } from './WeekCard';
 import { Play, UploadCloud } from 'lucide-react';
 
 interface DashboardProps {
-  totalCourseQuestions: number;
+  allQuestionsCount: number;
   weekCounts: Record<number, number>;
   onQuickPractice: (week: number | 'all') => void;
   onOpenSetup: (week: number | 'all') => void;
-  onImportForWeek: (week: number) => void;
+  onImportForWeek: (week: number | 'all') => void;
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({
-  totalCourseQuestions,
+  allQuestionsCount,
   weekCounts,
   onQuickPractice,
   onOpenSetup,
@@ -26,7 +26,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Practice Modules</h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            {totalCourseQuestions} questions across 12 weekly NPTEL modules. All Questions dynamically combines all active weeks.
+            Browse and practice from the dedicated <span className="font-semibold text-slate-700">All Questions</span> section or any of the 12 weekly course modules.
           </p>
         </div>
 
@@ -34,17 +34,17 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <button
             type="button"
             onClick={() => onQuickPractice('all')}
-            disabled={totalCourseQuestions === 0}
+            disabled={allQuestionsCount === 0}
             className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-xs transition-colors flex items-center space-x-1.5 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-            title="Practice all course questions combined across all weeks"
+            title="Practice from the dedicated All Questions section"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
-            <span>Practice All Questions ({totalCourseQuestions})</span>
+            <span>Practice All Questions ({allQuestionsCount})</span>
           </button>
 
           <button
             type="button"
-            onClick={() => onImportForWeek(1)}
+            onClick={() => onImportForWeek('all')}
             className="px-4 py-2.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-semibold rounded-xl shadow-xs transition-colors flex items-center space-x-1.5 cursor-pointer"
           >
             <UploadCloud className="w-3.5 h-3.5 text-indigo-600" />
@@ -55,13 +55,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
       {/* Sections Grid: All Questions Section + 12 Weeks */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {/* Dynamic All Questions Section Card */}
+        {/* Separate All Questions Section Card */}
         <WeekCard
           week="all"
-          totalQuestions={totalCourseQuestions}
+          totalQuestions={allQuestionsCount}
           onQuickPractice={onQuickPractice}
           onOpenSetup={onOpenSetup}
-          onImportForWeek={() => onImportForWeek(1)}
+          onImportForWeek={() => onImportForWeek('all')}
         />
 
         {/* 12 Individual Course Weeks */}
@@ -72,7 +72,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             totalQuestions={weekCounts[w] || 0}
             onQuickPractice={onQuickPractice}
             onOpenSetup={onOpenSetup}
-            onImportForWeek={(targetWeek) => onImportForWeek(typeof targetWeek === 'number' ? targetWeek : w)}
+            onImportForWeek={(targetWeek) => onImportForWeek(targetWeek)}
           />
         ))}
       </div>
