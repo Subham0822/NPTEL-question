@@ -1,25 +1,12 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { Attempt, Question, QuizConfig, QuizSession } from './types';
+import { Question, QuizConfig } from './types';
 import {
-  getQuestions,
-  getAttempts,
-  saveSession,
-  addQuestions,
-  updateQuestion as storageUpdateQuestion,
-  deleteQuestion as storageDeleteQuestion,
-  deleteQuestions as storageDeleteQuestions,
-  restoreSeedQuestions as storageRestoreSeedQuestions,
-  factoryReset as storageFactoryReset,
-  exportDataAsJSON,
-  importDataFromJSON,
-  fetchDirectoryData,
-} from './lib/storage';
-import {
-  getAllWeeksStats,
-  getAllQuestionsSectionStats,
-  getOverallStats,
-} from './lib/statistics';
-import { validateAnswers } from './lib/parser';
+  getAllCourseQuestions,
+  getQuestionsForWeek,
+  getCourseWeekCounts,
+  getTestDataQuestions,
+  getTotalCourseQuestionsCount,
+} from './lib/questions';
 import { prepareQuizQuestions } from './lib/quiz';
 import { Navbar } from './components/Navbar';
 import { Dashboard } from './components/Dashboard';
@@ -32,17 +19,19 @@ import { ConfirmDialog } from './components/ConfirmDialog';
 import { TestDataSection } from './components/TestDataSection';
 
 export default function App() {
-  // App views
+  // Navigation view state
   const [currentView, setCurrentView] = useState<
     'dashboard' | 'importer' | 'bank' | 'test_data' | 'quiz' | 'result'
   >('dashboard');
-  const [importerDefaultWeek, setImporterDefaultWeek] = useState<number | 'all'>(1);
+  const [importerDefaultWeek, setImporterDefaultWeek] = useState<number>(1);
 
-  // Core data states
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [attempts, setAttempts] = useState<Attempt[]>([]);
+  // Read-only question repository data
+  const courseQuestions = useMemo(() => getAllCourseQuestions(), []);
+  const testQuestions = useMemo(() => getTestDataQuestions(), []);
+  const weekCounts = useMemo(() => getCourseWeekCounts(), []);
+  const totalCourseQuestions = useMemo(() => getTotalCourseQuestionsCount(), []);
 
-  // Active Quiz State
+  // Active in-memory quiz state (ephemeral, zero persistence)
   const [activeQuizConfig, setActiveQuizConfig] = useState<QuizConfig | null>(null);
   const [activeQuizQuestions, setActiveQuizQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
@@ -51,7 +40,7 @@ export default function App() {
   const [quizStartTime, setQuizStartTime] = useState<number>(0);
   const [timerSecondsRemaining, setTimerSecondsRemaining] = useState<number | null>(null);
 
-  // Result summary storage
+  // In-memory quiz result view
   const [lastQuizResult, setLastQuizResult] = useState<{
     questions: Question[];
     userAnswers: Record<string, string[]>;
@@ -61,7 +50,7 @@ export default function App() {
 
   // Setup modal state
   const [setupModalTarget, setSetupModalTarget] = useState<{
-    week: number | 'all' | 'combined' | 'test';
+    week: number | 'all' | 'test';
     availableCount: number;
     initialMode?: 'practice' | 'exam';
   } | null>(null);
@@ -81,78 +70,54 @@ export default function App() {
     onConfirm: () => {},
   });
 
-  // Load questions and attempts on initial mount
-  const refreshData = useCallback(() => {
-    const loadedQuestions = getQuestions();
-    const loadedAttempts = getAttempts();
-    setQuestions(loadedQuestions);
-    setAttempts(loadedAttempts);
-
-    // Hydrate and sync with project directory storage (/data/questions.json)
-    fetchDirectoryData().then((serverData) => {
-      if (serverData && serverData.questions.length > 0) {
-        setQuestions(serverData.questions);
-        setAttempts(serverData.attempts);
-      }
-    });
-  }, []);
-
+  // Timer effect for Exam Mode
   useEffect(() => {
-    refreshData();
-  }, [refreshData]);
-
-  // Derived statistics (Course questions only, test data strictly excluded)
-  const weeksStats = useMemo(() => getAllWeeksStats(questions, attempts), [questions, attempts]);
-  const allQuestionsStats = useMemo(() => getAllQuestionsSectionStats(questions, attempts), [questions, attempts]);
-  const overallStats = useMemo(() => getOverallStats(questions, attempts), [questions, attempts]);
-
-  // Timer countdown for Exam Mode
-  useEffect(() => {
-    if (currentView !== 'quiz' || timerSecondsRemaining === null) return;
+    if (
+      currentView !== 'quiz' ||
+      !activeQuizConfig ||
+      activeQuizConfig.mode !== 'exam' ||
+      timerSecondsRemaining === null
+    ) {
+      return;
+    }
 
     if (timerSecondsRemaining <= 0) {
-      // Auto-submit exam when timer reaches 0
       handleFinishExam();
       return;
     }
 
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
       setTimerSecondsRemaining((prev) => (prev !== null && prev > 0 ? prev - 1 : 0));
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, [currentView, timerSecondsRemaining]);
-
-  // Get question pool by target type
-  const getQuestionsPoolForTarget = useCallback(
-    (target: number | 'all' | 'combined' | 'test'): Question[] => {
-      if (typeof target === 'number') {
-        return questions.filter((q) => q.source === 'course' && q.week === target);
-      }
-      if (target === 'all') {
-        return questions.filter((q) => q.source === 'course' && (q.week === 'all' || q.week === 0));
-      }
-      if (target === 'combined') {
-        return questions.filter((q) => q.source === 'course');
-      }
-      if (target === 'test') {
-        return questions.filter((q) => q.source === 'test');
-      }
-      return questions.filter((q) => q.source === 'course');
-    },
-    [questions]
-  );
+    return () => clearInterval(interval);
+  }, [currentView, activeQuizConfig, timerSecondsRemaining]);
 
   // Start a Quiz
   const startQuiz = useCallback(
-    (config: QuizConfig, customQuestions?: Question[]) => {
-      const pool = customQuestions || getQuestionsPoolForTarget(config.week);
+    (config: QuizConfig, customQuestionsPool?: Question[]) => {
+      let pool: Question[] = [];
+
+      if (customQuestionsPool && customQuestionsPool.length > 0) {
+        pool = customQuestionsPool;
+      } else if (config.week === 'test') {
+        pool = testQuestions;
+      } else if (config.week === 'all') {
+        pool = courseQuestions;
+      } else {
+        pool = getQuestionsForWeek(config.week as number);
+      }
+
       if (pool.length === 0) {
-        alert('No questions available for this practice session.');
         return;
       }
 
       const prepared = prepareQuizQuestions(pool, config);
+
+      if (prepared.length === 0) {
+        return;
+      }
+
       setActiveQuizConfig(config);
       setActiveQuizQuestions(prepared);
       setCurrentQuestionIndex(0);
@@ -169,132 +134,117 @@ export default function App() {
       setSetupModalTarget(null);
       setCurrentView('quiz');
     },
-    [getQuestionsPoolForTarget]
+    [courseQuestions, testQuestions]
   );
 
-  // Quick Practice from Week card
-  const handleQuickPracticeWeek = (weekNumber: number | 'all') => {
-    const weekQuestions =
-      weekNumber === 'all'
-        ? questions.filter((q) => q.source === 'course' && (q.week === 'all' || q.week === 0))
-        : questions.filter((q) => q.source === 'course' && q.week === weekNumber);
-
-    if (weekQuestions.length === 0) {
-      setImporterDefaultWeek(weekNumber);
-      setCurrentView('importer');
-      return;
-    }
-
-    startQuiz({
-      week: weekNumber,
-      mode: 'practice',
-      questionCount: 'all',
-      order: 'sequential',
-      shuffleOptions: false,
-      timerMinutes: 0,
-    });
-  };
+  // Quick practice launcher for a week or all questions
+  const handleQuickPracticeWeek = useCallback(
+    (target: number | 'all', mode: 'practice' | 'exam' = 'practice') => {
+      startQuiz({
+        week: target,
+        mode,
+        questionCount: 'all',
+        order: 'sequential',
+        shuffleOptions: false,
+        timerMinutes: mode === 'exam' ? 30 : 0,
+      });
+    },
+    [startQuiz]
+  );
 
   // Open Quiz Setup Modal
-  const handleOpenSetupModal = (
-    target: number | 'all' | 'combined' | 'test'
-  ) => {
-    const pool = getQuestionsPoolForTarget(target);
-    setSetupModalTarget({
-      week: target,
-      availableCount: pool.length,
-    });
-  };
+  const handleOpenSetupModal = useCallback(
+    (week: number | 'all', initialMode: 'practice' | 'exam' = 'practice') => {
+      const count = week === 'all' ? totalCourseQuestions : weekCounts[week] || 0;
+      setSetupModalTarget({
+        week,
+        availableCount: count,
+        initialMode,
+      });
+    },
+    [totalCourseQuestions, weekCounts]
+  );
 
-  // Toggle Option Selection in Quiz (single or multiple)
+  // Option selection in Quiz
   const handleToggleOption = (optionText: string) => {
     const currentQ = activeQuizQuestions[currentQuestionIndex];
     if (!currentQ) return;
 
     setUserAnswers((prev) => {
-      const existing = prev[currentQ.id] || [];
+      const currentSelected = prev[currentQ.id] || [];
+
       if (currentQ.type === 'single') {
         return {
           ...prev,
           [currentQ.id]: [optionText],
         };
       } else {
-        const isAlreadySelected = existing.includes(optionText);
-        const next = isAlreadySelected
-          ? existing.filter((item) => item !== optionText)
-          : [...existing, optionText];
+        const exists = currentSelected.includes(optionText);
+        const updated = exists
+          ? currentSelected.filter((opt) => opt !== optionText)
+          : [...currentSelected, optionText];
         return {
           ...prev,
-          [currentQ.id]: next,
+          [currentQ.id]: updated,
         };
       }
     });
   };
 
-  // Submit Answer in Practice Mode
+  // Submit Answer (Practice Mode immediate check)
   const handleSubmitAnswer = () => {
-    const currentQ = activeQuizQuestions[currentQuestionIndex];
-    if (!currentQ) return;
-
-    const selected = userAnswers[currentQ.id] || [];
-    if (selected.length === 0) return;
-
     setIsSubmittedForCurrent(true);
   };
 
-  // Next Question in Quiz
+  // Move to next question
   const handleNextQuestion = () => {
     if (currentQuestionIndex < activeQuizQuestions.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
       setIsSubmittedForCurrent(false);
     } else {
-      // Completed quiz!
       handleFinishExam();
     }
   };
 
-  // Previous Question (Exam mode)
+  // Move to previous question (Exam Mode)
   const handlePreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex((prev) => prev - 1);
+      setIsSubmittedForCurrent(false);
     }
   };
 
-  // Finish Exam / Quiz
+  // Finish session & build review
   const handleFinishExam = () => {
-    const totalTimeSeconds = Math.max(1, Math.round((Date.now() - quizStartTime) / 1000));
-    const finalAnswers = { ...userAnswers };
+    const timeSpentSeconds = Math.round((Date.now() - quizStartTime) / 1000);
 
-    // Prepare label for results
-    let weekLabel = 'Practice';
-    if (typeof activeQuizConfig?.week === 'number') {
-      weekLabel = `Week ${activeQuizConfig.week}`;
-    } else if (activeQuizConfig?.week === 'all') {
-      weekLabel = 'All Questions Section';
-    } else if (activeQuizConfig?.week === 'combined') {
-      weekLabel = 'Combined Course (All Modules)';
-    } else if (activeQuizConfig?.week === 'test') {
-      weekLabel = 'Test Data Sandbox';
-    }
+    const weekLabel =
+      typeof activeQuizConfig?.week === 'number'
+        ? `Week ${activeQuizConfig.week}`
+        : activeQuizConfig?.week === 'all'
+        ? 'All Questions'
+        : activeQuizConfig?.week === 'test'
+        ? 'Test Data Sandbox'
+        : 'Practice Session';
 
     setLastQuizResult({
       questions: activeQuizQuestions,
-      userAnswers: finalAnswers,
-      totalTimeSeconds,
+      userAnswers,
+      totalTimeSeconds: timeSpentSeconds,
       weekLabel,
     });
 
     setCurrentView('result');
   };
 
-  // Exit Quiz Handler with confirm
+  // Exit Quiz
   const handleExitQuiz = () => {
     setConfirmDialog({
       isOpen: true,
-      title: 'Exit Current Practice?',
-      message: 'Are you sure you want to leave this session?',
-      confirmLabel: 'Yes, Exit',
-      variant: 'warning',
+      title: 'Exit Practice Session?',
+      message: 'Your current session progress will not be saved. Are you sure you want to exit?',
+      confirmLabel: 'Exit Session',
+      variant: 'danger',
       onConfirm: () => {
         setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
         setCurrentView('dashboard');
@@ -311,32 +261,7 @@ export default function App() {
     startQuiz(activeQuizConfig, lastQuizResult.questions);
   };
 
-  // Import Questions handler
-  const handleImportSuccess = (importedCount: number, week: number | 'all') => {
-    refreshData();
-  };
-
-  // Question Bank operations
-  const handleUpdateQuestion = (id: string, updates: Partial<Question>) => {
-    storageUpdateQuestion(id, updates);
-    refreshData();
-  };
-
-  const handleDeleteQuestion = (id: string) => {
-    storageDeleteQuestion(id);
-    refreshData();
-  };
-
-  const handleBulkDeleteQuestions = (ids: string[]) => {
-    storageDeleteQuestions(ids);
-    refreshData();
-  };
-
-  const handleAddSingleQuestion = (newQ: Omit<Question, 'id' | 'createdAt'>) => {
-    addQuestions([newQ]);
-    refreshData();
-  };
-
+  // Practice a single question immediately from QuestionBank
   const handlePracticeSingle = (q: Question) => {
     startQuiz(
       {
@@ -351,43 +276,19 @@ export default function App() {
     );
   };
 
-  const handleFactoryReset = () => {
-    setConfirmDialog({
-      isOpen: true,
-      title: 'Factory Reset All Data?',
-      message:
-        'WARNING: This will delete all custom imported questions and all progress, restoring the original sample questions only. This action cannot be undone.',
-      confirmLabel: 'Factory Reset Everything',
-      variant: 'danger',
-      onConfirm: () => {
-        storageFactoryReset();
-        refreshData();
-        setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
+  // Practice a filtered question set from QuestionBank
+  const handlePracticeFiltered = (questionsPool: Question[]) => {
+    startQuiz(
+      {
+        week: 'all',
+        mode: 'practice',
+        questionCount: 'all',
+        order: 'sequential',
+        shuffleOptions: false,
+        timerMinutes: 0,
       },
-    });
-  };
-
-  const handleExportBackup = () => {
-    const jsonStr = exportDataAsJSON();
-    const blob = new Blob([jsonStr], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `nptel-cybersecurity-backup-${new Date().toISOString().slice(0, 10)}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
-
-  const handleImportBackup = (json: string) => {
-    try {
-      const res = importDataFromJSON(json);
-      refreshData();
-      alert(`Backup imported successfully! Loaded ${res.importedQuestions} questions and ${res.importedAttempts} attempts.`);
-    } catch (e: any) {
-      alert(`Failed to import backup: ${e?.message || 'Invalid JSON file.'}`);
-    }
+      questionsPool
+    );
   };
 
   const currentQ = activeQuizQuestions[currentQuestionIndex];
@@ -400,19 +301,15 @@ export default function App() {
           currentView === 'quiz' || currentView === 'result' ? 'dashboard' : currentView
         }
         onNavigate={(view) => setCurrentView(view)}
-        totalCourseQuestions={overallStats.totalQuestions}
-        onExportBackup={handleExportBackup}
-        onImportBackup={handleImportBackup}
-        onFactoryReset={handleFactoryReset}
+        totalCourseQuestions={totalCourseQuestions}
       />
 
       {/* Main Content Area */}
       <main className="flex-1">
         {currentView === 'dashboard' && (
           <Dashboard
-            overallStats={overallStats}
-            allQuestionsStats={allQuestionsStats}
-            weeksStats={weeksStats}
+            totalCourseQuestions={totalCourseQuestions}
+            weekCounts={weekCounts}
             onQuickPractice={handleQuickPracticeWeek}
             onOpenSetup={handleOpenSetupModal}
             onImportForWeek={(week) => {
@@ -424,31 +321,39 @@ export default function App() {
 
         {currentView === 'importer' && (
           <QuestionImporter
-            existingQuestions={questions}
+            existingQuestionsForWeek={
+              importerDefaultWeek ? getQuestionsForWeek(importerDefaultWeek) : []
+            }
             defaultWeek={importerDefaultWeek}
-            onImportSuccess={handleImportSuccess}
-            onPracticeWeek={handleQuickPracticeWeek}
-            onGoToBank={() => setCurrentView('bank')}
+            onPracticeParsedQuestions={(questionsToPractice) => {
+              startQuiz(
+                {
+                  week: importerDefaultWeek,
+                  mode: 'practice',
+                  questionCount: 'all',
+                  order: 'sequential',
+                  shuffleOptions: false,
+                  timerMinutes: 0,
+                },
+                questionsToPractice
+              );
+            }}
           />
         )}
 
         {currentView === 'bank' && (
           <QuestionBank
-            questions={questions}
-            onUpdateQuestion={handleUpdateQuestion}
-            onDeleteQuestion={handleDeleteQuestion}
-            onBulkDeleteQuestions={handleBulkDeleteQuestions}
-            onAddSingleQuestion={handleAddSingleQuestion}
+            courseQuestions={courseQuestions}
+            testQuestions={testQuestions}
             onPracticeSingle={handlePracticeSingle}
+            onPracticeFiltered={handlePracticeFiltered}
           />
         )}
 
         {currentView === 'test_data' && (
           <TestDataSection
-            testQuestions={questions.filter((q) => q.source === 'test')}
-            testAttempts={attempts.filter((a) => a.source === 'test')}
+            testQuestions={testQuestions}
             onPracticeTest={(mode) => {
-              const testPool = questions.filter((q) => q.source === 'test');
               startQuiz(
                 {
                   week: 'test',
@@ -458,12 +363,8 @@ export default function App() {
                   shuffleOptions: false,
                   timerMinutes: mode === 'exam' ? 10 : 0,
                 },
-                testPool
+                testQuestions
               );
-            }}
-            onRefreshData={refreshData}
-            onNavigateToWeek={(w) => {
-              setCurrentView('dashboard');
             }}
           />
         )}
@@ -478,9 +379,7 @@ export default function App() {
               typeof activeQuizConfig?.week === 'number'
                 ? `Week ${activeQuizConfig.week}`
                 : activeQuizConfig?.week === 'all'
-                ? 'All Questions Section'
-                : activeQuizConfig?.week === 'combined'
-                ? 'Combined Course'
+                ? 'All Questions'
                 : activeQuizConfig?.week === 'test'
                 ? 'Test Data Sandbox'
                 : 'Practice'

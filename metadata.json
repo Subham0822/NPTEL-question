@@ -1,6 +1,6 @@
 {
   "name": "NPTEL Cybersecurity MCQ Practice",
-  "description": "A modern, exam-oriented practice platform for NPTEL Cybersecurity with bulk question import, practice and exam modes, performance tracking, and question bank management.",
+  "description": "A focused, completely stateless practice platform for NPTEL Cybersecurity questions stored directly as repository JSON files, featuring Practice Mode, Exam Mode, and bulk question import with JSON export.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

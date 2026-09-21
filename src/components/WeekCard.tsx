@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { WeekStats } from '../types';
 import {
   Play,
   Settings,
@@ -9,20 +8,21 @@ import {
 } from 'lucide-react';
 
 interface WeekCardProps {
-  stats: WeekStats;
+  week: number | 'all';
+  totalQuestions: number;
   onQuickPractice: (week: number | 'all') => void;
   onOpenSetup: (week: number | 'all') => void;
   onImportForWeek: (week: number | 'all') => void;
 }
 
 export const WeekCard: React.FC<WeekCardProps> = ({
-  stats,
+  week,
+  totalQuestions,
   onQuickPractice,
   onOpenSetup,
   onImportForWeek,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const { week, totalQuestions } = stats;
 
   const isAllSection = week === 'all';
   const hasQuestions = totalQuestions > 0;

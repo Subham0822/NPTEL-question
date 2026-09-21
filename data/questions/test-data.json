@@ -1,0 +1,67 @@
+[
+  {
+    "id": "test-q1",
+    "question": "Which element of the CIA triad is primarily compromised during a Denial of Service (DoS) attack?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Authenticity"
+    ],
+    "correctAnswers": ["C"],
+    "explanation": "A Denial of Service (DoS) attack aims to overwhelm system resources, making services unavailable to legitimate users, directly violating Availability."
+  },
+  {
+    "id": "test-q2",
+    "question": "Which of the following are common characteristics and objectives of phishing attacks?",
+    "type": "multiple",
+    "options": [
+      "Deceptive emails simulating trusted entities",
+      "Harvesting user credentials and sensitive data",
+      "Employing social engineering persuasion techniques",
+      "Overclocking hardware components to accelerate CPU clock speed"
+    ],
+    "correctAnswers": ["A", "B", "C"],
+    "explanation": "Phishing relies on deceptive communications and social engineering to steal credentials. Hardware overclocking is unrelated."
+  },
+  {
+    "id": "test-q3",
+    "question": "Which security principle mandates that a user or system process must be granted only the minimum clearance necessary to perform authorized tasks?",
+    "type": "single",
+    "options": [
+      "Separation of Duties",
+      "Principle of Least Privilege",
+      "Defense in Depth",
+      "Fail-Safe Defaults"
+    ],
+    "correctAnswers": ["B"],
+    "explanation": "The Principle of Least Privilege (PoLP) restricts access rights to the bare minimum needed for legitimate operations."
+  },
+  {
+    "id": "test-q4",
+    "question": "Which of the following cryptographic algorithms rely on asymmetric (public-key) key pairs rather than a single shared secret key?",
+    "type": "multiple",
+    "options": [
+      "RSA (Rivest-Shamir-Adleman)",
+      "AES (Advanced Encryption Standard)",
+      "ECC (Elliptic Curve Cryptography)",
+      "DES (Data Encryption Standard)"
+    ],
+    "correctAnswers": ["A", "C"],
+    "explanation": "RSA and ECC are asymmetric public-key cryptosystems. AES and DES are symmetric ciphers that share a single secret key."
+  },
+  {
+    "id": "test-q5",
+    "question": "Which of the following network attacks are classified as ACTIVE attacks (modifying data or system state) rather than passive sniffing?",
+    "type": "multiple",
+    "options": [
+      "Man-in-the-Middle (MITM) packet tampering",
+      "Passive network packet sniffing with Wireshark",
+      "TCP Session Hijacking with packet injection",
+      "Traffic volume and pattern observation"
+    ],
+    "correctAnswers": ["A", "C"],
+    "explanation": "MITM tampering and TCP session injection actively modify network streams, whereas packet sniffing and traffic analysis are passive."
+  }
+]

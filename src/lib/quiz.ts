@@ -1,4 +1,5 @@
 import { Question, QuizConfig } from '../types';
+import { OPTION_LETTERS, isOptionCorrect } from './parser';
 
 /**
  * Shuffles an array immutably using Fisher-Yates algorithm.
@@ -13,10 +14,10 @@ export function shuffleArray<T>(array: T[]): T[] {
 }
 
 /**
- * Prepares questions for a quiz session based on user configuration.
+ * Prepares questions for an active quiz session in memory based on user configuration:
  * - Filters by question type if requested
  * - Shuffles question order if configured
- * - Shuffles option order per question if configured
+ * - Shuffles option order per question if configured (reliably tracking correct answers)
  * - Slices to requested count
  */
 export function prepareQuizQuestions(
@@ -40,13 +41,27 @@ export function prepareQuizQuestions(
     list = list.slice(0, config.questionCount);
   }
 
-  // Shuffle options if requested (preserving correctAnswers strings)
+  // Shuffle options if requested (preserving correct answer mapping)
   if (config.shuffleOptions) {
     list = list.map((q) => {
-      const shuffledOptions = shuffleArray([...q.options]) as [string, string, string, string];
+      const indexed = q.options.map((opt, idx) => ({
+        opt,
+        isCorrect: isOptionCorrect(opt, idx, q.correctAnswers),
+      }));
+      const shuffled = shuffleArray(indexed);
+      const newOptions = shuffled.map((item) => item.opt) as [string, string, string, string];
+      const newCorrectLetters: string[] = [];
+      shuffled.forEach((item, newIdx) => {
+        if (item.isCorrect) {
+          newCorrectLetters.push(OPTION_LETTERS[newIdx]);
+        }
+      });
+      newCorrectLetters.sort();
+
       return {
         ...q,
-        options: shuffledOptions,
+        options: newOptions,
+        correctAnswers: newCorrectLetters,
       };
     });
   }
@@ -61,7 +76,6 @@ export function formatTime(seconds: number): string {
   const hrs = Math.floor(seconds / 3600);
   const mins = Math.floor((seconds % 3600) / 60);
   const secs = seconds % 60;
-
   if (hrs > 0) {
     return `${hrs}:${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }

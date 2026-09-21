@@ -1,5 +1,7 @@
 import { ParsedQuestionCandidate, ParseError, ParseResult, Question, QuestionType } from '../types';
 
+export const OPTION_LETTERS = ['A', 'B', 'C', 'D'] as const;
+
 /**
  * Standard ChatGPT import prompt & template for NPTEL Cybersecurity questions.
  */
@@ -44,34 +46,135 @@ Phishing relies on deceptive messaging and social engineering to steal credentia
 [/QUESTION]`;
 
 /**
+ * Resolves whether an option is correct based on its text, index, and the correct answers list.
+ * Supports both letter keys (['A', 'C']) and full option text.
+ */
+export function isOptionCorrect(
+  optionText: string,
+  optionIndex: number,
+  correctAnswers: string[]
+): boolean {
+  if (!correctAnswers || correctAnswers.length === 0) return false;
+  const letter = OPTION_LETTERS[optionIndex];
+  return correctAnswers.some((ca) => {
+    const c = ca.trim();
+    return (
+      c.toUpperCase() === letter ||
+      c.toLowerCase() === optionText.trim().toLowerCase()
+    );
+  });
+}
+
+/**
  * Validates whether user-selected answers match correct answers.
- * For multiple-answer questions: exact set match (order-independent).
- * For single-answer questions: exact match.
+ * Handles both letter selections and full option text selections.
+ * Requires exact set match for both single and multiple-answer questions.
  */
 export function validateAnswers(
   selectedAnswers: string[],
+  options: string[],
   correctAnswers: string[]
 ): boolean {
-  if (!selectedAnswers || !correctAnswers) return false;
-  if (selectedAnswers.length !== correctAnswers.length) return false;
-
-  const correctSet = new Set(correctAnswers.map((s) => s.trim().toLowerCase()));
-  const selectedSet = new Set(selectedAnswers.map((s) => s.trim().toLowerCase()));
-
-  if (correctSet.size !== selectedSet.size) return false;
-
-  for (const ans of selectedSet) {
-    if (!correctSet.has(ans)) return false;
+  if (!selectedAnswers || selectedAnswers.length === 0 || !correctAnswers || correctAnswers.length === 0) {
+    return false;
   }
 
+  const correctIndices = new Set<number>();
+  options.forEach((opt, idx) => {
+    if (isOptionCorrect(opt, idx, correctAnswers)) {
+      correctIndices.add(idx);
+    }
+  });
+
+  const selectedIndices = new Set<number>();
+  options.forEach((opt, idx) => {
+    const letter = OPTION_LETTERS[idx];
+    const isSelected = selectedAnswers.some((s) => {
+      const trimmed = s.trim();
+      return (
+        trimmed.toUpperCase() === letter ||
+        trimmed.toLowerCase() === opt.trim().toLowerCase()
+      );
+    });
+    if (isSelected) {
+      selectedIndices.add(idx);
+    }
+  });
+
+  if (selectedIndices.size !== correctIndices.size) return false;
+  for (const idx of selectedIndices) {
+    if (!correctIndices.has(idx)) return false;
+  }
   return true;
 }
 
 /**
- * Main parser function to convert raw copy-pasted text into structured MCQ objects.
- * Handles both Single-Answer and Multiple-Answer formats, with backwards compatibility.
+ * Returns formatted labels for correct answers (e.g. ["A. Option text", "C. Option text"]).
  */
-export function parseQuestions(text: string, targetWeek: number | 'all'): ParseResult {
+export function getCorrectAnswerLabels(
+  options: string[],
+  correctAnswers: string[]
+): string[] {
+  const labels: string[] = [];
+  options.forEach((opt, idx) => {
+    if (isOptionCorrect(opt, idx, correctAnswers)) {
+      labels.push(`${OPTION_LETTERS[idx]}. ${opt}`);
+    }
+  });
+  return labels.length > 0 ? labels : correctAnswers;
+}
+
+/**
+ * Resolves answer string (e.g. 'A', 'Option B', '(C)', 'Brute Force')
+ * to the corresponding option letter ('A', 'B', 'C', or 'D').
+ */
+export function resolveAnswerToLetter(
+  rawAnswer: string,
+  options: [string, string, string, string] | string[]
+): string | null {
+  const cleaned = rawAnswer.trim();
+
+  // 1. Direct letter check: A, B, C, D
+  const letterMatch = cleaned.match(/^(?:option\s*)?[\(\[]?([a-dA-D]|1|2|3|4)[\.\)\:\-\]\)]?$/i);
+  if (letterMatch) {
+    const val = letterMatch[1].toUpperCase();
+    const indexMap: Record<string, string> = {
+      A: 'A',
+      B: 'B',
+      C: 'C',
+      D: 'D',
+      '1': 'A',
+      '2': 'B',
+      '3': 'C',
+      '4': 'D',
+    };
+    return indexMap[val] || null;
+  }
+
+  // 2. Direct match with option text
+  for (let i = 0; i < options.length; i++) {
+    if (options[i].trim().toLowerCase() === cleaned.toLowerCase()) {
+      return OPTION_LETTERS[i];
+    }
+  }
+
+  // 3. Match option without prefix (e.g. "A) text" -> "text")
+  for (let i = 0; i < options.length; i++) {
+    const optStripped = options[i].replace(/^[A-D\d][\.\)\:\-]\s*/i, '').trim().toLowerCase();
+    const cleanedStripped = cleaned.replace(/^[A-D\d][\.\)\:\-]\s*/i, '').trim().toLowerCase();
+    if (optStripped && optStripped === cleanedStripped) {
+      return OPTION_LETTERS[i];
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Main parser function to convert raw copy-pasted text into structured MCQ objects.
+ * Produces questions matching the exact repository JSON format.
+ */
+export function parseQuestions(text: string, targetWeek: number): ParseResult {
   const validQuestions: ParsedQuestionCandidate[] = [];
   const errors: ParseError[] = [];
 
@@ -89,7 +192,6 @@ export function parseQuestions(text: string, targetWeek: number | 'all'): ParseR
     };
   }
 
-  // Regex to extract all [QUESTION] ... [/QUESTION] blocks
   const questionRegex = /\[QUESTION\]([\s\S]*?)\[\/QUESTION\]/gi;
   const blocks: { content: string; start: number }[] = [];
   let match: RegExpExecArray | null;
@@ -101,84 +203,54 @@ export function parseQuestions(text: string, targetWeek: number | 'all'): ParseR
     });
   }
 
-  // Check for orphan tags or syntax mismatches
-  const openCount = (text.match(/\[QUESTION\]/gi) || []).length;
-  const closeCount = (text.match(/\[\/QUESTION\]/gi) || []).length;
-
   if (blocks.length === 0) {
     errors.push({
       index: 0,
-      title: 'No Valid Blocks Found',
-      reason:
-        'Could not find any [QUESTION] ... [/QUESTION] blocks. Please ensure your text follows the template format.',
-      rawSnippet: text.slice(0, 200),
+      title: 'No Valid [QUESTION] Blocks',
+      reason: 'No questions matching the [QUESTION]...[/QUESTION] format were detected. Please check template formatting.',
+      rawSnippet: text.slice(0, 150) + '...',
     });
     return { validQuestions, errors };
   }
 
-  if (openCount !== closeCount) {
-    errors.push({
-      index: blocks.length + 1,
-      title: 'Unclosed Question Block',
-      reason: `Detected ${openCount} [QUESTION] tag(s) but ${closeCount} [/QUESTION] closing tag(s). One or more questions might be missing [/QUESTION].`,
-      rawSnippet: text.slice(
-        Math.max(0, text.lastIndexOf('[QUESTION]')),
-        Math.min(text.length, text.lastIndexOf('[QUESTION]') + 150)
-      ),
-    });
-  }
-
   blocks.forEach((block, idx) => {
     const qIndex = idx + 1;
-    let rawContent = block.content.trim();
+    const content = block.content.trim();
 
-    // Check for [TYPE] tag
-    let specifiedType: QuestionType | null = null;
-    const typeMatch = rawContent.match(/\[TYPE\]\s*([a-zA-Z]+)/i);
-
-    if (typeMatch) {
-      const typeVal = typeMatch[1].trim().toLowerCase();
-      if (typeVal === 'single' || typeVal === 'multiple') {
-        specifiedType = typeVal as QuestionType;
-      } else {
-        errors.push({
-          index: qIndex,
-          title: `Question ${qIndex}: Invalid [TYPE]`,
-          reason: `Invalid [TYPE] "${typeMatch[1]}". Allowed values are "single" or "multiple".`,
-          rawSnippet: typeMatch[0],
-        });
-        return;
-      }
-      // Remove [TYPE] declaration from rawContent so it doesn't pollute the question text
-      rawContent = rawContent.replace(/\[TYPE\]\s*[a-zA-Z]+/i, '').trim();
-    }
-
-    // Extract Question text: text before the first [OPTION]
-    const firstOptionIndex = rawContent.search(/\[OPTION\]/i);
+    const firstOptionIndex = content.search(/\[OPTION\]/i);
     if (firstOptionIndex === -1) {
       errors.push({
         index: qIndex,
         title: `Question ${qIndex}: Missing Options`,
-        reason: 'No [OPTION] tags found inside this question block. Exactly 4 [OPTION] fields are required.',
-        rawSnippet: rawContent.slice(0, 150),
+        reason: 'No [OPTION] tags found in this question block.',
+        rawSnippet: content.slice(0, 100) + '...',
       });
       return;
     }
 
-    const questionText = rawContent.slice(0, firstOptionIndex).trim();
+    const questionAndTypeSection = content.slice(0, firstOptionIndex).trim();
+    const optionsAndBeyond = content.slice(firstOptionIndex);
+
+    // Extract [TYPE] if present
+    let questionText = questionAndTypeSection;
+    let specifiedType: QuestionType | null = null;
+
+    const typeMatch = questionText.match(/\[TYPE\]\s*(single|multiple)/i);
+    if (typeMatch) {
+      specifiedType = typeMatch[1].toLowerCase() as QuestionType;
+      questionText = questionText.replace(/\[TYPE\]\s*(single|multiple)/i, '').trim();
+    }
+
     if (!questionText) {
       errors.push({
         index: qIndex,
-        title: `Question ${qIndex}: Empty Question Body`,
-        reason: 'Question text cannot be blank before the first [OPTION] tag.',
-        rawSnippet: rawContent.slice(0, 120),
+        title: `Question ${qIndex}: Empty Question Statement`,
+        reason: 'The question text before the options is empty.',
+        rawSnippet: content.slice(0, 80),
       });
       return;
     }
 
-    const optionsAndBeyond = rawContent.slice(firstOptionIndex);
-
-    // Locate first [ANSWER]
     const firstAnswerTagIndex = optionsAndBeyond.search(/\[ANSWER\]/i);
     if (firstAnswerTagIndex === -1) {
       errors.push({
@@ -193,7 +265,6 @@ export function parseQuestions(text: string, targetWeek: number | 'all'): ParseR
     const optionsSection = optionsAndBeyond.slice(0, firstAnswerTagIndex);
     const answerAndExplanationSection = optionsAndBeyond.slice(firstAnswerTagIndex);
 
-    // Parse options
     const rawOptions = optionsSection
       .split(/\[OPTION\]/i)
       .map((opt) => opt.trim())
@@ -226,7 +297,7 @@ export function parseQuestions(text: string, targetWeek: number | 'all'): ParseR
       return;
     }
 
-    // Extract Explanation (if present)
+    // Extract Explanation
     const explanationTagIndex = answerAndExplanationSection.search(/\[EXPLANATION\]/i);
     let answersSection = '';
     let explanation: string | undefined = undefined;
@@ -244,7 +315,7 @@ export function parseQuestions(text: string, targetWeek: number | 'all'): ParseR
       answersSection = answerAndExplanationSection;
     }
 
-    // Extract all [ANSWER] values
+    // Extract [ANSWER] values
     const rawAnswersList = answersSection
       .split(/\[ANSWER\]/i)
       .map((ans) => ans.trim())
@@ -260,76 +331,70 @@ export function parseQuestions(text: string, targetWeek: number | 'all'): ParseR
       return;
     }
 
-    // Determine type (with backwards compatibility)
     let finalType: QuestionType = 'single';
     if (specifiedType) {
       finalType = specifiedType;
     } else {
-      // Backward compatibility rule:
-      // If no [TYPE] tag: exactly 1 answer -> 'single', >= 2 answers -> 'multiple'
       finalType = rawAnswersList.length >= 2 ? 'multiple' : 'single';
     }
 
-    // Validation according to Requirement 12:
-    if (finalType === 'single') {
-      if (rawAnswersList.length !== 1) {
-        errors.push({
-          index: qIndex,
-          title: `Question ${qIndex}: Single-Answer Violation`,
-          reason: 'Single-answer questions can only have one correct answer.',
-          rawSnippet: `Found ${rawAnswersList.length} [ANSWER] tags: ${rawAnswersList.join(', ')}`,
-        });
-        return;
-      }
-    } else if (finalType === 'multiple') {
-      if (rawAnswersList.length < 2) {
-        errors.push({
-          index: qIndex,
-          title: `Question ${qIndex}: Multiple-Answer Violation`,
-          reason: 'Multiple-answer questions must have at least two correct answers.',
-          rawSnippet: `Only 1 [ANSWER] tag found: "${rawAnswersList[0]}"`,
-        });
-        return;
-      }
+    if (finalType === 'single' && rawAnswersList.length !== 1) {
+      errors.push({
+        index: qIndex,
+        title: `Question ${qIndex}: Single-Answer Violation`,
+        reason: 'Single-answer questions must have exactly one [ANSWER] specified.',
+        rawSnippet: `Found ${rawAnswersList.length} [ANSWER] tags: ${rawAnswersList.join(', ')}`,
+      });
+      return;
+    } else if (finalType === 'multiple' && rawAnswersList.length < 2) {
+      errors.push({
+        index: qIndex,
+        title: `Question ${qIndex}: Multiple-Answer Violation`,
+        reason: 'Multiple-answer questions must have at least two correct answers.',
+        rawSnippet: `Only 1 [ANSWER] tag found: "${rawAnswersList[0]}"`,
+      });
+      return;
     }
 
-    // Resolve each answer to its corresponding option
-    const resolvedAnswers: string[] = [];
-    const seenAnswerKeys = new Set<string>();
+    const resolvedLetters: string[] = [];
+    const seenLetters = new Set<string>();
 
     for (const rawAns of rawAnswersList) {
-      const resolved = resolveAnswer(rawAns, options);
-      if (!resolved) {
+      const letter = resolveAnswerToLetter(rawAns, options);
+      if (!letter) {
         errors.push({
           index: qIndex,
           title: `Question ${qIndex}: Answer Mismatch`,
-          reason: `Answer "${rawAns}" does not match any of the 4 options, nor is it a valid option letter (A, B, C, D).`,
+          reason: `Answer "${rawAns}" does not match any of the 4 options (A, B, C, D).`,
           rawSnippet: `Options: A) ${options[0]} | B) ${options[1]} | C) ${options[2]} | D) ${options[3]} -> Specified: "${rawAns}"`,
         });
         return;
       }
 
-      const normalizedKey = resolved.toLowerCase().trim();
-      if (seenAnswerKeys.has(normalizedKey)) {
+      if (seenLetters.has(letter)) {
         errors.push({
           index: qIndex,
           title: `Question ${qIndex}: Duplicate Answer`,
-          reason: `Duplicate answer detected: "${rawAns}" resolves to "${resolved}", which was already specified.`,
+          reason: `Duplicate answer letter "${letter}" detected.`,
           rawSnippet: rawAnswersList.join(', '),
         });
         return;
       }
 
-      seenAnswerKeys.add(normalizedKey);
-      resolvedAnswers.push(resolved);
+      seenLetters.add(letter);
+      resolvedLetters.push(letter);
     }
 
+    // Sort letters alphabetically: ['A', 'C']
+    resolvedLetters.sort();
+
     validQuestions.push({
+      id: `w${targetWeek}-q${qIndex}`,
       week: targetWeek,
       type: finalType,
       question: questionText,
       options,
-      correctAnswers: resolvedAnswers,
+      correctAnswers: resolvedLetters,
       explanation,
     });
   });
@@ -338,62 +403,7 @@ export function parseQuestions(text: string, targetWeek: number | 'all'): ParseR
 }
 
 /**
- * Resolves answer string (e.g. 'A', 'Option B', '(C)', 'Brute Force')
- * to the exact matching option string.
- */
-export function resolveAnswer(
-  rawAnswer: string,
-  options: [string, string, string, string]
-): string | null {
-  const cleaned = rawAnswer.trim();
-
-  // 1. Direct case-insensitive match against option text
-  for (const opt of options) {
-    if (opt.trim().toLowerCase() === cleaned.toLowerCase()) {
-      return opt;
-    }
-  }
-
-  // 2. Check for single letters: A, B, C, D (or (A), [A], Option A, Option 1, A., B))
-  const letterMatch = cleaned.match(/^(?:option\s*)?[\(\[]?([a-dA-D]|1|2|3|4)[\.\)\:\-\]\)]?$/i);
-  if (letterMatch) {
-    const val = letterMatch[1].toUpperCase();
-    const indexMap: Record<string, number> = {
-      A: 0,
-      B: 1,
-      C: 2,
-      D: 3,
-      '1': 0,
-      '2': 1,
-      '3': 2,
-      '4': 3,
-    };
-    const targetIdx = indexMap[val];
-    if (targetIdx !== undefined && options[targetIdx]) {
-      return options[targetIdx];
-    }
-  }
-
-  // 3. Fallback: check if option starts with "A." or "A)" and user answered "A"
-  for (let i = 0; i < options.length; i++) {
-    const opt = options[i];
-    const letter = String.fromCharCode(65 + i); // 'A', 'B', 'C', 'D'
-    if (cleaned.toUpperCase() === letter) {
-      return opt;
-    }
-    // Check if cleaned stripped of leading 'A)' matches opt stripped of leading 'A)'
-    const optStripped = opt.replace(/^[A-D\d][\.\)\:\-]\s*/i, '').trim().toLowerCase();
-    const cleanedStripped = cleaned.replace(/^[A-D\d][\.\)\:\-]\s*/i, '').trim().toLowerCase();
-    if (optStripped && optStripped === cleanedStripped) {
-      return opt;
-    }
-  }
-
-  return null;
-}
-
-/**
- * Checks for duplicates against existing questions in the database for the given week.
+ * Checks for duplicates against an existing question list.
  */
 export function detectDuplicates(
   candidates: ParsedQuestionCandidate[],
@@ -415,12 +425,7 @@ export function detectDuplicates(
   candidates.forEach((cand) => {
     const candNorm = normalize(cand.question);
     const found = existingQuestions.find((eq) => {
-      if (eq.source !== 'course') return false;
-      const weekMatch =
-        cand.week === 'all'
-          ? eq.week === 'all' || eq.week === 0
-          : eq.week === cand.week;
-      return weekMatch && normalize(eq.question) === candNorm;
+      return normalize(eq.question) === candNorm;
     });
 
     if (found) {

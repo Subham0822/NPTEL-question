@@ -1,0 +1,602 @@
+[
+  {
+    "id": "w1-q1",
+    "question": "An attacker calls an employee, claims to be from the IT helpdesk, and convinces them to reveal their login credentials. Which technique is being used?",
+    "type": "single",
+    "options": [
+      "Session Hijacking",
+      "Social Engineering",
+      "Brute Force Attack",
+      "SQL Injection"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The attacker manipulates the employee into revealing credentials, which is social engineering."
+  },
+  {
+    "id": "w1-q2",
+    "question": "An attacker uses a commercially available penetration testing toolkit to probe and exploit vulnerabilities in a target network. In this context, the toolkit represents technology functioning as:",
+    "type": "single",
+    "options": [
+      "A compliance monitoring tool",
+      "A business continuity asset",
+      "A safeguard against external threats",
+      "A source of threat"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Technology can function as a source of threat when it is used to probe or exploit vulnerabilities."
+  },
+  {
+    "id": "w1-q3",
+    "question": "A threat actor sends a carefully researched email to a senior finance executive, referencing their recent business trip and impersonating their CEO. Which attack type does this describe?",
+    "type": "single",
+    "options": [
+      "Spear-phishing",
+      "Vishing",
+      "General phishing",
+      "Smishing"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Spear-phishing is targeted phishing that uses researched information about a specific victim."
+  },
+  {
+    "id": "w1-q4",
+    "question": "A victim attempts to open their files after a malware infection but finds every document locked behind an unknown cipher. The attacker then demands payment for the decryption key. Which malware category best explains this behavior?",
+    "type": "single",
+    "options": [
+      "Spyware",
+      "Rootkit",
+      "Adware",
+      "Ransomware"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Ransomware encrypts or locks files and demands payment for restoring access."
+  },
+  {
+    "id": "w1-q5",
+    "question": "A national government wants to safeguard systems that, if disrupted, could destabilize essential public services. Which of the following system types would be the highest priority under Critical Infrastructure Protection (CIP)?",
+    "type": "single",
+    "options": [
+      "Consumer mobile apps and entertainment platforms",
+      "University learning management systems",
+      "SCADA systems managing water treatment and power distribution",
+      "Home automation devices"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "SCADA systems controlling water treatment and power distribution support essential public services and are therefore critical infrastructure."
+  },
+  {
+    "id": "w1-q6",
+    "question": "Deploying a firewall alone is sufficient to constitute a complete Information Security program for an organization.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Not enough information",
+      "Only for small organizations"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A complete Information Security program requires more than a firewall, including policies, processes, people, risk management, and other security controls."
+  },
+  {
+    "id": "w1-q7",
+    "question": "A security manager wants to ensure that sensitive organizational data cannot be accessed by unauthorized individuals. Which combination of measures best achieves this?",
+    "type": "single",
+    "options": [
+      "Information classification, secure storage, and enforced access policies",
+      "Open access for all staff to improve collaboration efficiency",
+      "Faster network speeds and upgraded hardware",
+      "Regular system reboots and software updates only"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Classification, secure storage, and access policies help prevent unauthorized access to sensitive information."
+  },
+  {
+    "id": "w1-q8",
+    "question": "A hospital receptionist verbally shares a patient's diagnosis and full name with a visitor who claims to be a relative but has no verified authorization. Which category of violation does this represent?",
+    "type": "single",
+    "options": [
+      "A breach of general data privacy with no specific regulatory consequence",
+      "An acceptable disclosure under standard hospital protocols",
+      "A network security incident requiring IT intervention",
+      "A breach involving Protected Health Information (PHI)"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "A patient's diagnosis and identifying information constitute Protected Health Information, and sharing it without verified authorization is a PHI-related breach."
+  },
+  {
+    "id": "w1-q9",
+    "question": "During an audit, a database record is found to have been silently modified by an unauthorized party. Which information security property has been violated?",
+    "type": "single",
+    "options": [
+      "Availability",
+      "Integrity",
+      "Authenticity",
+      "Confidentiality"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Integrity means information remains accurate and unaltered by unauthorized parties."
+  },
+  {
+    "id": "w1-q10",
+    "question": "An organization rolls out a data classification scheme, runs employee awareness sessions, and deploys endpoint security tools. Collectively, these efforts are best described as implementing:",
+    "type": "single",
+    "options": [
+      "Information Security",
+      "Operations Security",
+      "Network Security",
+      "Physical Security"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The combination of data classification, awareness, and technical controls represents a broader Information Security program."
+  },
+  {
+    "id": "w1-q11",
+    "question": "An employee receives a message appearing to come from the organization's IT department asking them to reset their password through a provided link. The link leads to a fake login page designed to capture credentials. What technique is primarily being used?",
+    "type": "single",
+    "options": [
+      "Ransomware",
+      "Phishing",
+      "Denial of Service",
+      "Rootkit"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The attacker uses a deceptive message and fake login page to trick the victim into revealing credentials, which is phishing."
+  },
+  {
+    "id": "w1-q12",
+    "question": "An attacker researches an organization's senior manager, learns about their current project, and then sends a highly personalized email pretending to be the CEO. Why is this attack more dangerous than a generic phishing email?",
+    "type": "single",
+    "options": [
+      "It uses encryption to hide the message",
+      "It is based on background information about the target",
+      "It automatically disables antivirus software",
+      "It attacks the organization's physical infrastructure"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Using background information makes the phishing attempt specifically targeted to the victim, characteristic of spear-phishing."
+  },
+  {
+    "id": "w1-q13",
+    "question": "A criminal calls an employee and pretends to be a bank representative in order to obtain confidential information. Which concept best describes the attack?",
+    "type": "single",
+    "options": [
+      "Social Engineering",
+      "SQL Injection",
+      "Ransomware",
+      "Denial of Service"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The attacker manipulates the employee by impersonating another person to obtain confidential information."
+  },
+  {
+    "id": "w1-q14",
+    "question": "A company discovers that its files have been encrypted and the attackers demand cryptocurrency in exchange for a decryption key. Which security threat is involved?",
+    "type": "single",
+    "options": [
+      "Phishing",
+      "Ransomware",
+      "Spyware",
+      "Data classification"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Ransomware encrypts or locks data and demands payment for restoring access."
+  },
+  {
+    "id": "w1-q15",
+    "question": "A manufacturing plant connects temperature sensors to the Internet so that managers can monitor production remotely. What new security concern does this create?",
+    "type": "single",
+    "options": [
+      "Internet connectivity can introduce additional opportunities for unauthorized access",
+      "Physical security becomes completely unnecessary",
+      "Data can no longer be transmitted",
+      "Cybersecurity threats disappear because sensors are specialized devices"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Internet-connected devices can become targets for unauthorized access, creating additional cybersecurity vulnerabilities."
+  },
+  {
+    "id": "w1-q16",
+    "question": "A hacker gains access to an Internet-connected industrial sensor and changes the temperature reading from 500°C to 5°C. What does this example primarily demonstrate?",
+    "type": "single",
+    "options": [
+      "Digital systems can potentially cause physical consequences",
+      "Cybersecurity only concerns personal information",
+      "Privacy and cybersecurity are identical",
+      "Physical systems cannot be affected by cyberattacks"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Manipulating a connected industrial sensor can cause incorrect physical processes and potentially physical damage."
+  },
+  {
+    "id": "w1-q17",
+    "question": "A bank ensures that only authorized employees can view customers' financial records. Which CIA principle is primarily being protected?",
+    "type": "single",
+    "options": [
+      "Availability",
+      "Integrity",
+      "Confidentiality",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Confidentiality ensures that information is accessible only to authorized individuals."
+  },
+  {
+    "id": "w1-q18",
+    "question": "An attacker secretly changes the balance stored in a customer's bank account without authorization. Which security property has been compromised?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Privacy"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Unauthorized modification of information violates its integrity."
+  },
+  {
+    "id": "w1-q19",
+    "question": "An online banking system becomes unavailable because attackers overwhelm its servers with requests. Which CIA property is primarily affected?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Availability means systems and information should be accessible when authorized users need them."
+  },
+  {
+    "id": "w1-q20",
+    "question": "A company encrypts sensitive information before transmitting it across a network. Even if an attacker intercepts the communication, they cannot understand the contents. Which security objective does this primarily support?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Availability",
+      "Physical security",
+      "Business continuity"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Encryption protects the confidentiality of information by preventing unauthorized parties from understanding intercepted data."
+  },
+  {
+    "id": "w1-q21",
+    "question": "Which statement best describes the relationship between Information Security and Cybersecurity?",
+    "type": "single",
+    "options": [
+      "Information Security is broader than Cybersecurity",
+      "Cybersecurity is broader and includes concerns beyond information protection",
+      "They are completely unrelated concepts",
+      "Cybersecurity only deals with physical security"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Information Security focuses primarily on protecting information, while Cybersecurity has a broader scope that includes systems, infrastructure, and people in the cyber world."
+  },
+  {
+    "id": "w1-q22",
+    "question": "A company protects its database using access controls, encryption, and security policies. These measures primarily belong to:",
+    "type": "single",
+    "options": [
+      "Information Security",
+      "Transportation Security",
+      "Physical Security only",
+      "Social Engineering"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Access controls, encryption, and security policies are measures used to protect information."
+  },
+  {
+    "id": "w1-q23",
+    "question": "A company has excellent firewalls but employees frequently reveal passwords to attackers. What does this situation demonstrate?",
+    "type": "single",
+    "options": [
+      "Cybersecurity can be solved entirely through technology",
+      "Cybersecurity involves both technological and human/administrative aspects",
+      "Firewalls eliminate social engineering",
+      "Information security only concerns networks"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture emphasizes that cybersecurity is not only technical; human behavior and administrative measures are also important."
+  },
+  {
+    "id": "w1-q24",
+    "question": "An organization identifies possible cyberattacks and evaluates how likely and damaging they could be before implementing controls. This is an example of:",
+    "type": "single",
+    "options": [
+      "Contingency planning",
+      "Risk management",
+      "Incident recovery",
+      "Physical security"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Risk management considers what could go wrong and how to protect systems against potential risks."
+  },
+  {
+    "id": "w1-q25",
+    "question": "After a ransomware attack shuts down a company's systems, management follows a previously prepared plan to restore operations. This is primarily an example of:",
+    "type": "single",
+    "options": [
+      "Risk identification",
+      "Contingency planning",
+      "Phishing prevention",
+      "Data classification"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Contingency planning prepares an organization to respond and recover when something goes wrong."
+  },
+  {
+    "id": "w1-q26",
+    "question": "Which statement correctly distinguishes risk management from contingency planning?",
+    "type": "single",
+    "options": [
+      "Risk management responds after an incident; contingency planning prevents incidents",
+      "Risk management focuses on potential problems; contingency planning prepares for problems that occur",
+      "Both have exactly the same purpose",
+      "Contingency planning only concerns physical security"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Risk management is mainly preventive and considers potential risks, while contingency planning deals with responding to situations that actually occur."
+  },
+  {
+    "id": "w1-q27",
+    "question": "Which of the following best represents the broader scope of modern cybersecurity?",
+    "type": "single",
+    "options": [
+      "Only protecting passwords",
+      "Only protecting databases",
+      "Protecting systems, information, infrastructure, and people in the cyber world",
+      "Only installing antivirus software"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Modern cybersecurity extends beyond information to systems, infrastructure, users, and the broader cyber world."
+  },
+  {
+    "id": "w1-q28",
+    "question": "A company installs a firewall to prevent unauthorized network traffic from reaching its internal systems. In the lecture's framework, technology here is functioning as:",
+    "type": "single",
+    "options": [
+      "A source of threat",
+      "An asset being attacked",
+      "A defense mechanism",
+      "A privacy violation"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A firewall uses technology to protect systems from unauthorized access, making technology a defense mechanism."
+  },
+  {
+    "id": "w1-q29",
+    "question": "A hacker uses a computer program to launch attacks against another organization's network. In this situation, technology is functioning as:",
+    "type": "single",
+    "options": [
+      "A defense mechanism",
+      "A source of threat",
+      "A contingency plan",
+      "A privacy policy"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Technology can itself be used as a tool for launching cyberattacks and therefore act as a source of threat."
+  },
+  {
+    "id": "w1-q30",
+    "question": "An organization's servers, databases, and computers need protection from cyberattacks. In this situation, technology is considered:",
+    "type": "single",
+    "options": [
+      "An asset that needs protection",
+      "A phishing technique",
+      "A social engineering method",
+      "A regulatory framework"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Computers, databases, and servers are technological assets that organizations need to protect."
+  },
+  {
+    "id": "w1-q31",
+    "question": "Which combination correctly represents the three roles of technology in cybersecurity discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Threat, asset, and defense",
+      "Privacy, law, and policy",
+      "Risk, contingency, and governance",
+      "Authentication, authorization, and accounting"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture describes technology as a source of threat, an asset that needs protection, and a tool for defense."
+  },
+  {
+    "id": "w1-q32",
+    "question": "A company has strong technical security controls but no security policies, employee training, or management processes. What does this situation demonstrate?",
+    "type": "single",
+    "options": [
+      "Cybersecurity is purely a technical problem",
+      "Cybersecurity also requires administrative and governance measures",
+      "Technology eliminates human risk",
+      "Privacy is unnecessary"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture explains that effective cybersecurity requires technology together with management, governance, policies, and human considerations."
+  },
+  {
+    "id": "w1-q33",
+    "question": "Which of the following is NOT one of the CIA triad components?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Authorization"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The CIA triad consists of Confidentiality, Integrity, and Availability. Authorization is not one of its three components."
+  },
+  {
+    "id": "w1-q34",
+    "question": "An employee who has permission to access a company's database is able to access it when required. Which CIA property does this situation relate to?",
+    "type": "single",
+    "options": [
+      "Availability",
+      "Integrity",
+      "Confidentiality",
+      "Encryption"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Availability means authorized users should be able to access information and systems when needed."
+  },
+  {
+    "id": "w1-q35",
+    "question": "An attacker obtains unauthorized access to an individual's personal health information. Why is this particularly significant from a privacy perspective?",
+    "type": "single",
+    "options": [
+      "Health information can be highly sensitive personal information",
+      "Health information is never considered private",
+      "Only financial information can create privacy concerns",
+      "Healthcare systems cannot be attacked"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture emphasizes that healthcare information is highly sensitive and unauthorized disclosure can have serious consequences."
+  },
+  {
+    "id": "w1-q36",
+    "question": "A hospital's computer systems are attacked, preventing doctors from accessing important patient information. Which statement best describes the possible impact?",
+    "type": "single",
+    "options": [
+      "Cybersecurity incidents can affect real-world operations, not merely data",
+      "Cybersecurity only affects computer files",
+      "Healthcare systems are immune to cyberattacks",
+      "Privacy is unrelated to healthcare"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture shows that cyberattacks can disrupt critical operations and have consequences beyond the loss or theft of data."
+  },
+  {
+    "id": "w1-q37",
+    "question": "Which of the following best explains why cybersecurity has become more important over time?",
+    "type": "single",
+    "options": [
+      "Organizations are becoming less dependent on technology",
+      "Digital technologies are becoming increasingly pervasive and interconnected",
+      "Computers are disappearing from organizations",
+      "Internet connectivity reduces vulnerabilities"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture explains that increasing dependence on digital and connected technologies also increases the need to manage cyber threats."
+  },
+  {
+    "id": "w1-q38",
+    "question": "A modern vehicle receives software updates through the Internet. If an attacker gains control of the vehicle's connected systems, what broader concern does this illustrate?",
+    "type": "single",
+    "options": [
+      "Cybersecurity can potentially affect physical safety",
+      "Cybersecurity only concerns emails",
+      "Privacy automatically prevents cyberattacks",
+      "Connected systems are inherently safe"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture explains that attacks on connected systems such as vehicles can potentially affect physical systems and human safety."
+  },
+  {
+    "id": "w1-q39",
+    "question": "Which statement best summarizes the central message of the lectures?",
+    "type": "single",
+    "options": [
+      "Organizations should stop using digital technology to eliminate cyber threats",
+      "Cybersecurity is only the responsibility of IT departments",
+      "The benefits of digital technology must be accompanied by appropriate cybersecurity and safety measures",
+      "Cybersecurity is only concerned with protecting passwords"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The lectures emphasize that digital technology provides major benefits but requires appropriate cybersecurity, management, and safety measures."
+  },
+  {
+    "id": "w1-q40",
+    "question": "A government database containing citizens' personal information is compromised. Which two areas are most directly involved?",
+    "type": "single",
+    "options": [
+      "Cybersecurity and privacy",
+      "Physical security and transportation",
+      "Manufacturing and marketing",
+      "Availability and advertising"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A compromised government database creates a cybersecurity issue, while exposure or misuse of citizens' personal information creates a privacy issue."
+  }
+]

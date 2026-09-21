@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { QuizConfig } from '../types';
-import { X, Play, Clock, Shuffle, BookOpen, Layers, CheckSquare } from 'lucide-react';
+import { X, Play, Clock, Shuffle, BookOpen } from 'lucide-react';
 
 interface QuizSetupModalProps {
   isOpen: boolean;
   onClose: () => void;
   onStartQuiz: (config: QuizConfig) => void;
-  targetWeek: number | 'all' | 'combined' | 'test';
+  targetWeek: number | 'all' | 'test';
   availableCount: number;
   initialMode?: 'practice' | 'exam';
 }
@@ -25,7 +25,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
   const [customCount, setCustomCount] = useState<number>(Math.min(10, availableCount || 10));
   const [order, setOrder] = useState<'sequential' | 'random'>('sequential');
   const [shuffleOptions, setShuffleOptions] = useState<boolean>(false);
-  const [timerMinutes, setTimerMinutes] = useState<number>(0); // 0 = no timer
+  const [timerMinutes, setTimerMinutes] = useState<number>(0);
 
   if (!isOpen) return null;
 
@@ -51,10 +51,9 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
   };
 
   const getTargetTitle = () => {
-    if (targetWeek === 'all') return 'All Questions Section Quiz';
-    if (targetWeek === 'combined') return 'Combined Course Quiz (All Sections)';
+    if (targetWeek === 'all') return 'All Questions (Combined Weeks 1–12)';
     if (targetWeek === 'test') return 'Test Data Sandbox Quiz';
-    return `Week ${targetWeek} Quiz Setup`;
+    return `Week ${targetWeek} Practice Setup`;
   };
 
   return (
@@ -105,7 +104,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                   <BookOpen className="w-4 h-4 text-indigo-600" />
                 </div>
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  Immediate feedback after every question with correct answers & explanations.
+                  Immediate feedback after each question with explanations.
                 </p>
               </button>
 
@@ -123,7 +122,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                   <Clock className="w-4 h-4 text-indigo-600" />
                 </div>
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  Simulate real test conditions. No feedback until the final results and review.
+                  Simulate test conditions. Full review at the end.
                 </p>
               </button>
             </div>
@@ -132,7 +131,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
           {/* Question Type Filter */}
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-              Question Type Filter
+              Question Type
             </label>
             <div className="grid grid-cols-3 gap-2">
               <button

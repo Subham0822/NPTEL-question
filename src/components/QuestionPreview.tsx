@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ParsedQuestionCandidate, QuestionType } from '../types';
-import { Check, Edit2, Trash2, X, Lightbulb, CheckSquare, Circle } from 'lucide-react';
+import { Check, Edit2, Trash2, X, Lightbulb, CheckSquare, Circle, AlertCircle } from 'lucide-react';
 
 interface QuestionPreviewProps {
   question: ParsedQuestionCandidate;
@@ -9,6 +9,8 @@ interface QuestionPreviewProps {
   onDelete: () => void;
   isDuplicate?: boolean;
 }
+
+const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
 export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
   question,
@@ -26,31 +28,42 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
     question.options[2],
     question.options[3],
   ]);
-  const [editedCorrectAnswers, setEditedCorrectAnswers] = useState<string[]>(question.correctAnswers);
+
+  // Store letters ['A', 'B', 'C', 'D']
+  const initialSelectedLetters = LETTERS.filter((letter, idx) => {
+    const opt = question.options[idx];
+    return question.correctAnswers.some(
+      (ca) => ca.toUpperCase() === letter || ca.toLowerCase() === opt.toLowerCase()
+    );
+  });
+
+  const [editedCorrectLetters, setEditedCorrectLetters] = useState<string[]>(initialSelectedLetters);
   const [editedExplanation, setEditedExplanation] = useState(question.explanation || '');
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const isMultiple = question.type === 'multiple';
-  const letters = ['A', 'B', 'C', 'D'];
 
-  const handleToggleCorrectOption = (optText: string) => {
+  const handleToggleCorrectLetter = (letter: string) => {
+    setValidationError(null);
     if (editedType === 'single') {
-      setEditedCorrectAnswers([optText]);
+      setEditedCorrectLetters([letter]);
     } else {
-      if (editedCorrectAnswers.includes(optText)) {
-        setEditedCorrectAnswers(editedCorrectAnswers.filter((a) => a !== optText));
+      if (editedCorrectLetters.includes(letter)) {
+        setEditedCorrectLetters(editedCorrectLetters.filter((l) => l !== letter));
       } else {
-        setEditedCorrectAnswers([...editedCorrectAnswers, optText]);
+        const next = [...editedCorrectLetters, letter].sort();
+        setEditedCorrectLetters(next);
       }
     }
   };
 
   const handleSave = () => {
-    if (editedCorrectAnswers.length === 0) {
-      alert('Please specify at least one correct answer.');
+    if (editedCorrectLetters.length === 0) {
+      setValidationError('Please select at least one correct answer.');
       return;
     }
-    if (editedType === 'multiple' && editedCorrectAnswers.length < 2) {
-      alert('Multiple-answer questions must have at least two correct answers.');
+    if (editedType === 'multiple' && editedCorrectLetters.length < 2) {
+      setValidationError('Multiple-answer questions must have at least two correct answers.');
       return;
     }
 
@@ -64,9 +77,10 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
         editedOptions[2].trim(),
         editedOptions[3].trim(),
       ],
-      correctAnswers: editedCorrectAnswers,
+      correctAnswers: editedCorrectLetters,
       explanation: editedExplanation.trim() ? editedExplanation.trim() : undefined,
     });
+    setValidationError(null);
     setIsEditing(false);
   };
 
@@ -79,8 +93,9 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
       question.options[2],
       question.options[3],
     ]);
-    setEditedCorrectAnswers(question.correctAnswers);
+    setEditedCorrectLetters(initialSelectedLetters);
     setEditedExplanation(question.explanation || '');
+    setValidationError(null);
     setIsEditing(false);
   };
 
@@ -111,26 +126,33 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
           </div>
         </div>
 
+        {validationError && (
+          <div className="p-2.5 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700 flex items-center space-x-1.5">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <span>{validationError}</span>
+          </div>
+        )}
+
         {/* Question Type Selection */}
         <div className="flex items-center space-x-3">
           <span className="text-xs font-semibold text-slate-600">Type:</span>
-          <div className="flex items-center space-x-2">
-            <label className="flex items-center space-x-1 text-xs cursor-pointer">
+          <div className="flex items-center space-x-3">
+            <label className="flex items-center space-x-1.5 text-xs cursor-pointer">
               <input
                 type="radio"
                 name={`type-edit-${index}`}
                 checked={editedType === 'single'}
                 onChange={() => {
                   setEditedType('single');
-                  if (editedCorrectAnswers.length > 1) {
-                    setEditedCorrectAnswers([editedCorrectAnswers[0]]);
+                  if (editedCorrectLetters.length > 1) {
+                    setEditedCorrectLetters([editedCorrectLetters[0]]);
                   }
                 }}
                 className="text-indigo-600"
               />
               <span>Single Answer</span>
             </label>
-            <label className="flex items-center space-x-1 text-xs cursor-pointer">
+            <label className="flex items-center space-x-1.5 text-xs cursor-pointer">
               <input
                 type="radio"
                 name={`type-edit-${index}`}
@@ -155,33 +177,28 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
 
         <div className="space-y-2">
           <label className="block text-xs font-medium text-slate-600">
-            Options ({editedType === 'single' ? 'Select radio for correct answer' : 'Check all correct answers'})
+            Options ({editedType === 'single' ? 'Select 1 correct answer' : 'Select all correct answers'})
           </label>
           {editedOptions.map((opt, oIdx) => {
-            const isCorrect = editedCorrectAnswers.includes(opt);
+            const letter = LETTERS[oIdx];
+            const isCorrect = editedCorrectLetters.includes(letter);
             return (
               <div key={oIdx} className="flex items-center space-x-2">
                 <input
                   type={editedType === 'single' ? 'radio' : 'checkbox'}
                   name={`correct-ans-${index}`}
                   checked={isCorrect}
-                  onChange={() => handleToggleCorrectOption(opt)}
+                  onChange={() => handleToggleCorrectLetter(letter)}
                   className="w-4 h-4 text-indigo-600 cursor-pointer"
                 />
-                <span className="text-xs font-bold text-slate-400 w-4">{letters[oIdx]}.</span>
+                <span className="text-xs font-bold text-slate-400 w-4">{letter}.</span>
                 <input
                   type="text"
                   value={opt}
                   onChange={(e) => {
                     const newOpts = [...editedOptions] as [string, string, string, string];
-                    const oldVal = newOpts[oIdx];
                     newOpts[oIdx] = e.target.value;
                     setEditedOptions(newOpts);
-                    if (editedCorrectAnswers.includes(oldVal)) {
-                      setEditedCorrectAnswers(
-                        editedCorrectAnswers.map((a) => (a === oldVal ? e.target.value : a))
-                      );
-                    }
                   }}
                   className="flex-1 p-2 text-xs rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500"
                 />
@@ -267,7 +284,11 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
       {/* Options preview with radio/checkbox visual cues */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
         {question.options.map((opt, oIdx) => {
-          const isCorrect = question.correctAnswers.includes(opt);
+          const letter = LETTERS[oIdx];
+          const isCorrect = question.correctAnswers.some(
+            (ca) => ca.toUpperCase() === letter || ca.toLowerCase() === opt.toLowerCase()
+          );
+
           return (
             <div
               key={oIdx}
@@ -277,7 +298,6 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
                   : 'border-slate-200 bg-slate-50 text-slate-600'
               }`}
             >
-              {/* Radio or Checkbox visual indicator */}
               <div className="shrink-0">
                 {isMultiple ? (
                   <div
@@ -298,7 +318,7 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
                 )}
               </div>
 
-              <span className="font-bold text-[11px] text-slate-400 w-3">{letters[oIdx]}.</span>
+              <span className="font-bold text-[11px] text-slate-400 w-3">{letter}.</span>
               <span className="truncate flex-1">{opt}</span>
 
               {isCorrect && (

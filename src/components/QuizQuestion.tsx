@@ -3,17 +3,15 @@ import { Question } from '../types';
 import { AnswerOption } from './AnswerOption';
 import { ProgressBar } from './ProgressBar';
 import { formatTime } from '../lib/quiz';
-import { validateAnswers } from '../lib/parser';
+import { validateAnswers, isOptionCorrect, getCorrectAnswerLabels, OPTION_LETTERS } from '../lib/parser';
 import {
   ArrowLeft,
   ArrowRight,
   CheckCircle2,
   Clock,
-  HelpCircle,
   Lightbulb,
   XCircle,
   LogOut,
-  Layers,
   CheckSquare,
 } from 'lucide-react';
 
@@ -54,12 +52,12 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
 }) => {
   const isPracticeMode = mode === 'practice';
   const isMultiple = question.type === 'multiple';
-  const isCorrect = validateAnswers(selectedAnswers, question.correctAnswers);
+  const isCorrect = validateAnswers(selectedAnswers, question.options, question.correctAnswers);
+  const correctLabels = getCorrectAnswerLabels(question.options, question.correctAnswers);
 
-  // Keyboard shortcut listener
+  // Keyboard shortcuts listener
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      // Ignore if user is inside an input or textarea
       if (
         document.activeElement?.tagName === 'INPUT' ||
         document.activeElement?.tagName === 'TEXTAREA'
@@ -88,7 +86,6 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
             onNextQuestion();
           }
         } else {
-          // In exam mode
           if (isLastQuestion) {
             if (onFinishExam) onFinishExam();
           } else {
@@ -96,24 +93,16 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
           }
         }
       }
-
-      // 'N' key for next question
-      if (e.key.toLowerCase() === 'n') {
-        if (isPracticeMode && isSubmitted) {
-          e.preventDefault();
-          onNextQuestion();
-        }
-      }
     },
     [
       isSubmitted,
       isPracticeMode,
       selectedAnswers,
+      isLastQuestion,
       question.options,
       onToggleOption,
       onSubmitAnswer,
       onNextQuestion,
-      isLastQuestion,
       onFinishExam,
     ]
   );
@@ -123,30 +112,19 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleKeyDown]);
 
-  const letters = ['A', 'B', 'C', 'D'];
-
-  // Source week label
-  const questionSourceLabel =
-    question.source === 'course' && question.week !== null
-      ? `Week ${question.week}`
-      : question.source === 'test'
-      ? 'Test Data'
-      : weekLabel;
-
   return (
-    <div id="quiz-question-container" className="max-w-3xl mx-auto w-full px-4 py-6 md:py-8">
-      {/* Top Header Card */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs mb-6">
-        <div className="flex items-center justify-between gap-4">
-          {/* Week & Mode info */}
+    <div id="quiz-question-container" className="max-w-3xl mx-auto w-full px-4 py-8">
+      {/* Top Session Bar */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-6 shadow-xs">
+        <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="px-2.5 py-1 text-xs font-bold bg-indigo-50 text-indigo-700 rounded-lg border border-indigo-100">
-              {questionSourceLabel}
+            <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">
+              {weekLabel}
             </span>
             <span
-              className={`px-2 py-0.5 text-[11px] font-semibold rounded-md border uppercase tracking-wider ${
-                mode === 'practice'
-                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+              className={`text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${
+                isPracticeMode
+                  ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
                   : 'bg-amber-50 text-amber-800 border-amber-200'
               }`}
             >
@@ -173,7 +151,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
             type="button"
             onClick={onExitQuiz}
             className="flex items-center space-x-1 text-xs font-semibold text-slate-500 hover:text-rose-600 px-2.5 py-1 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
-            title="Exit Quiz"
+            title="Exit Practice"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Exit</span>
@@ -207,7 +185,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
           </div>
 
           {isMultiple && (
-            <div className="flex items-center space-x-1 text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200 animate-in fade-in">
+            <div className="flex items-center space-x-1 text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
               <CheckSquare className="w-3.5 h-3.5 text-amber-600" />
               <span>Select all that apply.</span>
             </div>
@@ -223,14 +201,14 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
         <div className="space-y-3">
           {question.options.map((option, idx) => {
             const isSelected = selectedAnswers.includes(option);
-            const isCorrectOption = question.correctAnswers.includes(option);
+            const isCorrectOption = isOptionCorrect(option, idx, question.correctAnswers);
             const showFeedback = isPracticeMode && isSubmitted;
 
             return (
               <AnswerOption
                 key={idx}
                 index={idx}
-                letter={letters[idx]}
+                letter={OPTION_LETTERS[idx]}
                 optionText={option}
                 questionType={question.type}
                 isSelected={isSelected}
@@ -273,9 +251,9 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
 
                 {!isCorrect && (
                   <div className="mt-2 text-xs font-semibold text-rose-900">
-                    Correct answer{question.correctAnswers.length > 1 ? 's' : ''}:
+                    Correct answer{correctLabels.length > 1 ? 's' : ''}:
                     <ul className="list-disc list-inside mt-1 space-y-0.5 font-normal">
-                      {question.correctAnswers.map((ca, idx) => (
+                      {correctLabels.map((ca, idx) => (
                         <li key={idx} className="font-semibold text-emerald-800">
                           {ca}
                         </li>
@@ -327,7 +305,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
               disabled={selectedAnswers.length === 0}
               className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-xs transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center space-x-1.5 cursor-pointer"
             >
-              <span>Submit Answer</span>
+              <span>Check Answer</span>
             </button>
           ) : (
             <button
