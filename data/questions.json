@@ -1,0 +1,39 @@
+[
+  {
+    "id": "test_q_5",
+    "source": "test",
+    "week": null,
+    "question": "Which of the following network attacks are classified as ACTIVE attacks (modifying data or system state) rather than passive sniffing?",
+    "type": "multiple",
+    "options": [
+      "Man-in-the-Middle (MITM) packet tampering",
+      "Passive network packet sniffing with Wireshark",
+      "TCP Session Hijacking with packet injection",
+      "Traffic pattern and bandwidth volume analysis"
+    ],
+    "correctAnswers": [
+      "Man-in-the-Middle (MITM) packet tampering",
+      "TCP Session Hijacking with packet injection"
+    ],
+    "explanation": "MITM data manipulation and TCP session injection alter network streams (active attacks). Packet sniffing and traffic volume observation do not alter data (passive attacks).",
+    "createdAt": 1710000005000
+  },
+  {
+    "id": "test_q_6",
+    "source": "test",
+    "week": null,
+    "question": "What is the standard fixed block size used by the Advanced Encryption Standard (AES) cipher?",
+    "type": "single",
+    "options": [
+      "64 bits",
+      "128 bits",
+      "192 bits",
+      "256 bits"
+    ],
+    "correctAnswers": [
+      "128 bits"
+    ],
+    "explanation": "AES is a symmetric block cipher standardized with a fixed block length of 128 bits (regardless of whether key size is 128, 192, or 256 bits).",
+    "createdAt": 1710000006000
+  }
+]
