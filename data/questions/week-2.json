@@ -1,1 +1,458 @@
-[]
+[
+  {
+    "id": "w2-q1",
+    "question": "The attribute that describes whether information is genuine and original rather than reproduced or fabricated is called Authenticity, not Accuracy.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both True and False",
+      "Neither True nor False"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The statement is true: authenticity concerns whether information is genuine and original, rather than fabricated or reproduced."
+  },
+  {
+    "id": "w2-q2",
+    "question": "A new IT manager wants to tighten access controls without disrupting productivity. Which of the following practices should they implement? (Select all that apply.)",
+    "type": "multiple",
+    "options": [
+      "Providing all staff with administrator-level access to avoid bottlenecks",
+      "Maintaining and auditing access logs to detect anomalies",
+      "Periodically reviewing and revoking unnecessary user access rights",
+      "Assigning permissions based on each employee's role and responsibilities"
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "Auditing logs, revoking unnecessary access, and assigning permissions according to roles improve access control. Giving everyone administrator access increases risk."
+  },
+  {
+    "id": "w2-q3",
+    "question": "A CISO needs a structured model to assess whether their organization's security program adequately covers the goals, data states, and control types relevant to protecting information. Which model was specifically designed for this purpose?",
+    "type": "single",
+    "options": [
+      "OSI Model",
+      "CIA Triad",
+      "STRIDE Model",
+      "McCumber Cube"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The McCumber Cube organizes cybersecurity across security goals, data states, and control types."
+  },
+  {
+    "id": "w2-q4",
+    "question": "A developer ships a web application with an unvalidated input field that allows attackers to inject SQL commands. Before any attack occurs, this unvalidated field is best described as:",
+    "type": "single",
+    "options": [
+      "A vulnerability",
+      "A threat",
+      "An exploit",
+      "An attack vector in active use"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "An unvalidated input field is a weakness in the application, making it a vulnerability before it is exploited."
+  },
+  {
+    "id": "w2-q5",
+    "question": "When malware slips through a detection system unidentified and causes damage, this is an example of a False Negative.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both True and False",
+      "Neither True nor False"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A false negative occurs when a real threat is incorrectly treated as harmless or goes undetected."
+  },
+  {
+    "id": "w2-q6",
+    "question": "A security analyst maps their controls across three axes: security goals, data states, and control types. Which framework are they applying, and which dimension addresses how data exists at any given moment?",
+    "type": "single",
+    "options": [
+      "CIA Triad; the first dimension",
+      "NIST CSF; the third dimension",
+      "McCumber Cube; the second dimension",
+      "COBIT; the second dimension"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The McCumber Cube uses three dimensions, with data states such as storage, processing, and transmission represented as a dimension."
+  },
+  {
+    "id": "w2-q7",
+    "question": "A security tool quarantines a trusted internal application used daily by the finance team, flagging it as malware. Operations come to a halt. How is this detection outcome classified?",
+    "type": "single",
+    "options": [
+      "True Positive - the threat was correctly identified",
+      "False Positive - a safe file was incorrectly flagged as malicious",
+      "True Negative - a safe file was correctly cleared",
+      "False Negative - a real threat was missed by the system"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A false positive occurs when a legitimate item is incorrectly identified as malicious."
+  },
+  {
+    "id": "w2-q8",
+    "question": "A server sends data packets to a workstation across an office. Which component of the information system made this transfer possible?",
+    "type": "single",
+    "options": [
+      "The server's hardware processor",
+      "The network infrastructure",
+      "The operating system software",
+      "The stored data files"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Network infrastructure enables data to be transmitted between the server and workstation."
+  },
+  {
+    "id": "w2-q9",
+    "question": "An employee receives an email from '[support@microsOft.com](mailto:support@microsOft.com)' asking them to click a link and reset their password. What is the most appropriate immediate response?",
+    "type": "single",
+    "options": [
+      "Open the attachment to verify the content before deciding",
+      "Forward it to colleagues to check if they received the same email",
+      "Click the link since the sender mentions Microsoft",
+      "Verify the sender's legitimacy independently and avoid clicking any links"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The sender should be independently verified and suspicious links should not be clicked."
+  },
+  {
+    "id": "w2-q10",
+    "question": "An attacker crafts a SQL injection string that takes advantage of an unvalidated input field to dump an entire customer database. The crafted string itself is best described as:",
+    "type": "single",
+    "options": [
+      "A vulnerability",
+      "An exploit",
+      "A threat agent",
+      "A security patch"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The crafted SQL injection string is an exploit because it takes advantage of an existing vulnerability."
+  },
+  {
+    "id": "w2-q11",
+    "question": "A company encrypts sensitive information so that an intercepted message cannot be understood by an unauthorized person. Which security objective is primarily being addressed?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Accountability"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Confidentiality protects information from unauthorized access or disclosure."
+  },
+  {
+    "id": "w2-q12",
+    "question": "A database administrator discovers that a customer's address was modified without permission. Which CIA property was violated?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Integrity ensures that data remains accurate and is not improperly modified."
+  },
+  {
+    "id": "w2-q13",
+    "question": "An online banking service is unavailable for several hours, preventing legitimate customers from accessing their accounts. Which security property is affected?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Authorization"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Availability ensures that authorized users can access systems and information when needed."
+  },
+  {
+    "id": "w2-q14",
+    "question": "Which of the following are the three data-related dimensions represented in the McCumber Cube? (Select all that apply.)",
+    "type": "multiple",
+    "options": [
+      "Storage",
+      "Processing",
+      "Transmission",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "The McCumber Cube considers storage, processing, and transmission as the three states or roles of computing."
+  },
+  {
+    "id": "w2-q15",
+    "question": "Which of the following are methods used to achieve cybersecurity according to the McCumber Cube? (Select all that apply.)",
+    "type": "multiple",
+    "options": [
+      "Policy",
+      "Education",
+      "Technology",
+      "Authorization"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "The McCumber Cube identifies policy, education, and technology as methods for achieving cybersecurity."
+  },
+  {
+    "id": "w2-q16",
+    "question": "A student enters their university ID number into a system for the first time. The system uses this information to establish who the student is. This is:",
+    "type": "single",
+    "options": [
+      "Authentication",
+      "Identification",
+      "Authorization",
+      "Accountability"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Identification establishes or states who an individual is."
+  },
+  {
+    "id": "w2-q17",
+    "question": "A website asks a user to enter their password after they provide their username. The password is being used primarily for:",
+    "type": "single",
+    "options": [
+      "Identification",
+      "Authentication",
+      "Authorization",
+      "Accountability"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Authentication verifies that a person is who they claim to be, commonly using a password."
+  },
+  {
+    "id": "w2-q18",
+    "question": "After logging in, a student can access course materials but cannot access faculty-only records. This restriction is an example of:",
+    "type": "single",
+    "options": [
+      "Identification",
+      "Authentication",
+      "Authorization",
+      "Integrity"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Authorization determines what resources an authenticated user is permitted to access."
+  },
+  {
+    "id": "w2-q19",
+    "question": "A company investigates its logs to determine which account accessed confidential files during a breach. Which concept is most directly involved?",
+    "type": "single",
+    "options": [
+      "Availability",
+      "Accountability",
+      "Authentication",
+      "Integrity"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Accountability uses records such as logs to determine who performed actions during an incident."
+  },
+  {
+    "id": "w2-q20",
+    "question": "Which sequence correctly represents the concepts discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Authentication → Identification → Authorization",
+      "Identification → Authentication → Authorization",
+      "Authorization → Authentication → Identification",
+      "Identification → Authorization → Authentication"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The sequence is identification, followed by authentication, and then authorization."
+  },
+  {
+    "id": "w2-q21",
+    "question": "A security system marks a harmless application as malicious and blocks it. What type of result is this?",
+    "type": "single",
+    "options": [
+      "True Positive",
+      "False Positive",
+      "True Negative",
+      "False Negative"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A false positive occurs when a harmless item is incorrectly classified as malicious."
+  },
+  {
+    "id": "w2-q22",
+    "question": "A malicious program enters a system because the security tool incorrectly considers it harmless. What type of result is this?",
+    "type": "single",
+    "options": [
+      "True Positive",
+      "False Positive",
+      "True Negative",
+      "False Negative"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "A false negative occurs when an actual threat is missed by the detection system."
+  },
+  {
+    "id": "w2-q23",
+    "question": "Employees disable a security system because frequent incorrect alerts are interfering with normal business operations. What problem does this demonstrate?",
+    "type": "single",
+    "options": [
+      "Security-efficiency trade-off",
+      "Authentication failure",
+      "Data integrity failure",
+      "Availability redundancy"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Frequent false alarms can interfere with operations, illustrating the trade-off between security and efficiency."
+  },
+  {
+    "id": "w2-q24",
+    "question": "A weakness in a system exists, but nobody has attempted to use it yet. What is the weakness called?",
+    "type": "single",
+    "options": [
+      "Threat",
+      "Exploit",
+      "Vulnerability",
+      "Attack"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A vulnerability is a weakness that can potentially be exploited by an attacker."
+  },
+  {
+    "id": "w2-q25",
+    "question": "An attacker uses an existing weakness in a web application to execute malicious commands. The technique used to take advantage of the weakness is called:",
+    "type": "single",
+    "options": [
+      "Vulnerability",
+      "Exploit",
+      "Authentication",
+      "Authorization"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "An exploit is the method or technique used to take advantage of a vulnerability."
+  },
+  {
+    "id": "w2-q26",
+    "question": "In the Target case, a third-party vendor obtained access to systems that it did not need for its legitimate function. Which security issue does this most directly demonstrate?",
+    "type": "single",
+    "options": [
+      "Authorization failure",
+      "Availability failure",
+      "Integrity failure",
+      "Identification failure"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The vendor had access beyond what its role required, indicating an authorization problem."
+  },
+  {
+    "id": "w2-q27",
+    "question": "Why was the Target breach not simply a technological problem?",
+    "type": "single",
+    "options": [
+      "Because only government systems can have cybersecurity problems",
+      "Because technical weaknesses interacted with management and process failures",
+      "Because Target had no cybersecurity technology",
+      "Because encryption cannot be used by retailers"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Target case involved both technical vulnerabilities and managerial or process failures."
+  },
+  {
+    "id": "w2-q28",
+    "question": "A company has expensive security technologies but employees are not properly trained and security procedures are frequently bypassed. What major lesson from the lecture does this demonstrate?",
+    "type": "single",
+    "options": [
+      "Cybersecurity depends only on technology",
+      "Management and human factors are also important",
+      "Training reduces availability",
+      "Technology automatically guarantees confidentiality"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture emphasizes that cybersecurity involves technology as well as people, education, policies, and management."
+  },
+  {
+    "id": "w2-q29",
+    "question": "After a data breach, customers lose trust in a company and begin using competitors. This is primarily an example of:",
+    "type": "single",
+    "options": [
+      "A tangible technical failure",
+      "An intangible impact",
+      "An authentication mechanism",
+      "A network vulnerability"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Loss of customer trust and reputation are intangible consequences of a data breach."
+  },
+  {
+    "id": "w2-q30",
+    "question": "Which statement best summarizes the Target case discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Having security technology guarantees that breaches cannot occur",
+      "Cybersecurity requires both technical controls and effective management",
+      "Only third-party vendors are responsible for security breaches",
+      "Security warnings should be ignored when they affect efficiency"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Target case demonstrates that cybersecurity depends on both technical controls and effective management and processes."
+  }
+]
