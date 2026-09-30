@@ -1,1 +1,392 @@
-[]
+[
+  {
+    "id": "w8-q1",
+    "question": "Which of the following statements is not true?",
+    "type": "single",
+    "options": [
+      "Risk management involves three major undertakings: risk identification, risk assessment, and risk control.",
+      "Risk assessment is the process of identifying risk, assessing its relative magnitude, and taking steps to reduce it to an acceptable level.",
+      "Risk identification is the recognition, enumeration, and documentation of risks to an organization's information assets.",
+      "Risk identification also involves classifying, valuing, and prioritizing assets."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Risk identification and risk assessment are separate activities. Identifying risk is part of risk identification, while risk assessment focuses on measuring the magnitude of identified risks."
+  },
+  {
+    "id": "w8-q2",
+    "question": "is the quantity and nature of risk that an organization is willing to accept while balancing security requirements against business needs such as accessibility and usability.",
+    "type": "single",
+    "options": [
+      "Risk appetite",
+      "Risk exposure",
+      "Residual risk",
+      "Risk capacity"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Risk appetite is the amount and nature of risk an organization is willing to accept while balancing security and business needs."
+  },
+  {
+    "id": "w8-q3",
+    "question": "True or False: Residual risk is a combined function of (1) a threat less the effect of threat-reducing safeguards, (2) a vulnerability less the effect of vulnerability-reducing safeguards, and (3) an asset less the effect of asset value-reducing safeguards.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Cannot be determined",
+      "Not applicable"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture defines residual risk in terms of loss frequency, loss magnitude, existing protection, and measurement uncertainty, so the stated definition is not correct."
+  },
+  {
+    "id": "w8-q4",
+    "question": "An organization estimates that a data breach would result in a Single Loss Expectancy (SLE) of ₹8,00,000. The Annualized Loss Expectancy (ALE) is estimated to be ₹12,00,000. What is the Annualized Rate of Occurrence (ARO)?",
+    "type": "single",
+    "options": [
+      "1.0",
+      "1.5",
+      "2.0",
+      "0.5"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "ALE = SLE × ARO. Therefore, ARO = ₹12,00,000 ÷ ₹8,00,000 = 1.5."
+  },
+  {
+    "id": "w8-q5",
+    "question": "An organization's critical server has an Asset Value (AV) of ₹15,00,000 and an Exposure Factor (EF) of 40%. The threat is expected to occur 2 times per year. What is the Annualized Loss Expectancy (ALE)?",
+    "type": "single",
+    "options": [
+      "₹6,00,000",
+      "₹12,00,000",
+      "₹20,00,000",
+      "₹30,00,000"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "SLE = AV × EF = ₹15,00,000 × 40% = ₹6,00,000. ALE = SLE × ARO = ₹6,00,000 × 2 = ₹12,00,000."
+  },
+  {
+    "id": "w8-q6",
+    "question": "A company has an Annualized Loss Expectancy (ALE) of ₹20,00,000 before implementing a security safeguard. After implementing the safeguard, the Annualized Loss Expectancy (ALE) is ₹8,00,000. The Annual Cost of Safeguard (ACS) is ₹3,00,000. What is the Cost-Benefit Estimate (CBE)?",
+    "type": "single",
+    "options": [
+      "₹5,00,000",
+      "₹8,00,000",
+      "₹9,00,000",
+      "₹12,00,000"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "CBE = ALE prior − (ALE post + ACS) = ₹20,00,000 − (₹8,00,000 + ₹3,00,000) = ₹9,00,000."
+  },
+  {
+    "id": "w8-q7",
+    "question": "Which of the following correctly distinguishes between identification and authentication?",
+    "type": "single",
+    "options": [
+      "Identification verifies the user's identity using a password, while authentication is the process of claiming an identity using a username.",
+      "Identification is the process of claiming an identity, while authentication verifies that the claimed identity is genuine.",
+      "Identification determines what resources a user can access, while authentication records the user's activities.",
+      "Identification and authentication are two terms used for the same process of verifying a user's identity."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Identification states who the user claims to be, while authentication verifies that the claimed identity is genuine."
+  },
+  {
+    "id": "w8-q8",
+    "question": "An organization wants to ensure that an employee cannot later deny having approved an electronic purchase order. Which mechanism would be most appropriate?",
+    "type": "single",
+    "options": [
+      "Encrypting the purchase order using the organization's public key",
+      "Generating a cryptographic hash of the purchase order",
+      "Applying a digital signature using the employee's private key",
+      "Storing the purchase order in an access-controlled database"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A digital signature using the employee's private key provides non-repudiation by linking the document to the signer."
+  },
+  {
+    "id": "w8-q9",
+    "question": "A user wants to verify that a website's public key actually belongs to the organization operating the website. Which entity is primarily responsible for providing this assurance?",
+    "type": "single",
+    "options": [
+      "Registration Authority (RA)",
+      "Certificate Repository",
+      "Identity Provider (IdP)",
+      "Certificate Authority (CA)"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "A Certificate Authority issues digital certificates that bind a public key to the identity of an organization or entity."
+  },
+  {
+    "id": "w8-q10",
+    "question": "Which of the following is NOT one of the five risk management strategies discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Defence",
+      "Transfer",
+      "Mitigation",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The five strategies are defence, transfer, mitigation, acceptance, and termination. Authentication is an access-control process, not a risk management strategy."
+  },
+  {
+    "id": "w8-q11",
+    "question": "Which strategy involves transferring cybersecurity responsibility to a third-party service provider?",
+    "type": "single",
+    "options": [
+      "Defence",
+      "Transfer",
+      "Acceptance",
+      "Termination"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Transfer means shifting responsibility or risk management to a third party, such as through outsourcing or managed services."
+  },
+  {
+    "id": "w8-q12",
+    "question": "Which statement correctly distinguishes defence from mitigation?",
+    "type": "single",
+    "options": [
+      "Defence reduces impact after an attack, while mitigation prevents attacks.",
+      "Defence attempts to prevent or reduce successful attacks, while mitigation reduces the impact of an attack.",
+      "Both terms mean exactly the same thing.",
+      "Mitigation involves transferring risk to another organization."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Defence focuses on preventing or reducing the success of attacks, while mitigation focuses on minimizing their impact."
+  },
+  {
+    "id": "w8-q13",
+    "question": "An organization decides that a cybersecurity risk is financially acceptable and chooses not to invest further in controls. Which strategy is this?",
+    "type": "single",
+    "options": [
+      "Defence",
+      "Transfer",
+      "Acceptance",
+      "Termination"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Acceptance means knowingly accepting a level of risk when further protection may not be economically justified."
+  },
+  {
+    "id": "w8-q14",
+    "question": "Which of the following best describes termination as a risk management strategy?",
+    "type": "single",
+    "options": [
+      "Outsourcing the risk to another company",
+      "Accepting the potential loss",
+      "Reducing the impact of an attack",
+      "Discontinuing an activity when its security cost is not economically justified"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Termination means stopping or removing a business activity or asset when managing its risk is no longer economically justified."
+  },
+  {
+    "id": "w8-q15",
+    "question": "An asset has a value of ₹20,00,000 and an Exposure Factor of 25%. What is its Single Loss Expectancy (SLE)?",
+    "type": "single",
+    "options": [
+      "₹2,00,000",
+      "₹5,00,000",
+      "₹8,00,000",
+      "₹20,00,000"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "SLE = Asset Value × Exposure Factor = ₹20,00,000 × 25% = ₹5,00,000."
+  },
+  {
+    "id": "w8-q16",
+    "question": "An organization's SLE is ₹5,00,000 and the expected Annual Rate of Occurrence (ARO) is 2. What is the ALE?",
+    "type": "single",
+    "options": [
+      "₹2,50,000",
+      "₹5,00,000",
+      "₹7,00,000",
+      "₹10,00,000"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "ALE = SLE × ARO = ₹5,00,000 × 2 = ₹10,00,000."
+  },
+  {
+    "id": "w8-q17",
+    "question": "Which of the following is the correct sequence of access-control processes?",
+    "type": "single",
+    "options": [
+      "Authentication → Identification → Authorization → Accountability",
+      "Identification → Authentication → Authorization → Accountability",
+      "Identification → Authorization → Authentication → Accountability",
+      "Authorization → Identification → Authentication → Accountability"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The access-control sequence is identification, authentication, authorization, and accountability."
+  },
+  {
+    "id": "w8-q18",
+    "question": "Which of the following is an example of \"something you are\" in multi-factor authentication?",
+    "type": "single",
+    "options": [
+      "Password",
+      "OTP",
+      "Fingerprint",
+      "Smart card"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A fingerprint is a biometric characteristic and therefore represents something you are."
+  },
+  {
+    "id": "w8-q19",
+    "question": "A biometric system incorrectly allows an unauthorized person to access a system. This is called:",
+    "type": "single",
+    "options": [
+      "False Rejection",
+      "False Acceptance",
+      "Authentication Failure",
+      "Authorization Failure"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "False Acceptance occurs when an unauthorized person is incorrectly accepted by the biometric system."
+  },
+  {
+    "id": "w8-q20",
+    "question": "What does the Crossover Error Rate (CER) represent in a biometric system?",
+    "type": "single",
+    "options": [
+      "The point where encryption and decryption rates are equal",
+      "The point where False Acceptance Rate and False Rejection Rate intersect",
+      "The percentage of users successfully authenticated",
+      "The percentage of rejected passwords"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "CER is the point at which the False Acceptance Rate and False Rejection Rate are equal."
+  },
+  {
+    "id": "w8-q21",
+    "question": "What is the primary purpose of a firewall?",
+    "type": "single",
+    "options": [
+      "Encrypt stored data",
+      "Control network access using configured rules",
+      "Generate digital signatures",
+      "Replace authentication mechanisms"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A firewall controls network access by applying configured rules to determine which connections are allowed or blocked."
+  },
+  {
+    "id": "w8-q22",
+    "question": "What is the primary purpose of a DMZ in a network?",
+    "type": "single",
+    "options": [
+      "To store private encryption keys",
+      "To act as a buffer between an untrusted external network and a trusted internal network",
+      "To replace the firewall",
+      "To authenticate users using biometrics"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A DMZ acts as an intermediary zone that helps protect the trusted internal network from direct external access."
+  },
+  {
+    "id": "w8-q23",
+    "question": "Which statement correctly describes symmetric and asymmetric encryption?",
+    "type": "single",
+    "options": [
+      "Symmetric encryption uses two keys, while asymmetric uses one",
+      "Symmetric encryption uses the same key for encryption and decryption, while asymmetric uses different keys",
+      "Both always use the same key",
+      "Neither requires a key"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Symmetric encryption uses one shared key for encryption and decryption, whereas asymmetric encryption uses a public and a private key."
+  },
+  {
+    "id": "w8-q24",
+    "question": "Bob wants to send Alice a confidential message using asymmetric encryption. Which key should Bob use to encrypt the message?",
+    "type": "single",
+    "options": [
+      "Bob's private key",
+      "Bob's public key",
+      "Alice's public key",
+      "Alice's private key"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "For confidential communication using asymmetric encryption, Bob encrypts the message with Alice's public key, which Alice can decrypt using her private key."
+  },
+  {
+    "id": "w8-q25",
+    "question": "Which of the following is NOT one of the three broad encryption techniques discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Substitution",
+      "Transposition",
+      "XOR",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The lecture identifies substitution, transposition, and XOR as three broad encryption techniques. Authentication is an access-control process."
+  },
+  {
+    "id": "w8-q26",
+    "question": "Which statement about active defence is correct?",
+    "type": "single",
+    "options": [
+      "Active defence is exactly the same as hacking back",
+      "Active defence can involve gathering intelligence and taking action to reduce the effectiveness of a cyber threat",
+      "Active defence only means installing antivirus software",
+      "Active defence means accepting the attack without responding"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Active defence involves actively responding to cyber threats, including gathering intelligence and taking measures to reduce the effectiveness of an attack."
+  }
+]

@@ -1,1 +1,535 @@
-[]
+[
+  {
+    "id": "w7-q1",
+    "question": "Which of the following statements correctly describes the processor protection ring model?",
+    "type": "single",
+    "options": [
+      "User programs execute in Ring 0 because they require maximum privileges.",
+      "Ring 3 is the most privileged ring used by the operating system.",
+      "The kernel executes in the highest privilege level, and no software is more privileged than the kernel.",
+      "All four protection rings are equally privileged."
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The kernel operates at the highest privilege level, while user programs operate with more restricted privileges."
+  },
+  {
+    "id": "w7-q2",
+    "question": "Which of the following is not true with respect to Public-Key Encryption?",
+    "type": "single",
+    "options": [
+      "One algorithm is used for encryption and decryption with a pair of keys, one for encryption and one for decryption.",
+      "The sender and receiver must each have one of the matched pair of keys.",
+      "One of the two keys must be kept secret.",
+      "The sender and receiver must share the algorithm and the key."
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Public-key encryption uses a pair of related keys, with the private key kept secret; the sender and receiver do not share the same secret key."
+  },
+  {
+    "id": "w7-q3",
+    "question": "Which of the following statements are true? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "A hash function maps a variable-length message into a fixed-length hash value, or message digest.",
+      "Hash functions can be used for intrusion detection and virus detection.",
+      "The compression function used in secure hash algorithms falls into one of two categories: a function based on a public-key cryptographic algorithm or an algorithm based on a stream cipher.",
+      "A cryptographic hash function can be used to construct a pseudorandom function (PRF) or a pseudorandom number generator (PRNG)"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Hash functions produce fixed-length digests, can support detection of changes or malicious files, and can be used in constructing PRFs or PRNGs."
+  },
+  {
+    "id": "w7-q4",
+    "question": "HTTPS refers to the combination of HTTP, SSL and to implement secure communication between a Web browser and a Web server.",
+    "type": "single",
+    "options": [
+      "HTTP, SSL",
+      "HTTP, SSH",
+      "UDP, TCP",
+      "TCP, SSL"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "HTTPS combines HTTP with SSL/TLS mechanisms to provide secure communication between a browser and web server."
+  },
+  {
+    "id": "w7-q5",
+    "question": "is the principle that an individual is entrusted to safeguard and control equipment, keying material, and information and is answerable to the proper authority for their loss or misuse, whereas and evidence. is the principle that ensures actions and events can be traced and reviewed through appropriate records",
+    "type": "single",
+    "options": [
+      "Auditability, Accountability",
+      "Accountability, Auditability",
+      "Confidentiality, Auditability",
+      "Responsibility, Accountability"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Accountability means being answerable for the protection and misuse of assets, while auditability ensures actions and events can be traced and reviewed through records."
+  },
+  {
+    "id": "w7-q6",
+    "question": "Match the following 1. Stateful Inspection Firewall 2. Packet Filters 3. Proxy Firewalls 4. Next Generation Firewalls",
+    "type": "single",
+    "options": [
+      "1 - c, 2 - a, 3 - b, 4 - d",
+      "1 - b, 2 - c, 3 - b, 4 - d",
+      "1 - c, 2 - b, 3 - a, 4 - d",
+      "1 - b, 2 - c, 3 - b, 4 - a"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Stateful inspection uses state, port, and protocol; packet filters inspect individual packets; proxy firewalls act as application gateways; next-generation firewalls provide advanced application and threat controls."
+  },
+  {
+    "id": "w7-q7",
+    "question": "masks your Internet protocol (IP) address, creating a private connection from a public wi-fi connection.",
+    "type": "single",
+    "options": [
+      "IPSEC",
+      "SSL",
+      "VPN",
+      "DNS"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A VPN creates a private, typically encrypted connection over a public network and can mask the user's IP address."
+  },
+  {
+    "id": "w7-q8",
+    "question": "Match the following 1. Reconnaissance 2. Exploitation 3. Weaponization 4. Command and Control",
+    "type": "single",
+    "options": [
+      "1 - c, 2 - a, 3 - b, 4 - d",
+      "1 - d, 2 - c, 3 - a, 4 - b",
+      "1 - d, 2 - a, 3 - c, 4 - b",
+      "1 - b, 2 - c, 3 - b, 4 - a"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Reconnaissance gathers target information, exploitation triggers the vulnerability, weaponization prepares the malicious payload, and command and control provides remote communication with the compromised system."
+  },
+  {
+    "id": "w7-q9",
+    "question": "The following figure depicts which attack? Compromised System, Internet, Compromised System, Target Server, Compromised System",
+    "type": "single",
+    "options": [
+      "DDOS",
+      "Brute Force Attack",
+      "Session Hijacking",
+      "DNS Spoofing"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A DDoS attack uses multiple compromised systems to overwhelm a target server."
+  },
+  {
+    "id": "w7-q10",
+    "question": "Which of the following is the primary function of a SIEM system?",
+    "type": "single",
+    "options": [
+      "Encrypting all network traffic",
+      "Collecting, correlating, and analyzing security logs and events",
+      "Blocking all unauthorized websites",
+      "Performing software vulnerability scanning"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A SIEM collects and analyzes security logs and events from different systems to identify suspicious activity."
+  },
+  {
+    "id": "w7-q11",
+    "question": "Which of the following correctly describes the CIA triad in cybersecurity?",
+    "type": "single",
+    "options": [
+      "Confidentiality ensures data is available, integrity ensures secrecy, and availability prevents modification.",
+      "Confidentiality protects data from unauthorized access, integrity protects against unauthorized modification, and availability ensures authorized access when required.",
+      "Confidentiality identifies users, integrity authenticates users, and availability audits users.",
+      "Confidentiality prevents denial-of-service attacks, integrity provides encryption, and availability provides hashing."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Confidentiality prevents unauthorized disclosure, integrity prevents unauthorized modification, and availability ensures access when required."
+  },
+  {
+    "id": "w7-q12",
+    "question": "Which of the following statements regarding operating systems and cybersecurity is correct?",
+    "type": "single",
+    "options": [
+      "The operating system only manages input devices and does not interact with hardware.",
+      "The operating system provides an interface between users, applications, and hardware.",
+      "The operating system is responsible only for network routing.",
+      "The operating system operates entirely outside the hardware privilege model."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The operating system provides the interface between users, applications, input/output devices, and computing hardware."
+  },
+  {
+    "id": "w7-q13",
+    "question": "Which of the following statements about cryptographic hash functions are true? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "A small change in the input can produce a significantly different hash value.",
+      "A hash value can normally be reversed to reconstruct the original input.",
+      "Hash functions can be used to verify whether a file has been modified.",
+      "A fixed-length hash can be generated from data of different sizes."
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "Hash functions are designed to produce significantly different outputs after small input changes, can verify file integrity, and produce fixed-length values from variable-sized inputs."
+  },
+  {
+    "id": "w7-q14",
+    "question": "Which of the following correctly distinguishes symmetric and public-key encryption?",
+    "type": "single",
+    "options": [
+      "Symmetric encryption uses separate public and private keys, while public-key encryption uses one shared key.",
+      "Symmetric encryption uses the same key for encryption and decryption, while public-key encryption uses a pair of related keys.",
+      "Both symmetric and public-key encryption always require the sender and receiver to share the same secret key.",
+      "Public-key encryption does not require any secret key."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Symmetric encryption uses a shared key, whereas public-key encryption uses a public/private key pair."
+  },
+  {
+    "id": "w7-q15",
+    "question": "Match the following: 1. Confidentiality 2. Integrity 3. Availability 4. Accountability",
+    "type": "single",
+    "options": [
+      "1 - c, 2 - d, 3 - a, 4 - b",
+      "1 - d, 2 - c, 3 - b, 4 - a",
+      "1 - c, 2 - a, 3 - d, 4 - b",
+      "1 - b, 2 - d, 3 - c, 4 - a"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Confidentiality prevents unauthorized disclosure, integrity prevents unauthorized modification, availability ensures access, and accountability associates actions with responsible individuals."
+  },
+  {
+    "id": "w7-q16",
+    "question": "Which of the following correctly describes TCP?",
+    "type": "single",
+    "options": [
+      "TCP sends packets without checking whether they arrive.",
+      "TCP is designed for reliable communication and uses acknowledgements and sequencing.",
+      "TCP is primarily used because it intentionally allows packets to arrive in any order.",
+      "TCP does not establish any coordination between sender and receiver."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "TCP provides reliable communication through mechanisms such as acknowledgements, sequencing, and retransmission."
+  },
+  {
+    "id": "w7-q17",
+    "question": "Why is UDP commonly preferred for real-time audio and video communication?",
+    "type": "single",
+    "options": [
+      "Because UDP guarantees delivery of every packet.",
+      "Because UDP automatically retransmits every lost packet.",
+      "Because occasional packet loss may be preferable to the delay caused by retransmission and reliability mechanisms.",
+      "Because UDP encrypts all packets by default."
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "UDP avoids the reliability overhead of TCP, making it suitable for applications where low delay is more important than perfect delivery."
+  },
+  {
+    "id": "w7-q18",
+    "question": "Which of the following correctly matches the networking concepts? 1. MAC Address 2. IP Address 3. Port Number",
+    "type": "single",
+    "options": [
+      "1 - c, 2 - b, 3 - a",
+      "1 - a, 2 - c, 3 - b",
+      "1 - b, 2 - a, 3 - c",
+      "1 - c, 2 - a, 3 - b"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A MAC address identifies a network interface locally, an IP address is used for network addressing, and a port identifies a network process or application endpoint."
+  },
+  {
+    "id": "w7-q19",
+    "question": "What is the primary purpose of a firewall?",
+    "type": "single",
+    "options": [
+      "To convert plaintext into ciphertext.",
+      "To determine whether network traffic should be allowed or blocked according to security rules.",
+      "To generate cryptographic hash values for every file.",
+      "To replace the operating system kernel."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A firewall applies predefined security rules to allow or block network traffic."
+  },
+  {
+    "id": "w7-q20",
+    "question": "Which of the following statements about firewalls is correct?",
+    "type": "single",
+    "options": [
+      "All firewalls operate at exactly the same network layer.",
+      "Higher-level firewalls can inspect more information and may provide more sophisticated controls.",
+      "Packet-filtering firewalls always understand the contents of every application.",
+      "Firewalls are designed only to protect physical hardware."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Higher-level firewalls can inspect additional information and provide more intelligent security controls."
+  },
+  {
+    "id": "w7-q21",
+    "question": "A company has offices in Delhi and Chennai. Employees in Chennai need secure access to resources located in Delhi through the public Internet. Which technology is most appropriate?",
+    "type": "single",
+    "options": [
+      "DNS",
+      "VPN",
+      "UDP",
+      "Hashing"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A VPN creates a secure private tunnel over the public Internet and can provide access to a company's private network."
+  },
+  {
+    "id": "w7-q22",
+    "question": "Which of the following statements about a VPN is correct?",
+    "type": "single",
+    "options": [
+      "A VPN makes the public Internet physically private.",
+      "A VPN can create an encrypted tunnel through a public network and provide access to a private network.",
+      "A VPN eliminates the need for authentication.",
+      "A VPN prevents all possible cyber attacks."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A VPN can create an encrypted tunnel through a public network and connect users securely to private network resources."
+  },
+  {
+    "id": "w7-q23",
+    "question": "Match the following attack concepts: 1. Vulnerability 2. Exploit 3. Payload 4. Command and Control",
+    "type": "single",
+    "options": [
+      "1 - b, 2 - c, 3 - a, 4 - d",
+      "1 - c, 2 - b, 3 - d, 4 - a",
+      "1 - b, 2 - a, 3 - c, 4 - d",
+      "1 - d, 2 - c, 3 - b, 4 - a"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A vulnerability is a weakness, an exploit takes advantage of it, a payload performs the malicious action, and command and control enables communication with the compromised system."
+  },
+  {
+    "id": "w7-q24",
+    "question": "Which of the following correctly describes spear phishing?",
+    "type": "single",
+    "options": [
+      "Sending identical phishing messages randomly to a very large number of users.",
+      "A targeted phishing attack that uses information about a specific victim.",
+      "An attack that only targets network routers.",
+      "A method of encrypting email communications."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Spear phishing is a targeted form of phishing that uses information about a particular victim."
+  },
+  {
+    "id": "w7-q25",
+    "question": "Which of the following statements about Trojans is correct?",
+    "type": "single",
+    "options": [
+      "A Trojan is a type of malware that can provide attackers with unauthorized access or a backdoor.",
+      "A Trojan is always a legitimate remote administration application.",
+      "All Trojans are ransomware and cannot perform other functions.",
+      "A Trojan is a cryptographic hash algorithm."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A Trojan is a type of malware that can disguise itself and provide an attacker with unauthorized access or a backdoor."
+  },
+  {
+    "id": "w7-q26",
+    "question": "Which of the following correctly describes a DDoS attack?",
+    "type": "single",
+    "options": [
+      "A single user encrypts a file using a public key.",
+      "Multiple compromised systems overwhelm a target service with traffic or requests.",
+      "An attacker modifies a single file using a hash function.",
+      "A firewall blocks traffic from a trusted network."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A DDoS attack uses multiple systems to overwhelm a target and prevent legitimate users from receiving its service."
+  },
+  {
+    "id": "w7-q27",
+    "question": "Which of the following statements regarding the Cyber Kill Chain is true? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "Reconnaissance involves gathering information about the target.",
+      "Weaponization involves preparing a malicious capability against the target.",
+      "Command and Control allows an attacker to communicate with a compromised system.",
+      "The attack begins only after the attacker has already gained permanent access."
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "Reconnaissance gathers target information, weaponization prepares the malicious capability, and command and control enables communication with a compromised system."
+  },
+  {
+    "id": "w7-q28",
+    "question": "Which of the following correctly describes an Advanced Persistent Threat (APT)?",
+    "type": "single",
+    "options": [
+      "A random automated attack that immediately stops after one failed attempt.",
+      "A highly organized and persistent operation that may continuously target a particular organization or system.",
+      "A firewall configuration used to prevent unauthorized access.",
+      "A hashing technique used to protect passwords."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "An APT is a persistent and organized threat that may continuously target a particular victim using advanced techniques."
+  },
+  {
+    "id": "w7-q29",
+    "question": "Which of the following are common objectives of cyber attacks? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "Stealing information",
+      "Disrupting services",
+      "Destroying systems or causing damage",
+      "Improving system availability for legitimate users"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "Cyber attacks may aim to steal information, disrupt services, or destroy systems. Improving availability for legitimate users is not an attack objective."
+  },
+  {
+    "id": "w7-q30",
+    "question": "Which organization is primarily associated in the lecture with protecting India's Critical Information Infrastructure?",
+    "type": "single",
+    "options": [
+      "CERT-In",
+      "NCIIPC",
+      "SIEM",
+      "SOC"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "NCIIPC, the National Critical Information Infrastructure Protection Centre, is associated with protecting India's critical information infrastructure."
+  },
+  {
+    "id": "w7-q31",
+    "question": "Which of the following correctly distinguishes NCIIPC and CERT-In?",
+    "type": "single",
+    "options": [
+      "NCIIPC focuses on Critical Information Infrastructure protection, while CERT-In deals with cybersecurity incident response.",
+      "NCIIPC is a firewall, while CERT-In is a VPN.",
+      "NCIIPC manages encryption keys, while CERT-In manages operating systems.",
+      "Both perform exactly the same function."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "NCIIPC focuses on critical infrastructure protection, while CERT-In is responsible for computer security incident response."
+  },
+  {
+    "id": "w7-q32",
+    "question": "Which of the following correctly distinguishes IT and OT?",
+    "type": "single",
+    "options": [
+      "IT primarily concerns information systems, while OT is associated with physical/industrial processes and machinery.",
+      "IT controls only physical machinery, while OT handles email and office documents.",
+      "IT and OT are exactly the same concepts.",
+      "OT refers only to public Internet services."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "IT deals mainly with information systems, while OT controls or monitors physical and industrial processes."
+  },
+  {
+    "id": "w7-q33",
+    "question": "Stuxnet is an important cybersecurity example because it demonstrated that:",
+    "type": "single",
+    "options": [
+      "Cyber attacks can only steal passwords.",
+      "Cyber attacks can affect physical industrial processes and machinery.",
+      "Firewalls completely eliminate industrial cyber threats.",
+      "Hash functions can directly control industrial centrifuges."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Stuxnet demonstrated how malicious software could manipulate industrial control systems and cause physical damage to machinery."
+  },
+  {
+    "id": "w7-q34",
+    "question": "Which of the following is the primary function of a SIEM system?",
+    "type": "single",
+    "options": [
+      "Collecting, correlating, and analyzing security logs and events.",
+      "Encrypting every file stored on a computer.",
+      "Replacing the organization's firewall.",
+      "Providing physical security guards for servers."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A SIEM collects and correlates security events and logs to help identify suspicious activity."
+  },
+  {
+    "id": "w7-q35",
+    "question": "Which of the following correctly describes the relationship between SIEM and SOC?",
+    "type": "single",
+    "options": [
+      "SIEM collects and analyzes security events, while SOC personnel monitor and investigate security alerts.",
+      "SIEM physically repairs compromised computers, while SOC generates encryption keys.",
+      "SOC replaces all network protocols, while SIEM provides Internet connectivity.",
+      "SIEM and SOC are two names for the same technology."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "SIEM is a security monitoring and analysis system, while a SOC is the team or operational function that monitors, investigates, and responds to security events."
+  }
+]

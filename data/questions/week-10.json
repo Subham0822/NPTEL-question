@@ -1,1 +1,754 @@
-[]
+[
+  {
+    "id": "w10-q1",
+    "question": "Confidentiality concerns the externalization of restricted but accurate information to a specific, authorized entity.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Confidentiality does not concern information sharing",
+      "Confidentiality applies only to anonymous information"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Confidentiality involves limiting accurate information to authorized entities."
+  },
+  {
+    "id": "w10-q2",
+    "question": "Which earlier regulatory framework evolved into the GDPR by 2018?",
+    "type": "single",
+    "options": [
+      "APEC privacy framework",
+      "OECD Guidelines",
+      "FTC privacy principles",
+      "EU Data Protection Directive"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The EU Data Protection Directive was replaced by the GDPR in 2018."
+  },
+  {
+    "id": "w10-q3",
+    "question": "In the randomization technique for privacy-preserving data mining, what does the data receiver do with the randomized values transmitted by data providers?",
+    "type": "single",
+    "options": [
+      "Discards the noise and reconstructs exact original values",
+      "Employs a distribution reconstruction algorithm to estimate the original data distribution",
+      "Applies k-anonymity to the randomized values",
+      "Encrypts the noise component before use"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Randomization adds noise so the receiver can estimate distributional properties without receiving the exact original values."
+  },
+  {
+    "id": "w10-q4",
+    "question": "What does the k-anonymity requirement state about a released dataset?",
+    "type": "single",
+    "options": [
+      "Every record must be fully anonymous with no identifiers at all",
+      "Every combination of quasi-identifier values must be indistinctly matched to at least k individuals",
+      "At most k attributes can be disclosed per record",
+      "Data must be encrypted using a k-bit key"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "K-anonymity requires each combination of quasi-identifier values to correspond indistinctly to at least k individuals."
+  },
+  {
+    "id": "w10-q5",
+    "question": "Data that has been de-identified and encrypted, but for which re-identification remains possible using a separate key, is classified under GDPR as:",
+    "type": "single",
+    "options": [
+      "Anonymous data, fully outside GDPR scope",
+      "Personal data, still within GDPR scope",
+      "Non-personal data once encrypted",
+      "Quasi-identifier data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "If re-identification remains possible using additional information or a separate key, the data remains personal data."
+  },
+  {
+    "id": "w10-q6",
+    "question": "Completely removing certain columns and reducing the granularity of others, as part of k-anonymization, describes which two techniques?",
+    "type": "single",
+    "options": [
+      "Suppression and encryption",
+      "Generalization and encryption",
+      "Suppression and generalization",
+      "Randomization and suppression"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Suppression removes identifying columns, while generalization reduces the specificity of values."
+  },
+  {
+    "id": "w10-q7",
+    "question": "Which of the following are quasi-identifiers rather than direct identifiers? (Select all that apply)",
+    "type": "multiple",
+    "options": [
+      "ZIP code",
+      "Passport / ID card number",
+      "Date of birth",
+      "Gender"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "ZIP code, date of birth, and gender can act as quasi-identifiers. A passport or ID card number is a direct identifier."
+  },
+  {
+    "id": "w10-q8",
+    "question": "Individuals reporting that they value privacy highly, while freely sharing personal data on social media, illustrates which phenomenon?",
+    "type": "single",
+    "options": [
+      "Prioritizing convenience over privacy alone",
+      "Unawareness of behavioral impact on privacy",
+      "Privacy Paradox",
+      "The balance between privacy protection and data sharing"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The Privacy Paradox describes the conflict between valuing privacy and still sharing personal information."
+  },
+  {
+    "id": "w10-q9",
+    "question": "Which statement correctly distinguishes anonymity, secrecy, and transparency?",
+    "type": "single",
+    "options": [
+      "Anonymity is intentional concealment of information; secrecy conceals identity; transparency discloses information about oneself",
+      "Anonymity conceals identity; secrecy is intentional concealment of information; transparency discloses information about oneself",
+      "Anonymity conceals identity; secrecy discloses information about oneself; transparency is intentional concealment",
+      "Anonymity discloses information about oneself; secrecy conceals identity; transparency is intentional concealment"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Anonymity hides identity, secrecy intentionally conceals information, and transparency involves disclosure of information."
+  },
+  {
+    "id": "w10-q10",
+    "question": "On an R-U map plotting disclosure risk against data utility, what does the optimal release point represent?",
+    "type": "single",
+    "options": [
+      "None of the above",
+      "Utilizing all PII data to extract full value without privacy concerns",
+      "Complete elimination of all data privacy risks by fully anonymizing all data",
+      "Maximizing data usefulness while maintaining acceptable privacy risk"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The R-U trade-off seeks a balance between useful analytics and acceptable privacy risk."
+  },
+  {
+    "id": "w10-q11",
+    "question": "Which of the following best describes the relationship between cybersecurity and information privacy?",
+    "type": "single",
+    "options": [
+      "Cybersecurity and privacy are completely independent domains",
+      "Cybersecurity focuses only on financial transactions, while privacy focuses only on social media",
+      "Cybersecurity helps address privacy concerns by protecting information and systems",
+      "Privacy regulations eliminate the need for cybersecurity"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cybersecurity helps protect information and systems, thereby helping address information privacy concerns."
+  },
+  {
+    "id": "w10-q12",
+    "question": "In the context of digital platforms, what does \"lock-in\" primarily refer to?",
+    "type": "single",
+    "options": [
+      "Encrypting user information permanently",
+      "Making it difficult for users to switch to another service because of switching costs",
+      "Preventing unauthorized users from accessing an account",
+      "Making a user's identity completely anonymous"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Lock-in occurs when switching services becomes difficult or costly because of switching costs."
+  },
+  {
+    "id": "w10-q13",
+    "question": "Which of the following is an example of a switching cost in a digital platform?",
+    "type": "single",
+    "options": [
+      "A website changing its privacy policy",
+      "Losing established connections and data when moving to another platform",
+      "Encrypting stored information",
+      "Removing a user's browsing history"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Losing established connections or data can make switching to another platform difficult."
+  },
+  {
+    "id": "w10-q14",
+    "question": "A user provides personal information to a retailer in exchange for discounts and loyalty benefits. This illustrates:",
+    "type": "single",
+    "options": [
+      "A purely monetary transaction",
+      "A non-monetary exchange involving personal data",
+      "Complete anonymity",
+      "Data suppression"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The user exchanges personal data for services or benefits rather than directly paying money."
+  },
+  {
+    "id": "w10-q15",
+    "question": "Why can loyalty programs create privacy concerns?",
+    "type": "single",
+    "options": [
+      "They prevent customers from purchasing products",
+      "They eliminate all customer information",
+      "They can track purchasing behavior and build customer profiles",
+      "They always require customers to disclose passwords"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Loyalty programs can record purchases and preferences, allowing organizations to build customer profiles."
+  },
+  {
+    "id": "w10-q16",
+    "question": "Which statement best represents the privacy paradox?",
+    "type": "single",
+    "options": [
+      "Individuals want neither privacy nor personalization",
+      "Individuals want personalized services while also wanting their personal information to remain private",
+      "Organizations always prioritize privacy over business value",
+      "Anonymization always eliminates the usefulness of data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Privacy Paradox reflects the conflicting desire for personalized services and personal privacy."
+  },
+  {
+    "id": "w10-q17",
+    "question": "Which of the following is an example of selective disclosure?",
+    "type": "single",
+    "options": [
+      "Sharing every piece of personal information publicly",
+      "Refusing to use all online services",
+      "Sharing selected information to create a desired impression while keeping other information private",
+      "Encrypting all information before sharing it"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Selective disclosure means choosing which personal information to reveal and which to keep private."
+  },
+  {
+    "id": "w10-q18",
+    "question": "Which statement about personal data is most accurate according to the lecture?",
+    "type": "single",
+    "options": [
+      "Only government-issued identification numbers are personal data",
+      "Personal data includes information related to an individual, such as name, age, address, and phone number",
+      "Personal data must always uniquely identify an individual",
+      "Personal data only includes financial information"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Personal data includes information related to an individual, such as name, age, address, and phone number."
+  },
+  {
+    "id": "w10-q19",
+    "question": "What is the main characteristic of personally identifiable information (PII)?",
+    "type": "single",
+    "options": [
+      "It can never be linked to an individual",
+      "It has the potential to identify an individual",
+      "It must always be publicly available",
+      "It contains only anonymous statistical information"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "PII consists of data that can identify or help identify an individual."
+  },
+  {
+    "id": "w10-q20",
+    "question": "Why can a combination of quasi-identifiers become useful for identifying an individual?",
+    "type": "single",
+    "options": [
+      "Each quasi-identifier is always unique by itself",
+      "Combining multiple attributes can distinguish an individual from others",
+      "Quasi-identifiers are always encrypted",
+      "Quasi-identifiers contain no personal information"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Multiple quasi-identifiers can be combined to distinguish or identify an individual."
+  },
+  {
+    "id": "w10-q21",
+    "question": "Which statement correctly describes pseudonymity?",
+    "type": "single",
+    "options": [
+      "The identity is permanently destroyed and cannot be reconstructed",
+      "An individual uses a different identifier while a trusted authority may still be able to link it to the real identity",
+      "All personal information is publicly disclosed",
+      "No information is shared with anyone"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Pseudonymity hides the direct identity while allowing an authorized party to potentially reconstruct the identity."
+  },
+  {
+    "id": "w10-q22",
+    "question": "A university shares students' grades for analysis but removes names, roll numbers, and email IDs. Which privacy technique is primarily being demonstrated?",
+    "type": "single",
+    "options": [
+      "Identification",
+      "Anonymization",
+      "Transparency",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Removing identifying information from data before analysis is an example of anonymization."
+  },
+  {
+    "id": "w10-q23",
+    "question": "Which statement correctly describes secrecy?",
+    "type": "single",
+    "options": [
+      "Sharing complete and accurate information publicly",
+      "Hiding an individual's identity while sharing all other information",
+      "Intentional concealment of information, potentially including misleading information",
+      "Sharing information only with authorized employees"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Secrecy involves intentionally concealing information and may involve misleading others."
+  },
+  {
+    "id": "w10-q24",
+    "question": "Which concept is generally associated more with the organizational context, while privacy is generally discussed at the individual level?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Anonymity",
+      "Lock-in",
+      "Generalization"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture distinguishes confidentiality as a concept commonly used in organizational contexts, while privacy is generally discussed at the individual level."
+  },
+  {
+    "id": "w10-q25",
+    "question": "A company removes the \"Name\" column entirely before releasing a dataset. Which anonymization technique is being used?",
+    "type": "single",
+    "options": [
+      "Generalization",
+      "Randomization",
+      "Suppression",
+      "Encryption"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Suppression means completely removing a column or piece of identifying information."
+  },
+  {
+    "id": "w10-q26",
+    "question": "A company changes exact dates of birth such as 15/08/2000 into only the birth year, 2000. Which technique is this?",
+    "type": "single",
+    "options": [
+      "Suppression",
+      "Generalization",
+      "Randomization",
+      "Encryption"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Generalization reduces the precision of information, such as changing an exact date into only the year."
+  },
+  {
+    "id": "w10-q27",
+    "question": "Which situation best demonstrates k-anonymity with k = 3?",
+    "type": "single",
+    "options": [
+      "Every individual is uniquely identifiable",
+      "Each combination of quasi-identifier values can be matched to at least three individuals",
+      "Exactly three attributes are removed from every record",
+      "Three encryption keys are used for each record"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "With k = 3, each combination of quasi-identifier values should be indistinguishably matched to at least three individuals."
+  },
+  {
+    "id": "w10-q28",
+    "question": "If k-anonymity is increased from k = 2 to k = 5, what does this generally indicate?",
+    "type": "single",
+    "options": [
+      "Less anonymization",
+      "Greater difficulty in uniquely distinguishing an individual",
+      "More direct identifiers are disclosed",
+      "Encryption becomes weaker"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A larger k means an individual's record is indistinguishable from a larger group of individuals."
+  },
+  {
+    "id": "w10-q29",
+    "question": "Which of the following is NOT one of the three broad privacy-preserving data-mining techniques discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Randomization",
+      "Anonymization",
+      "Encryption",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The lecture identifies randomization, anonymization, and encryption as the three broad techniques."
+  },
+  {
+    "id": "w10-q30",
+    "question": "In randomization, why is noise added to sensitive values?",
+    "type": "single",
+    "options": [
+      "To make the data completely useless",
+      "To prevent the data processor from receiving the exact original values",
+      "To encrypt the entire database",
+      "To increase the number of direct identifiers"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Random noise prevents the data processor from receiving the exact original value while retaining useful distributional information."
+  },
+  {
+    "id": "w10-q31",
+    "question": "What is the main purpose of linking attacks against anonymized datasets?",
+    "type": "single",
+    "options": [
+      "To increase encryption strength",
+      "To reconstruct an individual's identity by combining information from different datasets",
+      "To remove all quasi-identifiers",
+      "To improve data generalization"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Linking can combine anonymized records with other information to reconstruct an individual's identity."
+  },
+  {
+    "id": "w10-q32",
+    "question": "Which statement correctly describes the privacy-utility trade-off?",
+    "type": "single",
+    "options": [
+      "Increasing privacy always increases analytical usefulness",
+      "Decreasing privacy risk can sometimes reduce the usefulness of data for analytics",
+      "Data utility and privacy risk are completely unrelated",
+      "Complete anonymization always provides maximum analytical utility"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Greater anonymization can protect privacy but may reduce the usefulness of data for analytics and personalization."
+  },
+  {
+    "id": "w10-q33",
+    "question": "On an R-U map, moving toward higher disclosure generally means:",
+    "type": "single",
+    "options": [
+      "Lower privacy risk and lower data utility",
+      "Higher privacy risk and potentially higher data utility",
+      "Higher privacy and zero analytical value",
+      "Complete anonymity"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "More disclosure generally increases privacy risk while potentially increasing the usefulness of data."
+  },
+  {
+    "id": "w10-q34",
+    "question": "Why is complete anonymization sometimes undesirable for businesses?",
+    "type": "single",
+    "options": [
+      "It makes data impossible to encrypt",
+      "It can reduce the ability to perform personalization and customer profiling",
+      "It increases the amount of personally identifiable information",
+      "It automatically violates privacy regulations"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Complete anonymization can remove information needed for personalization, profiling, and other analytics."
+  },
+  {
+    "id": "w10-q35",
+    "question": "Which statement about the GDPR discussed in the lecture is correct?",
+    "type": "single",
+    "options": [
+      "GDPR was only a voluntary guideline",
+      "GDPR replaced the EU Data Protection Directive in 2018 as a regulation",
+      "GDPR applied only to healthcare organizations",
+      "GDPR was introduced before the EU Data Protection Directive"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture states that the EU Data Protection Directive was replaced by the GDPR in 2018, making data protection regulation enforceable."
+  },
+  {
+    "id": "w10-q36",
+    "question": "Why did the lecture emphasize the need for government regulation of personal data?",
+    "type": "single",
+    "options": [
+      "Individuals never have control over their own data",
+      "Data breaches can affect large populations, making individual protection alone insufficient",
+      "Companies are prohibited from collecting any data",
+      "Regulation eliminates all cybersecurity threats"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Large-scale breaches can affect millions of citizens, creating a need for government-level protection and regulation."
+  },
+  {
+    "id": "w10-q37",
+    "question": "What type of company was Equifax according to the case study?",
+    "type": "single",
+    "options": [
+      "Social media company",
+      "Credit reporting company",
+      "Cloud computing company",
+      "E-commerce company"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Equifax is a credit reporting company that collects and processes consumer credit and personal information."
+  },
+  {
+    "id": "w10-q38",
+    "question": "What vulnerability was exploited in the Equifax breach discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "A vulnerability in Apache Struts",
+      "A vulnerability in Gmail",
+      "A vulnerability in Aadhaar",
+      "A vulnerability in Facebook"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The case identifies an Apache Struts vulnerability as the entry point exploited in the Equifax breach."
+  },
+  {
+    "id": "w10-q39",
+    "question": "Which of the following was a major contributing factor to the Equifax breach?",
+    "type": "single",
+    "options": [
+      "Excessive encryption",
+      "Failure to properly patch a known vulnerability",
+      "Lack of customer data",
+      "Complete absence of cybersecurity personnel"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Equifax failed to properly patch a known Apache Struts vulnerability, contributing to the breach."
+  },
+  {
+    "id": "w10-q40",
+    "question": "Which of the following was NOT identified as a problem in the Equifax case?",
+    "type": "single",
+    "options": [
+      "Expired security certificates",
+      "Unpatched vulnerabilities",
+      "Weak communication between teams",
+      "Excessive anonymization of customer data"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The case identified expired certificates, unpatched vulnerabilities, and communication problems, but not excessive anonymization."
+  },
+  {
+    "id": "w10-q41",
+    "question": "Why were expired SSL certificates significant in the Equifax case?",
+    "type": "single",
+    "options": [
+      "They improved the company's ability to detect attacks",
+      "They contributed to weaknesses in monitoring and detecting malicious activity",
+      "They automatically anonymized customer information",
+      "They prevented attackers from accessing servers"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The case describes expired SSL certificates as a security weakness that hindered effective monitoring and detection."
+  },
+  {
+    "id": "w10-q42",
+    "question": "Which organizational issue was highlighted as an important lesson from the Equifax case?",
+    "type": "single",
+    "options": [
+      "Cybersecurity is purely a programming problem",
+      "Cybersecurity is also a corporate governance and risk-management issue",
+      "Cybersecurity can be handled only by the legal department",
+      "Boards should never be involved in cybersecurity"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The case emphasizes that cybersecurity involves governance, accountability, risk management, and organizational oversight, not just technology."
+  },
+  {
+    "id": "w10-q43",
+    "question": "Why is delayed breach disclosure particularly harmful to affected individuals?",
+    "type": "single",
+    "options": [
+      "It prevents individuals from taking timely protective measures",
+      "It automatically deletes their personal information",
+      "It increases the anonymity of the victims",
+      "It prevents companies from detecting vulnerabilities"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Early notification allows affected individuals to take protective measures such as monitoring accounts or freezing credit."
+  },
+  {
+    "id": "w10-q44",
+    "question": "Which of the following is an example of a governance failure highlighted in the Equifax case?",
+    "type": "single",
+    "options": [
+      "The company had no employees",
+      "Security concerns and responsibilities were not effectively communicated and managed",
+      "The company did not collect any personal data",
+      "The company refused to use technology"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The case highlights unclear responsibilities and ineffective communication between security, IT, and leadership."
+  },
+  {
+    "id": "w10-q45",
+    "question": "Why was Equifax considered a particularly valuable target for attackers?",
+    "type": "single",
+    "options": [
+      "It had no cybersecurity systems",
+      "It possessed a very large amount of sensitive personal and financial information",
+      "It provided free social media accounts",
+      "It stored only publicly available information"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Equifax held large quantities of sensitive consumer and financial information, making it a valuable target."
+  },
+  {
+    "id": "w10-q46",
+    "question": "Which of the following best summarizes the central lesson of the Equifax case?",
+    "type": "single",
+    "options": [
+      "Having cybersecurity teams automatically guarantees security",
+      "Cybersecurity requires technology, effective governance, risk management, communication, and appropriate regulation",
+      "Data breaches occur only because of external hackers",
+      "Privacy is unrelated to corporate governance"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Equifax case demonstrates that effective cybersecurity requires technical controls together with governance, risk management, communication, and regulation."
+  },
+  {
+    "id": "w10-q47",
+    "question": "Which of the following represents a privacy risk resulting from the Equifax breach?",
+    "type": "single",
+    "options": [
+      "Identity theft",
+      "Increased data anonymization",
+      "Reduced availability of public information",
+      "Improved credit scores for all users"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Stolen personal and financial information can be misused for identity theft and financial fraud."
+  },
+  {
+    "id": "w10-q48",
+    "question": "Why are independent directors/boards important in cybersecurity governance?",
+    "type": "single",
+    "options": [
+      "They write all the organization's security software",
+      "They can question management about significant risks and security performance",
+      "They replace all cybersecurity employees",
+      "They directly operate firewalls"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture emphasizes that boards should monitor significant risks and question management about cybersecurity performance."
+  },
+  {
+    "id": "w10-q49",
+    "question": "Which of the following represents the role of regulation in breach notification?",
+    "type": "single",
+    "options": [
+      "Organizations should decide individually whether customers need to know",
+      "Regulation can establish clear requirements and timelines for notifying affected parties",
+      "Regulation prevents all cyberattacks",
+      "Regulation eliminates the need for incident response"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Regulation can establish mandatory requirements and timelines for informing affected individuals and authorities."
+  },
+  {
+    "id": "w10-q50",
+    "question": "Investing money in cybersecurity is:",
+    "type": "single",
+    "options": [
+      "Sufficient by itself to guarantee protection",
+      "Unnecessary if an organization has legal protection",
+      "Not sufficient unless security processes, governance, accountability, and implementation also work effectively",
+      "Only useful for small companies"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The Equifax case shows that cybersecurity investment alone does not guarantee protection when implementation, governance, accountability, and processes are weak."
+  }
+]

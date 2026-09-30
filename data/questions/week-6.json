@@ -1,1 +1,534 @@
-[]
+[
+  {
+    "id": "w6-q1",
+    "question": "Match the following:\n\n1. Risk Assessment\n2. Risk Identification\n3. Risk Management\n4. Risk Control\n\na. The process of identifying risk, assessing its relative magnitude, and taking steps to reduce it to an acceptable level.\nb. The recognition, enumeration, and documentation of risks to an organization's information assets.\nc. The implementation of safeguards that reduce the risks to an organization's information assets to an acceptable level.\nd. A determination of the extent to which an organization's information assets are exposed to risk.",
+    "type": "single",
+    "options": [
+      "1 -a, 2 - d, 3 - c, 4 - b",
+      "1 -d, 2 - a, 3 - b, 4 - c",
+      "1 -d, 2 - b, 3 - a, 4 - c",
+      "1 -b, 2 - a, 3 - d, 4 - c"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Risk Assessment determines exposure to risk, Risk Identification recognizes and documents risks, Risk Management involves identifying, assessing, and reducing risk, and Risk Control implements safeguards to reduce risk."
+  },
+  {
+    "id": "w6-q2",
+    "question": "The risk that remains after the risk management process has concluded is a combined function of (1) a threat less the effect of threat-reducing safeguards, (2) a vulnerability less the effect of vulnerability-reducing safeguards, and (3) an asset less the effect of asset value-reducing safeguards.",
+    "type": "single",
+    "options": [
+      "(1) a threat less the effect of threat-reducing safeguards, (2) a vulnerability less the effect of vulnerability-reducing safeguards, and (3) an asset less the effect of asset value-reducing safeguards.",
+      "(1) a threat less the effect of threat-reducing safeguards, (2) a vulnerability plus the effect of vulnerability-reducing safeguards, and (3) an asset less the effect of asset value-reducing safeguards.",
+      "(1) a threat plus the effect of threat-reducing safeguards, (2) a vulnerability less the effect of vulnerability-reducing safeguards, and (3) an asset less the effect of asset value-reducing safeguards.",
+      "(1) a threat plus the effect of threat-reducing safeguards, (2) a vulnerability plus the effect of vulnerability-reducing safeguards, and (3) an asset less the effect of asset value-reducing safeguards."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Residual risk is the risk remaining after safeguards reduce threats, vulnerabilities, and asset exposure."
+  },
+  {
+    "id": "w6-q3",
+    "question": "Which of the following is not a component of Risk Assessment?",
+    "type": "single",
+    "options": [
+      "Determine Loss Frequency",
+      "Specify Asset Vulnerabilities",
+      "Calculate Risk",
+      "Assess Risk Acceptability"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Specifying asset vulnerabilities is part of risk identification, while risk assessment includes determining loss frequency, calculating risk, and assessing risk acceptability."
+  },
+  {
+    "id": "w6-q4",
+    "question": "___ is the quantity and nature of risk that organizations are willing to accept as they evaluate the trade-offs between perfect security and unlimited accessibility.",
+    "type": "single",
+    "options": [
+      "Residual risk",
+      "Risk appetite",
+      "Loss magnitude",
+      "Loss frequency"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Risk appetite is the amount and nature of risk an organization is willing to accept."
+  },
+  {
+    "id": "w6-q5",
+    "question": "Which of the following are the components of risk identification? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "Identify, Inventory, & Categorize Assets",
+      "Evaluate Loss Magnitude",
+      "Classify, Value, & Prioritize Assets",
+      "Specify Asset Vulnerabilities"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "Risk identification includes identifying and categorizing assets, classifying and valuing assets, and specifying asset vulnerabilities. Evaluating loss magnitude belongs to risk assessment."
+  },
+  {
+    "id": "w6-q6",
+    "question": "The classification scheme used by the U.S. Classified National Security Information (NSI) system \"to information, the unauthorized disclosure of which reasonably could be expected to cause serious damage to the national security that the original classification authority is able to identify or describe.\"",
+    "type": "single",
+    "options": [
+      "Top Secret",
+      "Secret",
+      "Confidential",
+      "Internal"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Secret classification applies to information whose unauthorized disclosure could reasonably be expected to cause serious damage to national security."
+  },
+  {
+    "id": "w6-q7",
+    "question": "Match the following threats with examples:\nThreat\n\n1. Espionage or trespass\n2. Sabotage or vandalism\n3. Information extortion\n4. Theft\n\nExample\na. Damage to or destruction of systems or information.\nb. Unauthorized access and/or data collection\nc. Illegal confiscation of equipment or information\nd. Blackmail threat of information disclosure",
+    "type": "single",
+    "options": [
+      "1 - c, 2 - a, 3 - b, 4 - d",
+      "1 - b, 2 - a, 3 - d, 4 - c",
+      "1 - c, 2 - d, 3 - b, 4 - b",
+      "1 - b, 2 - d, 3 - a, 4- d"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Espionage or trespass involves unauthorized access or data collection, sabotage or vandalism damages systems, information extortion involves blackmail, and theft involves illegal confiscation."
+  },
+  {
+    "id": "w6-q8",
+    "question": "An attacker bypasses or compromises a router, gains access to an organization's network, and encrypts critical data, demanding payment in exchange for the decryption key. This scenario is best classified as:",
+    "type": "single",
+    "options": [
+      "Information extortion",
+      "Sabotage or vandalism",
+      "Espionage or trespass",
+      "Software attacks"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The attacker demands payment in exchange for restoring access to encrypted information, which is information extortion."
+  },
+  {
+    "id": "w6-q9",
+    "question": "An organization's Hospital Electronic Health Record (EHR) System (Asset A) has an asset value of 50 on a scale of 0-100. Industry reports indicate a 10% probability of a cyberattack in a given year. Based on current vulnerabilities and protection mechanisms, the attack has a 50% probability of success if attempted. Information security analysts estimate that a successful attack would result in a 100% loss or compromise of the EHR system's value. The assumptions and data used in the analysis are considered 90% accurate, and the resulting risk value should be adjusted by adding the 10% uncertainty. Using the formula: Risk =(Loss Frequency x Loss Magnitude)+ Uncertainty Term, What is the risk score for Asset A?",
+    "type": "single",
+    "options": [
+      "2.25",
+      "2.5",
+      "2.75",
+      "5"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Loss Frequency is 0.10 × 0.50 = 0.05. Loss Magnitude is 50 × 1.00 = 50. Basic risk is 0.05 × 50 = 2.5. Ten percent uncertainty is 0.25, giving a total risk of 2.75."
+  },
+  {
+    "id": "w6-q10",
+    "question": "True or False: The goal of risk assessment is to assign a risk rating or score that represents the relative risk for a specific vulnerability of an information asset.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Not applicable",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Risk assessment evaluates vulnerabilities and assigns a risk rating or score representing their relative risk."
+  },
+  {
+    "id": "w6-q11",
+    "question": "Which of the following correctly represents the three phases of risk management?",
+    "type": "single",
+    "options": [
+      "Risk Identification → Risk Assessment → Risk Control",
+      "Risk Assessment → Risk Identification → Risk Control",
+      "Risk Control → Risk Identification → Risk Assessment",
+      "Risk Identification → Risk Control → Risk Assessment"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture describes three phases: risk identification, risk assessment, and risk control."
+  },
+  {
+    "id": "w6-q12",
+    "question": "Which of the following are considered asset categories in cybersecurity risk management? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "People",
+      "Procedures",
+      "Data",
+      "Loss Frequency"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "The lecture identifies people, procedures, data, software, hardware, and networking components as asset categories. Loss frequency is a risk assessment measure, not an asset category."
+  },
+  {
+    "id": "w6-q13",
+    "question": "Match the following:\n\n1. Risk Identification\n2. Risk Assessment\n3. Risk Control\n4. Threat Intelligence\n\na. Information about current external cyber threats\nb. Identification of assets, threats, and vulnerabilities\nc. Selection and monitoring of measures to reduce risk\nd. Estimation of loss frequency and loss magnitude",
+    "type": "single",
+    "options": [
+      "1-b, 2-d, 3-c, 4-a",
+      "1-d, 2-b, 3-a, 4-c",
+      "1-a, 2-c, 3-d, 4-b",
+      "1-c, 2-a, 3-b, 4-d"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Risk identification finds assets, threats, and vulnerabilities; risk assessment estimates loss frequency and magnitude; risk control reduces risk; threat intelligence provides information about external threats."
+  },
+  {
+    "id": "w6-q14",
+    "question": "Which of the following best describes residual risk?",
+    "type": "single",
+    "options": [
+      "The total number of threats facing an organization",
+      "The risk that remains after existing safeguards and controls have been applied",
+      "The risk before any security controls are implemented",
+      "The financial cost of implementing security controls"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Residual risk is the risk that remains after existing safeguards and controls have reduced the original risk."
+  },
+  {
+    "id": "w6-q15",
+    "question": "An organization's database has an asset value of 80. A successful attack is expected to compromise 50% of the asset. What is the loss magnitude?",
+    "type": "single",
+    "options": [
+      "20",
+      "30",
+      "40",
+      "50"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Loss Magnitude = Asset Value × Percentage of Asset Affected = 80 × 0.50 = 40."
+  },
+  {
+    "id": "w6-q16",
+    "question": "An attack has a 20% probability of occurring and a 25% probability of success if it occurs. What is the loss frequency?",
+    "type": "single",
+    "options": [
+      "0.02",
+      "0.05",
+      "0.20",
+      "0.45"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Loss Frequency = Probability of Attack × Probability of Success = 0.20 × 0.25 = 0.05."
+  },
+  {
+    "id": "w6-q17",
+    "question": "Which of the following correctly describes vulnerability assessment?",
+    "type": "single",
+    "options": [
+      "Determining the financial value of an organization's assets",
+      "Determining vulnerabilities for a specific asset against specific threats",
+      "Determining the number of employees in an organization",
+      "Determining the total number of cyber threats worldwide"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Vulnerability is assessed with respect to a particular asset and a particular threat."
+  },
+  {
+    "id": "w6-q18",
+    "question": "A company identifies a server as an important asset and examines how phishing, malware, and unauthorized access could affect it. This activity is primarily part of:",
+    "type": "single",
+    "options": [
+      "Asset valuation",
+      "Vulnerability assessment",
+      "Risk control",
+      "Loss magnitude calculation"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Examining how different threats can affect a particular asset is part of vulnerability assessment."
+  },
+  {
+    "id": "w6-q19",
+    "question": "Which of the following statements about asset value is correct?",
+    "type": "single",
+    "options": [
+      "Asset value is always equal to its purchase price",
+      "Asset value depends only on its physical replacement cost",
+      "Asset value can depend on its impact on revenue, profitability, reputation, and business operations",
+      "Asset value cannot be quantified"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Asset value is based on its importance and potential business impact, not simply its purchase price."
+  },
+  {
+    "id": "w6-q20",
+    "question": "Which of the following is the purpose of a Threat–Vulnerability–Asset (TVA) worksheet?",
+    "type": "single",
+    "options": [
+      "To calculate employee salaries",
+      "To assess vulnerabilities for different threat-asset combinations",
+      "To classify employees according to their job roles",
+      "To determine the organization's annual revenue"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The TVA worksheet assesses vulnerabilities for combinations of threats and assets."
+  },
+  {
+    "id": "w6-q21",
+    "question": "Match the following concepts with their descriptions:\n\n1. Loss Frequency\n2. Loss Magnitude\n3. Vulnerability\n4. Residual Risk\n\na. Risk remaining after existing safeguards\nb. Likelihood of an attack combined with its probability of success\nc. Weakness associated with a particular asset and threat\nd. Value of the asset affected by a successful attack",
+    "type": "single",
+    "options": [
+      "1-b, 2-d, 3-c, 4-a",
+      "1-d, 2-b, 3-a, 4-c",
+      "1-c, 2-a, 3-d, 4-b",
+      "1-a, 2-c, 3-b, 4-d"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Loss frequency measures likelihood, loss magnitude measures affected asset value, vulnerability is a weakness related to an asset and threat, and residual risk is the remaining risk after safeguards."
+  },
+  {
+    "id": "w6-q22",
+    "question": "Which of the following is NOT normally used to assess the value of an information asset?",
+    "type": "single",
+    "options": [
+      "Impact on revenue",
+      "Impact on profitability",
+      "Impact on public image",
+      "Number of employees in the organization"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Revenue, profitability, and public image can be used to assess asset value. Number of employees is not one of the listed asset valuation criteria."
+  },
+  {
+    "id": "w6-q23",
+    "question": "Threat intelligence is primarily concerned with:",
+    "type": "single",
+    "options": [
+      "Internal asset inventory only",
+      "Information about current and emerging cyber threats and their severity",
+      "Calculating employee productivity",
+      "Determining hardware purchase prices"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Threat intelligence provides information about external cyber threats, including their likelihood, frequency, and impact."
+  },
+  {
+    "id": "w6-q24",
+    "question": "Which of the following statements about risk management is TRUE?",
+    "type": "single",
+    "options": [
+      "Risk management aims to completely eliminate all cyber risk",
+      "Risk management is a one-time activity",
+      "Risk management involves identifying, assessing, and reducing risk",
+      "Risk management only focuses on hardware assets"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Risk management identifies, assesses, and reduces risk and is a continuing process."
+  },
+  {
+    "id": "w6-q25",
+    "question": "A company has an asset valued at 60. A successful attack is expected to affect 75% of the asset. What is the loss magnitude?",
+    "type": "single",
+    "options": [
+      "15",
+      "30",
+      "45",
+      "60"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Loss Magnitude = Asset Value × Percentage Affected = 60 × 0.75 = 45."
+  },
+  {
+    "id": "w6-q26",
+    "question": "An organization estimates that an attack has a 10% chance of occurring and a 40% chance of succeeding if attempted. The asset value is 50 and 80% of the asset is expected to be affected. Assuming no controls or uncertainty, what is the risk based on Loss Frequency × Loss Magnitude?",
+    "type": "single",
+    "options": [
+      "1.2",
+      "1.6",
+      "2.0",
+      "4.0"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Loss Frequency = 0.10 × 0.40 = 0.04. Loss Magnitude = 50 × 0.80 = 40. Risk = 0.04 × 40 = 1.6."
+  },
+  {
+    "id": "w6-q27",
+    "question": "Which of the following correctly describes the relationship between threats, vulnerabilities, and attacks?",
+    "type": "single",
+    "options": [
+      "A threat exploits a vulnerability to potentially result in an attack",
+      "A vulnerability automatically creates an attack",
+      "An attack always occurs whenever a threat exists",
+      "A threat and vulnerability are exactly the same thing"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A threat can exploit a vulnerability, potentially resulting in an attack."
+  },
+  {
+    "id": "w6-q28",
+    "question": "Which of the following are examples of information assets? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "Customer database",
+      "Security procedures",
+      "Employee information",
+      "Software"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "The lecture identifies data, procedures, people-related information, and software as assets that organizations need to identify and protect."
+  },
+  {
+    "id": "w6-q29",
+    "question": "An organization regularly updates its operating systems with security patches. This primarily helps to:",
+    "type": "single",
+    "options": [
+      "Increase asset purchase value",
+      "Reduce vulnerabilities",
+      "Increase loss magnitude",
+      "Increase threat frequency"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Regular security patches address weaknesses and therefore reduce vulnerabilities."
+  },
+  {
+    "id": "w6-q30",
+    "question": "True or False: Risk management is a dynamic and continuous process because threats and vulnerabilities can change over time.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Not applicable",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Risk management is dynamic because threats, vulnerabilities, safeguards, and risks can change over time."
+  },
+  {
+    "id": "w6-q31",
+    "question": "In the Cheddar case study, why was completely disconnecting all systems from digital networks not considered an ideal solution?",
+    "type": "single",
+    "options": [
+      "Digital systems provided operational and efficiency benefits",
+      "The company had no digital systems",
+      "Manual systems cannot have errors",
+      "Cybersecurity risks would disappear automatically"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The company's digital systems provided important efficiency and monitoring benefits, so completely abandoning them would create operational disadvantages."
+  },
+  {
+    "id": "w6-q32",
+    "question": "Which of the following was a major concern identified in the Cheddar case?",
+    "type": "single",
+    "options": [
+      "Critical industrial systems had unnecessary digital/network exposure",
+      "The company had no employees",
+      "The company had no automated systems",
+      "The company had no sensitive information"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The consultant found that critical industrial systems had digital pathways that could be exploited by attackers."
+  },
+  {
+    "id": "w6-q33",
+    "question": "Match the following from the Cheddar case:\n\n1. Ransomware\n2. Digitalization\n3. Manual controls\n4. Least privilege\n\na. Limiting a user's access to only what is required\nb. Malware that can encrypt systems/data and demand payment\nc. Can improve efficiency but also increase digital exposure\nd. Can act as a backup/parallel control for critical processes",
+    "type": "single",
+    "options": [
+      "1-b, 2-c, 3-d, 4-a",
+      "1-c, 2-b, 3-a, 4-d",
+      "1-d, 2-a, 3-c, 4-b",
+      "1-a, 2-d, 3-b, 4-c"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Ransomware demands payment after compromising systems, digitalization improves efficiency but can increase exposure, manual controls can provide backup, and least privilege limits access."
+  },
+  {
+    "id": "w6-q34",
+    "question": "A company decides to keep its most critical industrial control system offline while keeping less critical systems connected to the network. This approach mainly aims to:",
+    "type": "single",
+    "options": [
+      "Eliminate all technology",
+      "Reduce the attack surface of critical assets",
+      "Increase the number of vulnerabilities",
+      "Increase loss magnitude"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Keeping critical systems offline can reduce their exposure to network-based attacks and therefore reduce the attack surface."
+  },
+  {
+    "id": "w6-q35",
+    "question": "True or False: In risk assessment, loss magnitude is related to the impact or amount of asset value that could be affected by a successful attack.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Not applicable",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Loss magnitude represents the value or portion of an asset expected to be affected by a successful attack."
+  }
+]

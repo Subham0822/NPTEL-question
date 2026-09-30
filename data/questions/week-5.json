@@ -1,1 +1,607 @@
-[]
+[
+  {
+    "id": "w5-q1",
+    "question": "Identify the correct statement.",
+    "type": "single",
+    "options": [
+      "Guidelines are examples of actions that illustrate compliance with policies.",
+      "Procedures are non-mandatory recommendations that employees may use as a reference when complying with a policy.",
+      "Standards are step-by-step instructions that guide employees in following policies and guidelines.",
+      "Practices are examples of actions that illustrate compliance with policies."
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Practices are examples of actions that illustrate compliance with policies."
+  },
+  {
+    "id": "w5-q2",
+    "question": "Which of the following is not a component of Enterprise Information Security Policies (EISP)?",
+    "type": "single",
+    "options": [
+      "Statement of Purpose",
+      "Need for Information Security",
+      "Authorized access and usage of equipment",
+      "Information Security Responsibilities and Roles"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Authorized access and usage of equipment is not listed as a component of EISP in the lecture."
+  },
+  {
+    "id": "w5-q3",
+    "question": "A policy to be effective and legally enforceable, it should meet which of the criteria? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "The organization must be able to demonstrate that the policy has been made readily available for review by the employee.",
+      "The organization must be able to demonstrate that it disseminated the document in an intelligible form.",
+      "The organization must be able to demonstrate that the employee understands the requirements and content of the policy.",
+      "The organization must be able to demonstrate that the employee agrees to comply with the policy through act or affirmation."
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "An effective and legally enforceable policy should be made available, communicated clearly, understood by employees, and accepted through agreement or affirmation."
+  },
+  {
+    "id": "w5-q4",
+    "question": "Which of the following approaches are used to create and manage ISSPs within an organization? (Select all that apply. More than one answer may be possible)",
+    "type": "multiple",
+    "options": [
+      "Independent ISSP documents, each tailored to a specific issue.",
+      "A single comprehensive ISSP document that covers all issues.",
+      "A modular ISSP document that unifies policy creation and administration while maintaining each specific issue's requirements.",
+      "A hierarchical ISSP structure in which all issue-specific requirements are incorporated directly into the Enterprise Information Security Policy (EISP)."
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "ISSPs can be managed as independent documents, as a single comprehensive document, or through a modular approach. Incorporating all issue-specific requirements directly into EISP is not an ISSP management approach."
+  },
+  {
+    "id": "w5-q5",
+    "question": "Which of the following statement is not true?",
+    "type": "single",
+    "options": [
+      "SysSPs (systems-specific security policies) function as standards or procedures to be used when configuring or maintaining systems.",
+      "SysSPs can be separated into two general groups, managerial guidance SysSPs and technical specifications SysSPs.",
+      "Systems-specific policies can be developed at the same time as ISSPs, or they can be prepared in advance of their related ISSPs.",
+      "Technical specifications SysSP expresses management's intent for the acquisition, implementation, configuration, and management of a particular technology, written from a business perspective."
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Technical specifications SysSPs provide technical implementation details, whereas management guidance SysSPs express management's intent from a business perspective."
+  },
+  {
+    "id": "w5-q6",
+    "question": "____ consists of details about user access permissions and privileges for an organizational asset or resource, such as a file storage system, software component, or network communications device, and focuses on the assets and the users who can access and use them.",
+    "type": "single",
+    "options": [
+      "Access Control List",
+      "Capabilities Table",
+      "Configuration rules",
+      "User Policies"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "An Access Control List (ACL) contains details about users, resources, and their access permissions and privileges."
+  },
+  {
+    "id": "w5-q7",
+    "question": "True or False: Capability Tables combines the information in Access Control Lists and Access Control Matrix.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both True and False",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Capability Tables combine information from Access Control Lists and the Access Control Matrix."
+  },
+  {
+    "id": "w5-q8",
+    "question": "___ govern how a security system reacts to the data it receives.",
+    "type": "single",
+    "options": [
+      "User Policies",
+      "Configuration Rules",
+      "Access Control Lists",
+      "File Integrity Baselines"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Configuration rules determine how a security system reacts to the data it receives."
+  },
+  {
+    "id": "w5-q9",
+    "question": "Which of the following most accurately distinguishes cyber hygiene from cybersecurity?",
+    "type": "single",
+    "options": [
+      "Cyber hygiene is hardware-focused, while cybersecurity is software-focused.",
+      "Cyber hygiene is reactive in nature, while cybersecurity is always proactive.",
+      "Cyber hygiene involves routine practices for maintaining digital health, whereas cybersecurity encompasses broader strategies, technologies, and incident response.",
+      "Cyber hygiene focuses only on personal devices, while cybersecurity is limited to organizations."
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Cyber hygiene refers to routine practices that maintain digital security, while cybersecurity covers the broader protection of systems, networks, data, and organizational operations."
+  },
+  {
+    "id": "w5-q10",
+    "question": "___ is an organizational policy that offers detailed, targeted guidance to all members of the organization regarding the use of a resource, such as a process or technology.",
+    "type": "single",
+    "options": [
+      "Systems-specific security policy",
+      "General or security program policy",
+      "Enterprise information security policy",
+      "Issue-specific security policy"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "An Issue-Specific Security Policy (ISSP) provides detailed guidance concerning the use of a particular resource, process, technology, or issue."
+  },
+  {
+    "id": "w5-q11",
+    "question": "Which of the following best describes the primary purpose of a cybersecurity policy?",
+    "type": "single",
+    "options": [
+      "To provide step-by-step technical instructions for configuring systems",
+      "To establish organizational direction and objectives regarding cybersecurity",
+      "To replace all cybersecurity regulations",
+      "To specify the exact firewall configuration rules"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A cybersecurity policy establishes the organization's overall direction, objectives, responsibilities, and expectations regarding cybersecurity."
+  },
+  {
+    "id": "w5-q12",
+    "question": "Which of the following correctly distinguishes a policy from a regulation?",
+    "type": "single",
+    "options": [
+      "A policy is always legally enforceable, while a regulation is not",
+      "A regulation is socially accepted behavior, while a policy is legally enforced",
+      "A regulation is legally enforceable, whereas a policy may be an organizational document",
+      "A policy and regulation are always identical"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Regulations are legally enforceable, while organizational policies may provide binding internal direction without themselves being laws."
+  },
+  {
+    "id": "w5-q13",
+    "question": "Which of the following is an important principle when formulating a cybersecurity policy?",
+    "type": "single",
+    "options": [
+      "The policy should override existing laws when necessary",
+      "The policy should never conflict with applicable law",
+      "The policy should focus only on technical controls",
+      "The policy should be changed every day"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture emphasizes that cybersecurity policies must be consistent with the law of the land."
+  },
+  {
+    "id": "w5-q14",
+    "question": "Which of the following is the most appropriate relationship between policy, standards, and procedures?",
+    "type": "single",
+    "options": [
+      "Policy provides broad direction, standards provide specific requirements, and procedures explain implementation",
+      "Policy provides technical configurations, while procedures provide organizational strategy",
+      "Standards establish organizational mission, while policies provide firewall rules",
+      "Procedures are broader than policies"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Policy is broad and strategic, standards provide more specific requirements, and procedures describe how those requirements are implemented."
+  },
+  {
+    "id": "w5-q15",
+    "question": "Which of the following statements about cybersecurity policies is NOT true?",
+    "type": "single",
+    "options": [
+      "Policies can influence organizational behavior",
+      "Policies can help establish priorities",
+      "Policies should always maximize security regardless of operational efficiency",
+      "Policies can provide a reference during a crisis"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A good policy should balance security with organizational efficiency rather than maximizing security regardless of its operational impact."
+  },
+  {
+    "id": "w5-q16",
+    "question": "A cybersecurity policy that completely blocks internet access may improve security but negatively affect productivity. This illustrates the trade-off between:",
+    "type": "single",
+    "options": [
+      "Privacy and anonymity",
+      "Security and efficiency",
+      "Encryption and authentication",
+      "Detection and identification"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture emphasizes the need to balance protection and safety with the organization's ability to work efficiently."
+  },
+  {
+    "id": "w5-q17",
+    "question": "Which of the following best describes EISP?",
+    "type": "single",
+    "options": [
+      "It defines detailed firewall configuration rules",
+      "It establishes the organization's overall information security direction",
+      "It specifies individual user permissions for files",
+      "It provides step-by-step instructions for configuring an IDS"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "EISP, or Enterprise Information Security Policy, establishes the organization's strategic direction, scope, responsibilities, and overall information security requirements."
+  },
+  {
+    "id": "w5-q18",
+    "question": "Which of the following is most closely associated with an Issue-Specific Security Policy (ISSP)?",
+    "type": "single",
+    "options": [
+      "Overall organizational mission",
+      "Specific technology or issue such as email or cloud usage",
+      "Individual firewall configuration",
+      "Database access-control entries"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "ISSPs provide detailed guidance for specific technologies or issues such as email, cloud usage, malware, or work from home."
+  },
+  {
+    "id": "w5-q19",
+    "question": "Which of the following is most closely associated with a System-Specific Security Policy (SysSP)?",
+    "type": "single",
+    "options": [
+      "Organization-wide security philosophy",
+      "Technology-specific organizational guidance",
+      "Technical configuration and system implementation",
+      "Corporate mission and vision"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "SysSPs operate at the system and technical implementation level and include management guidance and technical specifications."
+  },
+  {
+    "id": "w5-q20",
+    "question": "Which sequence correctly represents the three major levels of security policy?",
+    "type": "single",
+    "options": [
+      "ISSP → EISP → SysSP",
+      "SysSP → ISSP → EISP",
+      "EISP → ISSP → SysSP",
+      "EISP → SysSP → ISSP"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The hierarchy moves from Enterprise Information Security Policy to Issue-Specific Security Policy and finally to System-Specific Security Policy."
+  },
+  {
+    "id": "w5-q21",
+    "question": "Which of the following is a likely topic for an ISSP?",
+    "type": "single",
+    "options": [
+      "Organizational mission statement",
+      "Email usage",
+      "Exact firewall rule configuration",
+      "User's individual file permissions"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Email usage is an issue or technology that can be addressed through an ISSP."
+  },
+  {
+    "id": "w5-q22",
+    "question": "Which of the following is most likely to appear at the SysSP level?",
+    "type": "single",
+    "options": [
+      "Organization-wide cybersecurity objectives",
+      "Policy on work-from-home arrangements",
+      "Access control lists and configuration rules",
+      "Statement of organizational purpose"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "ACLs and configuration rules are technical implementation details associated with system-specific security policies."
+  },
+  {
+    "id": "w5-q23",
+    "question": "Which of the following correctly describes an Access Control List (ACL)?",
+    "type": "single",
+    "options": [
+      "It identifies vulnerabilities in hardware",
+      "It maps users/roles to resources and their access privileges",
+      "It defines organizational cybersecurity objectives",
+      "It determines the overall cybersecurity budget"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "An ACL defines which users or roles can access particular resources and what privileges they have."
+  },
+  {
+    "id": "w5-q24",
+    "question": "Which of the following is NOT normally determined through an ACL?",
+    "type": "single",
+    "options": [
+      "Who can access a resource",
+      "What permissions a user has",
+      "Which resources a user can access",
+      "The organization's overall cybersecurity mission"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "An ACL manages access permissions and privileges; organizational cybersecurity mission is established at the enterprise policy level."
+  },
+  {
+    "id": "w5-q25",
+    "question": "Which of the following statements about configuration rules is correct?",
+    "type": "single",
+    "options": [
+      "They describe the organization's overall security philosophy",
+      "They implement technical requirements in systems",
+      "They replace cybersecurity policies",
+      "They define social norms"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Configuration rules technically implement requirements established through higher-level policies and guidance."
+  },
+  {
+    "id": "w5-q26",
+    "question": "A firewall configuration specifies which websites or network traffic should be allowed or blocked. This is an example of:",
+    "type": "single",
+    "options": [
+      "EISP",
+      "ISSP",
+      "Configuration rule",
+      "Social norm"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Firewall allow/block settings are technical configuration rules that implement security requirements."
+  },
+  {
+    "id": "w5-q27",
+    "question": "Which statement correctly distinguishes a firewall from an IDS?",
+    "type": "single",
+    "options": [
+      "Firewall detects attacks while IDS prevents them",
+      "Firewall prevents/controls access while IDS detects and alerts",
+      "Both are exclusively detection systems",
+      "Both are exclusively policy documents"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A firewall controls or prevents network access, while an IDS primarily detects suspicious activity and generates alerts."
+  },
+  {
+    "id": "w5-q28",
+    "question": "Which of the following is the primary purpose of SETA?",
+    "type": "single",
+    "options": [
+      "To configure firewalls automatically",
+      "To provide Security Education, Training and Awareness",
+      "To replace an organization's security policy",
+      "To create access control lists"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "SETA stands for Security Education, Training and Awareness and helps employees understand and practice cybersecurity."
+  },
+  {
+    "id": "w5-q29",
+    "question": "Which statement about policy dissemination is correct?",
+    "type": "single",
+    "options": [
+      "A policy can remain confidential from employees",
+      "Employees should be made aware of the policies they are expected to follow",
+      "Only the IT department needs to know organizational policies",
+      "Policy dissemination is unnecessary if the policy is legally valid"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture states that policies must be disseminated and made known to the individuals who are expected to follow them."
+  },
+  {
+    "id": "w5-q30",
+    "question": "Which of the following best explains why cybersecurity policies should not be overly restrictive?",
+    "type": "single",
+    "options": [
+      "Restrictive policies always violate the law",
+      "Excessive restrictions can interfere with organizational objectives and productivity",
+      "Employees cannot understand restrictive policies",
+      "Restrictive policies eliminate all cyber threats"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Overly restrictive policies can make employees less efficient and may encourage policy violations when legitimate work becomes difficult."
+  },
+  {
+    "id": "w5-q31",
+    "question": "Which of the following best describes cyber hygiene?",
+    "type": "single",
+    "options": [
+      "A single emergency response procedure",
+      "Routine practices used to maintain digital security and reduce vulnerabilities",
+      "A replacement for cybersecurity strategy",
+      "A method used exclusively by cybersecurity professionals"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cyber hygiene consists of regular practices such as patching, secure passwords, training, and monitoring that help maintain digital security."
+  },
+  {
+    "id": "w5-q32",
+    "question": "Which of the following is an example of cyber hygiene?",
+    "type": "single",
+    "options": [
+      "Regular security patching",
+      "Eliminating all digital systems",
+      "Removing all organizational policies",
+      "Ignoring software vulnerabilities"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Regularly applying security patches is a routine practice that helps maintain the security of digital systems."
+  },
+  {
+    "id": "w5-q33",
+    "question": "Which statement best represents the relationship between digital transformation and cybersecurity risk discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Digital transformation always reduces cybersecurity risk",
+      "Increased digital connectivity can increase vulnerabilities and dependencies",
+      "Digital transformation eliminates the need for cybersecurity",
+      "Digital transformation affects only software companies"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture explains that increasing digitalization and interconnectedness can improve efficiency while also increasing vulnerabilities and dependencies."
+  },
+  {
+    "id": "w5-q34",
+    "question": "Why are interconnected critical infrastructures particularly concerning from a cybersecurity perspective?",
+    "type": "single",
+    "options": [
+      "They operate completely independently",
+      "Failure of one connected system can potentially create cascading effects",
+      "They do not depend on digital technologies",
+      "They cannot be attacked remotely"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Connected critical infrastructures can depend on one another, so disruption of one system may affect other connected systems."
+  },
+  {
+    "id": "w5-q35",
+    "question": "Which of the following best describes the main argument of the HBR article discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Increasing cybersecurity spending guarantees protection from cyberattacks",
+      "Cyberattacks can be completely eliminated through cyber hygiene",
+      "Organizations should consider how to continue critical functions even if attacks succeed",
+      "Organizations should completely abandon digital technologies"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The article argues for focusing on critical functions, reducing attack paths, and building redundancy so important operations can continue despite attacks."
+  },
+  {
+    "id": "w5-q36",
+    "question": "What is the central idea behind Consequence-Driven Cyber-Informed Engineering (CCE)?",
+    "type": "single",
+    "options": [
+      "Focus first on the most critical consequences that must be avoided",
+      "Focus only on employee password management",
+      "Eliminate every digital device from an organization",
+      "Focus exclusively on detecting malware"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "CCE begins by identifying the most important critical consequence or function that could jeopardize the overall operation."
+  },
+  {
+    "id": "w5-q37",
+    "question": "Which sequence best represents the CCE approach discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Identify critical function → map attack paths → reduce attack paths → develop mitigation measures",
+      "Install firewall → change passwords → delete systems → stop digitalization",
+      "Train employees → purchase software → write policies → identify critical functions",
+      "Detect malware → report it → ignore critical functions → restore systems"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The CCE approach identifies the critical consequence, analyzes pathways to it, reduces attack paths, and develops mitigation measures."
+  },
+  {
+    "id": "w5-q38",
+    "question": "What is the key idea behind Cyber-Informed Engineering (CIE)?",
+    "type": "single",
+    "options": [
+      "Cybersecurity should be considered only after a system is deployed",
+      "Cybersecurity considerations should be incorporated from the engineering/design stage",
+      "Cybersecurity should be handled only by the IT department",
+      "Engineering should avoid all digital technologies"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "CIE incorporates cybersecurity considerations into the conceptual and engineering design stages rather than treating security as an afterthought."
+  },
+  {
+    "id": "w5-q39",
+    "question": "Which of the following best represents the goal of redundancy and contingency planning in the lecture?",
+    "type": "single",
+    "options": [
+      "To ensure that critical functions can continue even when a cyberattack occurs",
+      "To eliminate all cybersecurity policies",
+      "To increase dependence on internet connectivity",
+      "To guarantee that no cyberattack can occur"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Redundancy and contingency planning are intended to maintain critical functions and continuity even when a cyberattack disrupts a system."
+  },
+  {
+    "id": "w5-q40",
+    "question": "Which statement best captures the philosophy of Cyber-Informed Engineering?",
+    "type": "single",
+    "options": [
+      "Cyberattack should be considered as one possible mode of system failure during engineering",
+      "Cybersecurity should be added only after system deployment",
+      "Cybersecurity is unrelated to engineering decisions",
+      "Every digital system can be made completely immune to attacks"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture presents cyberattack as one possible mode of failure that engineers should consider during system design and development."
+  }
+]

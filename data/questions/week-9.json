@@ -1,1 +1,534 @@
-[]
+[
+  {
+    "id": "w9-q1",
+    "question": "Who first introduced the Fair Information Practice Principles (FIPPs)?",
+    "type": "single",
+    "options": [
+      "The Federal Trade Commission (FTC)",
+      "A private industry consortium",
+      "The European Union",
+      "The US Secretary's Advisory Committee on Automated Personal Data Systems"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The US Secretary's Advisory Committee on Automated Personal Data Systems developed the principles in its 1973 report."
+  },
+  {
+    "id": "w9-q2",
+    "question": "Who is credited with popularizing \"the right to be let alone\" in American privacy law, and in which year?",
+    "type": "single",
+    "options": [
+      "Alan Westin, 1967",
+      "Warren & Brandeis, 1890",
+      "Richard Posner, 1975",
+      "Aristotle, 4th century BCE"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Samuel Warren and Louis Brandeis articulated the classical \"right to be let alone\" concept in their 1890 paper, The Right to Privacy."
+  },
+  {
+    "id": "w9-q3",
+    "question": "Which school of thought holds that privacy has no independent existence and must always be derived from other rights like property or bodily security?",
+    "type": "single",
+    "options": [
+      "Coherentism",
+      "Reductionism",
+      "Feminist view",
+      "Economic view"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Reductionism treats privacy as something derived from other fundamental rights rather than as an independent concept."
+  },
+  {
+    "id": "w9-q4",
+    "question": "Which stakeholder in a data ecosystem \"determines the purposes and means of processing personal data,\" termed Data Fiduciary under India's PDP?",
+    "type": "single",
+    "options": [
+      "Data Subject",
+      "Controller",
+      "Processor",
+      "Regulator"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Controller determines the purposes and means of processing personal data and is termed Data Fiduciary in the Indian framework discussed."
+  },
+  {
+    "id": "w9-q5",
+    "question": "What is the equivalent term for \"Data Subject\" under India's Personal Data Protection framework?",
+    "type": "single",
+    "options": [
+      "Data Fiduciary",
+      "Data Processor",
+      "Data Principal",
+      "Data Controller"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The Indian framework discussed in the lecture uses Data Principal for the individual whose data is collected."
+  },
+  {
+    "id": "w9-q6",
+    "question": "Which of the following are among the four dimensions of concern for information privacy? Select all that apply.",
+    "type": "multiple",
+    "options": [
+      "Concern on Collection",
+      "Concern on Unauthorized Access",
+      "Concern on Encryption Strength",
+      "Concern on Secondary Use"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "The four dimensions are collection, unauthorized access, errors, and secondary use. Encryption strength is not one of the four dimensions."
+  },
+  {
+    "id": "w9-q7",
+    "question": "According to Posner's (1975) economic view, when does privacy matter?",
+    "type": "single",
+    "options": [
+      "Always, regardless of cost",
+      "Only insofar as it has economic consequences",
+      "Never, it is purely a social construct",
+      "Only in employer-employee relationships"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Posner's economic view considers privacy important insofar as it has economic consequences."
+  },
+  {
+    "id": "w9-q8",
+    "question": "Which era in Westin's (2003) evolution of information privacy is marked by the rise of the Internet, the emergence of Web 2.0, and a major geopolitical event that reshaped information-exchange norms?",
+    "type": "single",
+    "options": [
+      "Privacy Baseline (1945-1960)",
+      "1st Era of Privacy (1961-1979)",
+      "2nd Era of Privacy (1980-1989)",
+      "3rd Era of Privacy (1990-2002)"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The 3rd Era of Privacy is associated with the Internet era and major changes in information exchange."
+  },
+  {
+    "id": "w9-q9",
+    "question": "Alan Westin's 1967 work Privacy and Freedom distinguished \"privacy\" from a related concept concerning personal data. Which pairing correctly reflects that distinction?",
+    "type": "single",
+    "options": [
+      "Privacy is control over exposure to others; informational self-determination is control over disclosure of personal data",
+      "Privacy is a legal right; information privacy is a moral principle",
+      "Privacy applies to individuals; information privacy applies only to institutions",
+      "Privacy is derived from property rights; information privacy is derived from bodily security"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Privacy concerns control over exposure to others, while informational self-determination concerns control over disclosure of personal data."
+  },
+  {
+    "id": "w9-q10",
+    "question": "Coherentism treats privacy as a right derived from other fundamental rights like property and bodily security.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture distinguishes coherentism as treating privacy as a distinct concept, while reductionism derives privacy from other rights."
+  },
+  {
+    "id": "w9-q11",
+    "question": "Which of the following best describes Information Privacy?",
+    "type": "single",
+    "options": [
+      "The ability to encrypt all personal information",
+      "An individual's control over when, how, and to what extent information about them is shared",
+      "The government's ability to access private information",
+      "An organization's right to collect unlimited personal information"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Information Privacy concerns an individual's control over when, how, and to what extent information about them is communicated to others."
+  },
+  {
+    "id": "w9-q12",
+    "question": "Which of the following properties of blockchain refers to the fact that recorded transactions cannot easily be changed?",
+    "type": "single",
+    "options": [
+      "Confidentiality",
+      "Authentication",
+      "Immutability",
+      "Availability"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Immutability means that recorded blockchain transactions cannot easily be altered."
+  },
+  {
+    "id": "w9-q13",
+    "question": "Which technique helps maintain the immutability of blockchain records?",
+    "type": "single",
+    "options": [
+      "Hash function",
+      "Password authentication",
+      "Access control",
+      "Data compression"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A hash function generates a hash value for a block, helping detect changes and maintain immutability."
+  },
+  {
+    "id": "w9-q14",
+    "question": "Which encryption standard became widely used after DES was considered insufficiently secure?",
+    "type": "single",
+    "options": [
+      "AES",
+      "FTP",
+      "HTTP",
+      "SHA"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture identifies Advanced Encryption Standard (AES) as a widely used encryption standard after DES became insufficiently secure."
+  },
+  {
+    "id": "w9-q15",
+    "question": "Which of the following correctly describes the relationship between privacy and freedom discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Privacy is completely unrelated to freedom",
+      "Privacy concerns an individual's autonomy and freedom to control their private life",
+      "Freedom exists only in public spaces",
+      "Privacy exists only when information is encrypted"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture connects privacy with individual autonomy and the freedom to control one's private life."
+  },
+  {
+    "id": "w9-q16",
+    "question": "Which technological development helped make privacy a prominent issue around the 1890s?",
+    "type": "single",
+    "options": [
+      "Blockchain",
+      "Photography",
+      "Cloud computing",
+      "Artificial intelligence"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The development of photography made it possible to capture and publicly distribute images of private moments."
+  },
+  {
+    "id": "w9-q17",
+    "question": "Which of the following correctly distinguishes Privacy from Information Privacy?",
+    "type": "single",
+    "options": [
+      "Privacy concerns the right to be left alone, while Information Privacy concerns control over personal information",
+      "Privacy concerns organizations, while Information Privacy concerns governments",
+      "Privacy concerns encryption, while Information Privacy concerns authentication",
+      "There is no distinction between the two"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Privacy broadly concerns the right to be left alone, while Information Privacy focuses on control over personal information."
+  },
+  {
+    "id": "w9-q18",
+    "question": "An organization collects someone's data for one purpose and later shares it with another organization for an unrelated purpose without consent. Which privacy concern is involved?",
+    "type": "single",
+    "options": [
+      "Collection",
+      "Unauthorized Access",
+      "Errors",
+      "Secondary Use"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Using information collected for one purpose for another purpose without consent is a concern about secondary use."
+  },
+  {
+    "id": "w9-q19",
+    "question": "A person discovers that their personal information stored by an organization contains an incorrect date of birth. Which privacy concern does this represent?",
+    "type": "single",
+    "options": [
+      "Collection",
+      "Errors",
+      "Secondary Use",
+      "Unauthorized Access"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Concern about inaccurate personal information and the ability to correct it falls under errors."
+  },
+  {
+    "id": "w9-q20",
+    "question": "Which of the following correctly identifies the three entities in a typical data ecosystem?",
+    "type": "single",
+    "options": [
+      "Data Subject, Data Controller, Data Processor",
+      "Data Owner, Data Hacker, Data Regulator",
+      "Data Principal, Data Subject, Data Auditor",
+      "Data Controller, Data Regulator, Data Hacker"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture identifies Data Subject, Data Controller, and Data Processor as the three entities through which personal data is collected, stored, and processed."
+  },
+  {
+    "id": "w9-q21",
+    "question": "In India's Personal Data Protection terminology discussed in the lecture, \"Data Principal\" corresponds to:",
+    "type": "single",
+    "options": [
+      "Data Processor",
+      "Data Subject",
+      "Data Controller",
+      "Data Regulator"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Data Principal is the Indian terminology used for the individual whose personal data is collected."
+  },
+  {
+    "id": "w9-q22",
+    "question": "Which FIPP principle states that individuals should be able to find out what information about them is stored and how it is used?",
+    "type": "single",
+    "options": [
+      "Secret collection",
+      "Individual access",
+      "Data encryption",
+      "Secondary use"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "FIPP requires a way for individuals to find out what information about them is recorded and how it is used."
+  },
+  {
+    "id": "w9-q23",
+    "question": "Which of the following is NOT one of the four dimensions of Concern for Information Privacy?",
+    "type": "single",
+    "options": [
+      "Collection",
+      "Unauthorized Access",
+      "Errors",
+      "Encryption Strength"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The four dimensions are collection, unauthorized access, errors, and secondary use. Encryption strength is not one of them."
+  },
+  {
+    "id": "w9-q24",
+    "question": "According to the lecture, why does privacy have economic importance for organizations?",
+    "type": "single",
+    "options": [
+      "Privacy breaches can create liability and financial consequences",
+      "Privacy eliminates the need for security",
+      "Personal data has no economic value",
+      "Privacy prevents organizations from collecting any data"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Privacy breaches can cause liability and other economic consequences for organizations."
+  },
+  {
+    "id": "w9-q25",
+    "question": "What is the main concern behind the \"Big Brother\" concept discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Excessive power and surveillance by authorities",
+      "Increased encryption strength",
+      "Faster information processing",
+      "Greater consumer choice"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The Big Brother concept represents the power asymmetry that allows authorities to monitor and potentially control individuals."
+  },
+  {
+    "id": "w9-q26",
+    "question": "In the \"We Googled You\" case, what did HR discover about Mimi Brewster?",
+    "type": "single",
+    "options": [
+      "Her private banking records",
+      "Her previous activist and protest activities",
+      "Her encrypted WhatsApp messages",
+      "Her medical database"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "HR's Google search revealed Mimi's previous involvement in activist and protest activities."
+  },
+  {
+    "id": "w9-q27",
+    "question": "Which factor makes internet screening of a job candidate particularly problematic?",
+    "type": "single",
+    "options": [
+      "Using irrelevant personal information to make employment decisions",
+      "Checking publicly available professional information",
+      "Verifying educational qualifications",
+      "Checking previous work experience"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The case highlights the concern that irrelevant personal information could improperly influence employment decisions."
+  },
+  {
+    "id": "w9-q28",
+    "question": "According to the case discussion, which approach should organizations follow when conducting internet screening?",
+    "type": "single",
+    "options": [
+      "Collect as much information as possible",
+      "Search only private accounts",
+      "Limit searches to relevant and publicly available information and follow applicable privacy rules",
+      "Reject candidates based on their personal beliefs"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The case recommends limiting screening to relevant publicly available information while following applicable privacy requirements."
+  },
+  {
+    "id": "w9-q29",
+    "question": "Why should information found online be treated carefully during recruitment?",
+    "type": "single",
+    "options": [
+      "Online information is always legally protected",
+      "Information may be false, outdated, or manipulated",
+      "Online information can never be relevant",
+      "Companies cannot access public information"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The case discussion notes that information found online may not always be accurate or reliable."
+  },
+  {
+    "id": "w9-q30",
+    "question": "Which of the following are the four dimensions of Concern for Information Privacy? Select all that apply.",
+    "type": "multiple",
+    "options": [
+      "Collection",
+      "Unauthorized Access",
+      "Errors",
+      "Secondary Use"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "The four dimensions are concern about collection, unauthorized access, errors, and secondary use."
+  },
+  {
+    "id": "w9-q31",
+    "question": "Which of the following are principles associated with FIPP? Select all that apply.",
+    "type": "multiple",
+    "options": [
+      "Individuals should know about systems that store their personal data",
+      "Individuals should be able to access their stored information",
+      "Individuals should be able to correct inaccurate information",
+      "Organizations can freely reuse information for unrelated purposes without consent"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "FIPP supports transparency, individual access, and correction of inaccurate information. Unrelated reuse without consent violates the purpose limitation principle."
+  },
+  {
+    "id": "w9-q32",
+    "question": "Privacy is an absolute right that can never have any limitations related to national security or law enforcement.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture explains that privacy is important but is not an absolute right and may have legal limitations for purposes such as national security and law enforcement."
+  },
+  {
+    "id": "w9-q33",
+    "question": "Information found on the internet is always guaranteed to be accurate.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The case discussion specifically notes that information on the internet can be false or manipulated."
+  },
+  {
+    "id": "w9-q34",
+    "question": "Organizations have a responsibility to protect personal data they collect from misuse.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "FIPP places responsibility on organizations that collect personal data to ensure its reliability and prevent misuse."
+  },
+  {
+    "id": "w9-q35",
+    "question": "The \"We Googled You\" case raises both privacy concerns and questions about how organizations should use information during recruitment.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The case addresses both the privacy implications of internet screening and the appropriate use of information when making hiring decisions."
+  }
+]

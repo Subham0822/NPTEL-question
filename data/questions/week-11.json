@@ -1,1 +1,677 @@
-[]
+[
+  {
+    "id": "w11-q1",
+    "question": "Which of the following is not true about personal data as per GDPR?",
+    "type": "single",
+    "options": [
+      "Personal data is any information that relates to an individual who can be directly or indirectly identified.",
+      "Names and email addresses are personal data.",
+      "Location information, ethnicity, gender, biometric data, religious beliefs, web cookies, and political opinions can also be personal data.",
+      "Pseudonymous data is not personal data, even if the individual can be easily re-identified from it"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Pseudonymous data can still be personal data if the individual can be re-identified."
+  },
+  {
+    "id": "w11-q2",
+    "question": "An organization continues to retain personal data even though it is no longer required for the purpose for which it was collected. Which principle is most directly concerned with this situation?",
+    "type": "single",
+    "options": [
+      "Accuracy",
+      "Purpose Limitation",
+      "Storage Limitation",
+      "Accountability"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The storage limitation principle requires personal data not to be retained longer than necessary for its purpose."
+  },
+  {
+    "id": "w11-q3",
+    "question": "Which of the following statements best describes the applicability of the GDPR?",
+    "type": "single",
+    "options": [
+      "GDPR applies only when an organization is physically located in the European Union.",
+      "GDPR applies only to organizations that collect names and email addresses.",
+      "GDPR can apply to organizations that process personal data, regardless of their location, when the GDPR applies to their processing activities",
+      "GDPR applies only to government organizations that process personal data."
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "GDPR can apply to organizations outside the EU when their processing activities fall within the scope of GDPR."
+  },
+  {
+    "id": "w11-q4",
+    "question": "A person is in a life-threatening situation, and processing their personal data is necessary to save their life. Which legal basis for processing is most appropriate under GDPR?",
+    "type": "single",
+    "options": [
+      "Consent",
+      "Public interest",
+      "Contract",
+      "Vital interests"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "Vital interests provide a legal basis when processing personal data is necessary to protect a person's life."
+  },
+  {
+    "id": "w11-q5",
+    "question": "In the context of Aadhaar data, who is considered the Data Principal under DPDP Act?",
+    "type": "single",
+    "options": [
+      "The Unique Identification Authority of India (UIDAI)",
+      "The individual to whom the Aadhaar number and related personal data belong",
+      "The service provider that uses Aadhaar authentication",
+      "The government agency responsible for processing the data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Data Principal is the individual to whom the personal data relates."
+  },
+  {
+    "id": "w11-q6",
+    "question": "What is the primary objective of the Digital Personal Data Protection (DPDP) Act, 2023?",
+    "type": "single",
+    "options": [
+      "To give organizations unrestricted authority to process personal data when a legitimate purpose exists.",
+      "To balance the right of individuals to protect their personal data with the need to process such data for lawful purposes.",
+      "To restrict the processing of digital personal data primarily to government-authorized purposes.",
+      "To prioritize the prevention of personal-data processing over its legitimate and lawful use."
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The DPDP framework seeks to balance individual data protection with legitimate and lawful processing of personal data."
+  },
+  {
+    "id": "w11-q7",
+    "question": "According to the Digital Personal Data Protection Act, 2023 (DPDP Act), a person who alone or together with others determines the purpose and means of processing personal data is known as:",
+    "type": "single",
+    "options": [
+      "Data Protection Officer",
+      "Data Processor",
+      "Data Fiduciary",
+      "Consent Manager"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A Data Fiduciary determines the purpose and means of processing personal data."
+  },
+  {
+    "id": "w11-q8",
+    "question": "The Information Technology Act of India was enacted in which year?",
+    "type": "single",
+    "options": [
+      "2000",
+      "2020",
+      "2022",
+      "1998"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The Information Technology Act of India was enacted in 2000."
+  },
+  {
+    "id": "w11-q9",
+    "question": "Which of the following correctly identifies the core principles of the Aadhaar technology system?",
+    "type": "single",
+    "options": [
+      "Openness, central storage, security, and data monetization",
+      "Data monetization, vendor-neutrality, security, and data analytics",
+      "Openness, data monetization, security, and data analytics",
+      "Openness, vendor-neutrality, security, and data analytics"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The Aadhaar technology system is described in terms of openness, vendor-neutrality, security, and data analytics."
+  },
+  {
+    "id": "w11-q10",
+    "question": "The Indian Telegraph Act, 1885, empowered the government to intercept certain communications under specified circumstances.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Only after the Aadhaar Act was enacted",
+      "Only for private companies"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture explains that the Indian Telegraph Act, 1885 provided government powers to intercept certain communications under specified circumstances."
+  },
+  {
+    "id": "w11-q11",
+    "question": "Which of the following best describes the significance of the Puttaswamy judgment in the Indian privacy context?",
+    "type": "single",
+    "options": [
+      "It established that all government data collection is unconstitutional",
+      "It recognized the right to privacy as a fundamental right",
+      "It abolished the Aadhaar system",
+      "It prohibited government agencies from intercepting communications"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Puttaswamy judgment recognized the right to privacy as a fundamental right."
+  },
+  {
+    "id": "w11-q12",
+    "question": "Which Article of the Indian Constitution was discussed in relation to the protection of life and personal liberty?",
+    "type": "single",
+    "options": [
+      "Article 14",
+      "Article 19",
+      "Article 21",
+      "Article 32"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Article 21 protects life and personal liberty and was discussed in relation to privacy."
+  },
+  {
+    "id": "w11-q13",
+    "question": "Why did Aadhaar create significant privacy concerns?",
+    "type": "single",
+    "options": [
+      "It eliminated the need for any form of identification",
+      "It involved the collection and storage of sensitive personal and biometric information",
+      "It allowed individuals to create multiple identities",
+      "It prevented government agencies from accessing citizen information"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Aadhaar involved collecting and storing personal and biometric information, creating important privacy concerns."
+  },
+  {
+    "id": "w11-q14",
+    "question": "Which of the following correctly describes the relationship between privacy and Aadhaar discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Aadhaar automatically makes privacy an absolute right",
+      "Aadhaar demonstrates the need to balance government objectives with individual privacy",
+      "Aadhaar completely eliminates the need for privacy regulation",
+      "Aadhaar prevents the government from collecting any personal information"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture presents Aadhaar as an example of the need to balance government objectives with individual privacy."
+  },
+  {
+    "id": "w11-q15",
+    "question": "Which of the following is NOT one of the three requirements discussed for government interference with privacy?",
+    "type": "single",
+    "options": [
+      "Legality",
+      "Necessity",
+      "Proportionality",
+      "Profitability"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The three requirements discussed are legality, necessity, and proportionality. Profitability is not one of them."
+  },
+  {
+    "id": "w11-q16",
+    "question": "The principle of proportionality in privacy protection primarily means that:",
+    "type": "single",
+    "options": [
+      "Government can collect unlimited data if a law exists",
+      "Data collection should be limited to a rational and necessary extent",
+      "Individuals must always provide all requested information",
+      "Organizations should maximize the amount of data they collect"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Proportionality requires the extent of data collection or privacy interference to be rational and necessary."
+  },
+  {
+    "id": "w11-q17",
+    "question": "Which statement best describes privacy as discussed in the Indian context?",
+    "type": "single",
+    "options": [
+      "Privacy is an absolute right under all circumstances",
+      "Privacy is not a fundamental right in India",
+      "Privacy is a fundamental right but is not absolute",
+      "Privacy applies only to government organizations"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The lecture explains that privacy is a fundamental right but is not an absolute right."
+  },
+  {
+    "id": "w11-q18",
+    "question": "Why was a unique identity system such as Aadhaar considered useful by the government?",
+    "type": "single",
+    "options": [
+      "To encourage individuals to maintain multiple identities",
+      "To reduce identity-related fraud and improve delivery of government services",
+      "To eliminate all forms of personal data collection",
+      "To prevent digital government services"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Aadhaar was intended to address duplicate identities, fraud, leakage, and improve the effectiveness of government services."
+  },
+  {
+    "id": "w11-q19",
+    "question": "Which of the following best explains \"information asymmetry\" in the context of government services?",
+    "type": "single",
+    "options": [
+      "Both parties have exactly the same information",
+      "One party has information that the other party does not have",
+      "Information is automatically deleted after use",
+      "Information can only be accessed by private companies"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Information asymmetry occurs when one party has information that another party does not have."
+  },
+  {
+    "id": "w11-q20",
+    "question": "Before unique identification became widespread, what problem could arise from multiple identities?",
+    "type": "single",
+    "options": [
+      "Individuals could potentially have duplicate identities or benefit records in different places",
+      "Government would be unable to collect any information",
+      "Digital services would automatically become more secure",
+      "Personal data could never be linked"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture explains that multiple identities could contribute to duplicate records and misuse of government benefits."
+  },
+  {
+    "id": "w11-q21",
+    "question": "A company decides why personal data should be collected and how it should be processed. Under the terminology discussed in the lecture, this entity is the:",
+    "type": "single",
+    "options": [
+      "Data Principal",
+      "Data Processor",
+      "Data Fiduciary",
+      "Consent Manager"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The Data Fiduciary determines the purpose and means of processing personal data."
+  },
+  {
+    "id": "w11-q22",
+    "question": "An organization receives personal data from a Data Fiduciary and performs analytics on that data on the fiduciary's behalf. What is the organization most appropriately described as?",
+    "type": "single",
+    "options": [
+      "Data Principal",
+      "Data Processor",
+      "Data Subject",
+      "Data Fiduciary"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A Data Processor processes data on behalf of the Data Fiduciary."
+  },
+  {
+    "id": "w11-q23",
+    "question": "Which statement correctly distinguishes a Data Fiduciary from a Data Processor?",
+    "type": "single",
+    "options": [
+      "The Data Processor determines the purpose and means, while the Data Fiduciary only stores data",
+      "The Data Fiduciary determines the purpose and means, while the Data Processor processes data on its behalf",
+      "Both terms refer to the individual whose data is collected",
+      "Both terms refer exclusively to government organizations"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Data Fiduciary determines the purpose and means of processing, while the Data Processor processes data on its behalf."
+  },
+  {
+    "id": "w11-q24",
+    "question": "Why did the Justice Srikrishna Committee become important in India's data protection journey?",
+    "type": "single",
+    "options": [
+      "It was responsible for creating the Aadhaar number",
+      "It worked on developing a framework for personal data protection in India",
+      "It replaced Article 21",
+      "It abolished the Indian Telegraph Act"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Justice Srikrishna Committee worked on developing India's personal data protection framework."
+  },
+  {
+    "id": "w11-q25",
+    "question": "What was the broad objective given to the Justice Srikrishna Committee?",
+    "type": "single",
+    "options": [
+      "Stop the digital economy completely",
+      "Unlock the data economy while protecting citizens' data",
+      "Allow unrestricted government access to personal data",
+      "Eliminate all data-based businesses"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The committee was tasked with balancing the development of the data economy with protection of citizens' data."
+  },
+  {
+    "id": "w11-q26",
+    "question": "Which of the following best represents the central policy challenge discussed in India's data protection framework?",
+    "type": "single",
+    "options": [
+      "Choosing between technology and economic development",
+      "Balancing digital/economic development with protection of individual privacy",
+      "Eliminating all forms of data processing",
+      "Giving complete control of data to corporations"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture emphasizes balancing the benefits of digital and economic development with individual privacy."
+  },
+  {
+    "id": "w11-q27",
+    "question": "Which of the following was a feature of the earlier PDP framework discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "It classified data into personal, sensitive personal, and critical personal data",
+      "It completely prohibited data processing",
+      "It applied only to government databases",
+      "It removed all restrictions on cross-border data transfer"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The earlier PDP framework classified data into personal, sensitive personal, and critical personal data."
+  },
+  {
+    "id": "w11-q28",
+    "question": "Which of the following is an example of sensitive personal data mentioned in the lecture?",
+    "type": "single",
+    "options": [
+      "Public weather information",
+      "Financial or health information",
+      "Public road maps",
+      "General information about a city"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture identifies financial and health information as examples of sensitive personal data."
+  },
+  {
+    "id": "w11-q29",
+    "question": "What is meant by \"data localization\"?",
+    "type": "single",
+    "options": [
+      "Deleting all personal data after collection",
+      "Requiring certain data to be stored within the country",
+      "Allowing only government agencies to collect data",
+      "Converting personal data into anonymous data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Data localization refers to keeping certain citizens' data within the country's jurisdiction."
+  },
+  {
+    "id": "w11-q30",
+    "question": "What was one major argument in favour of data localization?",
+    "type": "single",
+    "options": [
+      "It gives the country greater control over citizens' data under its own legal framework",
+      "It guarantees that data can never be breached",
+      "It eliminates the need for cybersecurity",
+      "It prevents companies from using data for analytics"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Keeping data within the country can give the country greater legal and regulatory control over it."
+  },
+  {
+    "id": "w11-q31",
+    "question": "Which of the following was identified as a potential disadvantage of strict data localization for multinational companies?",
+    "type": "single",
+    "options": [
+      "They may have to build additional data centers in different countries",
+      "They would no longer need to process data",
+      "They would automatically receive more customers",
+      "Their data would become completely anonymous"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Strict localization can require multinational companies to establish additional domestic data centers."
+  },
+  {
+    "id": "w11-q32",
+    "question": "Why can data localization increase costs for multinational companies?",
+    "type": "single",
+    "options": [
+      "They may lose the economies of scale provided by centralized global data centers",
+      "They are prohibited from using cloud computing",
+      "They must delete all data after processing",
+      "They must give all data to the government"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Global companies can lose economies of scale when they have to maintain separate data infrastructure in different countries."
+  },
+  {
+    "id": "w11-q33",
+    "question": "Which of the following best describes the debate surrounding data localization?",
+    "type": "single",
+    "options": [
+      "It has benefits for government control but can increase costs and reduce flexibility for businesses",
+      "It has benefits only for multinational corporations",
+      "It has no connection with privacy or business",
+      "It completely eliminates cybersecurity risks"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture presents data localization as having potential benefits for government control while creating additional costs and operational concerns for businesses."
+  },
+  {
+    "id": "w11-q34",
+    "question": "Which of the following is a potential weakness in a large identity-data system such as Aadhaar?",
+    "type": "single",
+    "options": [
+      "Only the central database can ever create a security risk",
+      "Vendors and authentication/service-delivery points can also become potential weak links",
+      "No external organization interacts with the system",
+      "Biometric data cannot be processed digitally"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture emphasizes that vendors, authentication devices, and other connected entities can become potential weak links."
+  },
+  {
+    "id": "w11-q35",
+    "question": "Which of the following best represents the Aadhaar authentication flow discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "User → Authentication Device → Service Provider/Agency → Aadhaar system",
+      "User → Social Media → Aadhaar → Government",
+      "Government → User → Bank → Aadhaar",
+      "User → Data Processor → Newspaper → Aadhaar"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture describes the user providing information through an authentication device and service provider, which connects through authentication agencies to the Aadhaar system."
+  },
+  {
+    "id": "w11-q36",
+    "question": "Why can third-party vendors involved in collecting Aadhaar information become a privacy concern?",
+    "type": "single",
+    "options": [
+      "They may be involved in handling personal information during the collection process",
+      "They automatically become the owners of Aadhaar",
+      "They cannot access any part of the collection process",
+      "They eliminate the need for authentication"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Vendors participate in collecting personal information, creating potential points where data can be mishandled or leaked."
+  },
+  {
+    "id": "w11-q37",
+    "question": "Which statement about privacy and government surveillance is most consistent with the lecture?",
+    "type": "single",
+    "options": [
+      "Government has unlimited power to intercept private communications",
+      "Government can never access private communications under any circumstances",
+      "Government access must satisfy legal, necessary, and proportionality requirements",
+      "Privacy applies only when no crime has occurred"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The lecture identifies legality, necessity, and proportionality as requirements for government interference with privacy."
+  },
+  {
+    "id": "w11-q38",
+    "question": "Which of the following best describes the purpose of regulation in the privacy context?",
+    "type": "single",
+    "options": [
+      "To completely prevent organizations from using data",
+      "To balance the interests of individuals, businesses, and government",
+      "To give businesses unrestricted access to personal information",
+      "To give government unrestricted control over all data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Privacy regulation aims to balance the interests of individuals, organizations, and government."
+  },
+  {
+    "id": "w11-q39",
+    "question": "Why is data described as economically valuable in the lecture?",
+    "type": "single",
+    "options": [
+      "Data can be analyzed to identify patterns and create products and services",
+      "Data has no relationship with modern businesses",
+      "Data can only be used by governments",
+      "Data automatically becomes valuable when it is encrypted"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture explains that data can be analyzed to identify business patterns and create products and services."
+  },
+  {
+    "id": "w11-q40",
+    "question": "Which of the following best describes the relationship between privacy regulation and the digital economy?",
+    "type": "single",
+    "options": [
+      "Privacy regulation should completely stop the digital economy",
+      "Digital businesses should operate without any privacy restrictions",
+      "Regulation should protect privacy while allowing legitimate data-based economic activity",
+      "Privacy and economic activity cannot coexist"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The lecture emphasizes that privacy protection should coexist with legitimate digital and economic activity."
+  },
+  {
+    "id": "w11-q41",
+    "question": "Which statement about the DPDP framework is consistent with the lecture?",
+    "type": "single",
+    "options": [
+      "It completely eliminates the need for data protection",
+      "It attempts to regulate digital personal data while considering different stakeholders",
+      "It applies only to biometric data",
+      "It prohibits all cross-border data movement"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The DPDP framework seeks to regulate digital personal data while balancing the interests of different stakeholders."
+  },
+  {
+    "id": "w11-q42",
+    "question": "A bank determines why customer data should be collected, while an external company performs analytics using that data. Which classification is most appropriate?",
+    "type": "single",
+    "options": [
+      "Bank = Data Principal; analytics company = Data Fiduciary",
+      "Bank = Data Fiduciary; analytics company = Data Processor",
+      "Bank = Data Processor; analytics company = Data Principal",
+      "Bank = Data Principal; analytics company = Data Processor"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The bank determines the purpose and means of processing, while the external analytics company processes data on the bank's behalf."
+  },
+  {
+    "id": "w11-q43",
+    "question": "What is the main concern when government itself acts as a major holder/controller of citizens' data?",
+    "type": "single",
+    "options": [
+      "There may be a potential conflict of interest because the government may both regulate data and possess large amounts of it",
+      "Government cannot legally possess any data",
+      "Government cannot provide digital services",
+      "Government automatically becomes a private company"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture discusses a potential conflict of interest when the government both holds large amounts of data and has rule-making or regulatory powers."
+  },
+  {
+    "id": "w11-q44",
+    "question": "Which of the following best summarizes the lecture's discussion of India's privacy journey?",
+    "type": "single",
+    "options": [
+      "India has moved from limited privacy regulation toward stronger recognition and regulation of personal data",
+      "India has completely rejected digital technologies",
+      "India has made privacy an absolute right with no exceptions",
+      "India has eliminated government access to personal data"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture describes India's movement toward stronger recognition of privacy and dedicated personal data protection frameworks."
+  },
+  {
+    "id": "w11-q45",
+    "question": "Which statement best captures the overall message of the lecture?",
+    "type": "single",
+    "options": [
+      "Privacy should always take priority over every other consideration",
+      "Business interests should always take priority over privacy",
+      "Effective regulation requires balancing privacy, government requirements, and economic interests",
+      "Personal data should never be collected under any circumstances"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The central theme is the need to balance individual privacy, government requirements, and legitimate economic use of data."
+  }
+]

@@ -1,1 +1,677 @@
-[]
+[
+  {
+    "id": "w3-q1",
+    "question": "Which of the following are the goals of information security governance? i. Strategic alignment of information security with business objectives to ensure organizational goals are effectively supported. ii. Risk management through the implementation of suitable controls and measures to identify, manage, and mitigate risks to information assets. iii. Resource management by optimizing the utilization of information security expertise, technologies, and infrastructure in an efficient and effective manner. iv. Performance measurement by evaluating, monitoring, and reporting information security governance metrics to verify that organizational objectives are being achieved.",
+    "type": "single",
+    "options": [
+      "Only i and ii are correct",
+      "Only i, ii, and iv are correct",
+      "Only i, ii, and iii are correct",
+      "i, ii, iii, and iv are correct"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "All four are recognized goals of information security governance: strategic alignment, risk management, resource management, and performance measurement."
+  },
+  {
+    "id": "w3-q2",
+    "question": "Which of the following statements is not correct?",
+    "type": "single",
+    "options": [
+      "COBIT is a framework to organize business processes.",
+      "COBIT defines the design factors the enterprise should consider when building a best-fit governance system.",
+      "COBIT is not a comprehensive description of an enterprise's IT environment.",
+      "COBIT defines the components to build and sustain a governance system: processes, organizational structures, policies and procedures, information flows, culture and behaviors, skills, and infrastructure."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "COBIT is a framework for the governance and management of enterprise information and technology rather than simply a framework to organize business processes."
+  },
+  {
+    "id": "w3-q3",
+    "question": "Match the following i. De facto standard ii. De jure standard iii. Guidelines iv. Practices a. A standard that has been formally evaluated, approved, and ratified by a formal standards organization. b. Examples of actions that illustrate compliance with policies. c. A standard that has been widely adopted or accepted by a public group rather than a formal standards organization. d. Nonmandatory recommendations the employee may use as a reference in complying with a policy.",
+    "type": "single",
+    "options": [
+      "i-a, ii - c, iii - b, iv - d",
+      "i -c, ii - a, iii - b, iv - d",
+      "i - c, ii - a, iii - d, iv - b",
+      "i - b, ii - c, iii - d, iv - a"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A de facto standard is widely adopted without formal ratification, a de jure standard is formally approved, guidelines are nonmandatory recommendations, and practices are actions demonstrating compliance."
+  },
+  {
+    "id": "w3-q4",
+    "question": "COSO's ERM framework emphasizes:",
+    "type": "single",
+    "options": [
+      "Operational efficiency",
+      "Risk identification and assessment",
+      "Regulatory compliance",
+      "Human resource management"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "COSO's Enterprise Risk Management framework emphasizes identifying and assessing risks across the enterprise."
+  },
+  {
+    "id": "w3-q5",
+    "question": "Which of the following is NOT a fundamental component of the NIST Cybersecurity Framework?",
+    "type": "single",
+    "options": [
+      "The Framework profile",
+      "The Framework tiers",
+      "The Framework core",
+      "The Framework control"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The NIST Cybersecurity Framework includes the Framework Core, Framework Profiles, and Framework Implementation Tiers. Framework control is not one of its fundamental components."
+  },
+  {
+    "id": "w3-q6",
+    "question": "An organization adopts a Governance, Risk, and Compliance (GRC) framework. What benefits can it expect to achieve?",
+    "type": "single",
+    "options": [
+      "Improved accountability and responsible operations",
+      "Better decisions based on data and insights",
+      "Stronger cybersecurity management",
+      "All of the above"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "A GRC framework can improve accountability, support better decision-making, and strengthen cybersecurity management."
+  },
+  {
+    "id": "w3-q7",
+    "question": "Which of the following is not true?",
+    "type": "single",
+    "options": [
+      "ISO/IEC 27001 is suitable only for large organizations in the information technology sector and is not relevant to small or medium-sized businesses.",
+      "Conformity with ISO/IEC 27001 indicates that an organization has established a systematic approach to managing risks associated with the security of the information it owns or processes, and that this approach adheres to the best practices and principles specified in the International Standard.",
+      "ISO/IEC 27001 enables organizations to develop a risk-aware culture by proactively identifying, assessing, and addressing information security vulnerabilities and weaknesses.",
+      "ISO/IEC 27001 promotes a comprehensive approach to information security by addressing people, processes, policies, and technology to safeguard organizational information assets."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "ISO/IEC 27001 is not limited to large IT organizations. It can be applied by organizations of different sizes and sectors."
+  },
+  {
+    "id": "w3-q8",
+    "question": "Which of the following is not a component of COSO?",
+    "type": "single",
+    "options": [
+      "Control Activities",
+      "Monitoring",
+      "Risk Response",
+      "Risk Assessment"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Risk Response is associated with COSO ERM. Control Activities, Monitoring, and Risk Assessment are components associated with COSO."
+  },
+  {
+    "id": "w3-q9",
+    "question": "Information security governance is the application of the principles of corporate governance to the information security function.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Not applicable",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Information security governance applies corporate governance principles to direct and oversee the information security function."
+  },
+  {
+    "id": "w3-q10",
+    "question": "ISO standards, such as ISO 31000, ISO 27001 for risk management or for information security, provide global best practices for compliance and risk management.",
+    "type": "single",
+    "options": [
+      "ISO 31000, ISO 27001",
+      "ISO 27001, ISO 31000",
+      "ISO 27001, ISO 17799",
+      "ISO 17799, ISO 27001"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "ISO 31000 is associated with risk management, while ISO 27001 is associated with information security management."
+  },
+  {
+    "id": "w3-q11",
+    "question": "Which of the following best describes the primary purpose of Governance in information security?",
+    "type": "single",
+    "options": [
+      "To configure firewalls and antivirus software",
+      "To provide strategic direction and oversight for information security",
+      "To investigate every individual security incident",
+      "To replace the organization's IT department"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Governance provides strategic direction, oversight, and accountability for information security."
+  },
+  {
+    "id": "w3-q12",
+    "question": "Which of the following is NOT one of the three broad approaches to cybersecurity management discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "GRC approach",
+      "Standards-driven approach",
+      "Organizational planning approach",
+      "Software development approach"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The lecture identifies the GRC approach, standards-driven approach, and organizational planning approach."
+  },
+  {
+    "id": "w3-q13",
+    "question": "In the GRC approach, cybersecurity is primarily viewed as:",
+    "type": "single",
+    "options": [
+      "A completely independent technical activity",
+      "One part of the organization's overall risk-management framework",
+      "A responsibility only of the cybersecurity team",
+      "A replacement for enterprise risk management"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "GRC treats cybersecurity as one category of risk within the broader enterprise risk-management framework."
+  },
+  {
+    "id": "w3-q14",
+    "question": "Which of the following correctly expands GRC?",
+    "type": "single",
+    "options": [
+      "Governance, Regulation and Control",
+      "Governance, Risk and Compliance",
+      "Government, Risk and Cybersecurity",
+      "Governance, Regulation and Cybersecurity"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "GRC stands for Governance, Risk and Compliance."
+  },
+  {
+    "id": "w3-q15",
+    "question": "Which of the following is the correct sequence of the three types of internal controls?",
+    "type": "single",
+    "options": [
+      "Corrective → Preventive → Detective",
+      "Detective → Corrective → Preventive",
+      "Preventive → Detective → Corrective",
+      "Preventive → Corrective → Detective"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Internal controls can be preventive, detective, or corrective depending on whether they prevent, detect, or correct problems."
+  },
+  {
+    "id": "w3-q16",
+    "question": "A control designed to stop a cybersecurity problem before it occurs is called:",
+    "type": "single",
+    "options": [
+      "Detective control",
+      "Corrective control",
+      "Preventive control",
+      "Recovery control"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Preventive controls are designed to deter or stop problems before they occur."
+  },
+  {
+    "id": "w3-q17",
+    "question": "A security monitoring system that identifies suspicious activity after it occurs is an example of:",
+    "type": "single",
+    "options": [
+      "Preventive control",
+      "Detective control",
+      "Corrective control",
+      "Strategic control"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Detective controls identify or detect problems after or while they occur."
+  },
+  {
+    "id": "w3-q18",
+    "question": "Which of the following is an example of a corrective control?",
+    "type": "single",
+    "options": [
+      "Firewall blocking unauthorized traffic",
+      "Monitoring system detecting an intrusion",
+      "Patching a vulnerability after it has been discovered",
+      "Security policy defining access permissions"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Corrective controls address and fix problems after they have been identified."
+  },
+  {
+    "id": "w3-q19",
+    "question": "Which organization is associated with the COBIT framework?",
+    "type": "single",
+    "options": [
+      "ISACA",
+      "NIST",
+      "ISO",
+      "American Medical Association"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "COBIT is associated with ISACA, the Information Systems Audit and Control Association."
+  },
+  {
+    "id": "w3-q20",
+    "question": "COBIT broadly separates:",
+    "type": "single",
+    "options": [
+      "Hardware and software",
+      "Governance and Management",
+      "Risk and Compliance",
+      "Prevention and Detection"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "COBIT distinguishes governance from management, with governance providing direction and oversight and management carrying out activities."
+  },
+  {
+    "id": "w3-q21",
+    "question": "Which sequence represents the broad COBIT process structure discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Plan → Build → Run → Monitor",
+      "Build → Plan → Monitor → Run",
+      "Run → Build → Plan → Monitor",
+      "Monitor → Plan → Run → Build"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture describes COBIT using the broad sequence Plan, Build, Run, and Monitor."
+  },
+  {
+    "id": "w3-q22",
+    "question": "Which of the following statements about COBIT is correct?",
+    "type": "single",
+    "options": [
+      "COBIT focuses only on cybersecurity",
+      "COBIT considers the health and governance of the enterprise end-to-end",
+      "COBIT is only a financial accounting standard",
+      "COBIT is designed only for small organizations"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "COBIT provides an enterprise-wide approach to governing and managing information and technology."
+  },
+  {
+    "id": "w3-q23",
+    "question": "COSO primarily originated from which area?",
+    "type": "single",
+    "options": [
+      "Cybersecurity technology",
+      "Accounting and internal controls",
+      "Telecommunications",
+      "Software engineering"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "COSO originated from the accounting community and focuses strongly on internal controls."
+  },
+  {
+    "id": "w3-q24",
+    "question": "COSO was expanded into which framework for broader enterprise risk management?",
+    "type": "single",
+    "options": [
+      "COBIT",
+      "NIST",
+      "COSO ERM",
+      "ISO 17799"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "COSO was expanded into the COSO Enterprise Risk Management framework for broader enterprise risk management."
+  },
+  {
+    "id": "w3-q25",
+    "question": "Which of the following correctly describes ISO/IEC 27001 according to the lecture?",
+    "type": "single",
+    "options": [
+      "It is a cybersecurity-specific management standard",
+      "It is exclusively an accounting standard",
+      "It is a physical security standard",
+      "It is a software development methodology"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "ISO/IEC 27001 is a standard for information security management."
+  },
+  {
+    "id": "w3-q26",
+    "question": "What does PDCA stand for?",
+    "type": "single",
+    "options": [
+      "Plan, Develop, Control, Assess",
+      "Plan, Do, Check, Act",
+      "Prepare, Detect, Correct, Audit",
+      "Plan, Deploy, Control, Analyze"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "PDCA stands for Plan, Do, Check, Act and represents a continual improvement cycle."
+  },
+  {
+    "id": "w3-q27",
+    "question": "Which of the following correctly describes NIST?",
+    "type": "single",
+    "options": [
+      "A US technology standards-setting organization",
+      "A European accounting organization",
+      "A private antivirus company",
+      "An Indian banking regulator"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "NIST stands for National Institute of Standards and Technology and is a US standards-setting organization."
+  },
+  {
+    "id": "w3-q28",
+    "question": "Which statement about NIST standards/guidance was emphasized in the lecture?",
+    "type": "single",
+    "options": [
+      "They are generally openly accessible",
+      "They can only be accessed by large companies",
+      "They are exclusively European standards",
+      "They are designed only for accounting"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture emphasizes that NIST standards and guidance are openly accessible, unlike many ISO standards that require purchase."
+  },
+  {
+    "id": "w3-q29",
+    "question": "Match the following: i. COBIT ii. COSO iii. COSO ERM iv. NIST a. Enterprise Risk Management b. US technology standards body c. IT governance and control framework d. Internal control framework",
+    "type": "single",
+    "options": [
+      "i-c, ii-d, iii-a, iv-b",
+      "i-d, ii-c, iii-a, iv-b",
+      "i-c, ii-a, iii-d, iv-b",
+      "i-b, ii-d, iii-c, iv-a"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "COBIT is an IT governance and control framework, COSO focuses on internal controls, COSO ERM focuses on enterprise risk management, and NIST is a US technology standards body."
+  },
+  {
+    "id": "w3-q30",
+    "question": "Match the following: i. Governance ii. Risk iii. Compliance iv. Management a. Following applicable laws, regulations, policies and standards b. Executing organizational activities and processes c. Providing direction and oversight d. Identifying and managing potential threats and uncertainties",
+    "type": "single",
+    "options": [
+      "i-c, ii-d, iii-a, iv-b",
+      "i-d, ii-c, iii-b, iv-a",
+      "i-a, ii-d, iii-c, iv-b",
+      "i-c, ii-a, iii-d, iv-b"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Governance provides direction and oversight, risk involves identifying and managing threats, compliance involves following requirements, and management executes organizational activities."
+  },
+  {
+    "id": "w3-q31",
+    "question": "The original cybersecurity standard discussed in the lecture before the development of the ISO 27000 series was:",
+    "type": "single",
+    "options": [
+      "BS 7799",
+      "COBIT 5",
+      "COSO ERM",
+      "NIST SP 800"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture identifies BS 7799 as the British Standard from which the ISO information security standards developed."
+  },
+  {
+    "id": "w3-q32",
+    "question": "What type of attack did iPremier experience?",
+    "type": "single",
+    "options": [
+      "Phishing attack",
+      "Distributed Denial of Service attack",
+      "Ransomware attack",
+      "SQL injection attack"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The iPremier case describes a Distributed Denial of Service attack against the company's website."
+  },
+  {
+    "id": "w3-q33",
+    "question": "What is the primary objective of a Denial of Service attack?",
+    "type": "single",
+    "options": [
+      "To make a service unavailable to legitimate users",
+      "To improve server performance",
+      "To encrypt the company's backup files",
+      "To increase network bandwidth"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A Denial of Service attack attempts to overwhelm a service or system so legitimate users cannot access it."
+  },
+  {
+    "id": "w3-q34",
+    "question": "What is the major difference between DoS and DDoS?",
+    "type": "single",
+    "options": [
+      "DoS uses multiple sources while DDoS uses one",
+      "DDoS uses multiple systems or sources to overwhelm the target",
+      "DoS is always more powerful than DDoS",
+      "There is no difference between them"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A DoS attack generally uses a single source, while a DDoS attack uses multiple systems to generate traffic against the target."
+  },
+  {
+    "id": "w3-q35",
+    "question": "A collection of compromised devices controlled by an attacker and used to launch attacks is commonly called:",
+    "type": "single",
+    "options": [
+      "Firewall",
+      "Botnet",
+      "VPN",
+      "Proxy server"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A botnet is a collection of compromised devices that can be controlled by an attacker."
+  },
+  {
+    "id": "w3-q36",
+    "question": "Which of the following was a major weakness identified in the iPremier case?",
+    "type": "single",
+    "options": [
+      "The company had too many cybersecurity experts",
+      "Its business continuity plan was outdated and incident response had not been practiced",
+      "The company had no customers",
+      "The website was completely offline before the attack"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The case highlights that iPremier had an outdated business continuity plan and had not properly practiced incident response."
+  },
+  {
+    "id": "w3-q37",
+    "question": "Why was the absence or reduction of log data problematic for iPremier?",
+    "type": "single",
+    "options": [
+      "It increased website speed too much",
+      "It made forensic investigation and identification of the attack more difficult",
+      "It prevented customers from purchasing products",
+      "It automatically blocked the DDoS attack"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Without adequate logs, investigators have less evidence to determine what happened, how the attack occurred, and who was responsible."
+  },
+  {
+    "id": "w3-q38",
+    "question": "Which of the following was one of the concerns raised by the legal counsel in the iPremier case?",
+    "type": "single",
+    "options": [
+      "Increasing employee salaries",
+      "Protecting customers' personal information",
+      "Increasing product prices",
+      "Hiring more sales employees"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The legal counsel was concerned about protecting customer information and potential legal consequences."
+  },
+  {
+    "id": "w3-q39",
+    "question": "What was the central dilemma faced by Bob after the DDoS attack stopped?",
+    "type": "single",
+    "options": [
+      "Whether to hire more salespeople",
+      "Whether to resume business or shut down temporarily and investigate",
+      "Whether to change the company's products",
+      "Whether to close the company permanently immediately"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Bob had to balance business continuity against the need to investigate the attack and determine whether the systems were safe."
+  },
+  {
+    "id": "w3-q40",
+    "question": "What is the most important management lesson from the iPremier case?",
+    "type": "single",
+    "options": [
+      "Cybersecurity can be ignored if an attack eventually stops",
+      "Cybersecurity should be treated as a strategic priority and organizations should prepare before an attack",
+      "Only technical employees should make cybersecurity decisions",
+      "Business continuity is more important than cybersecurity in every situation"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The case demonstrates that cybersecurity must be treated as a strategic management priority and that organizations need preparation before an incident occurs."
+  },
+  {
+    "id": "w3-q41",
+    "question": "Which of the following best describes the role of cybersecurity in the organizational planning approach discussed in the lecture?",
+    "type": "single",
+    "options": [
+      "Cybersecurity should only be handled at the operational level",
+      "Cybersecurity should be prioritized as part of strategic planning and contingency planning",
+      "Cybersecurity should be excluded from organizational planning",
+      "Cybersecurity should only be considered after an incident occurs"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The organizational planning approach treats cybersecurity as a strategic priority and includes contingency planning to address cyber risk."
+  },
+  {
+    "id": "w3-q42",
+    "question": "Which of the following is a key reason organizations may adopt cybersecurity-specific standards such as ISO 27001?",
+    "type": "single",
+    "options": [
+      "To manage cyber assets using established cybersecurity practices",
+      "To eliminate the need for management involvement",
+      "To replace all enterprise risk management activities",
+      "To guarantee that cyberattacks will never occur"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cybersecurity-specific standards provide established practices and structures for managing and protecting information assets."
+  },
+  {
+    "id": "w3-q43",
+    "question": "Which of the following best describes Enterprise Risk Management (ERM)?",
+    "type": "single",
+    "options": [
+      "Managing only cybersecurity risks",
+      "Managing the different categories of risks faced by the organization as a whole",
+      "Managing only financial reporting",
+      "Managing only IT infrastructure"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "ERM takes an organization-wide view of risk, with cybersecurity being one category among the risks an organization must manage."
+  },
+  {
+    "id": "w3-q44",
+    "question": "Which of the following is a major difference between COBIT and cybersecurity-specific standards such as ISO 27001?",
+    "type": "single",
+    "options": [
+      "COBIT focuses on enterprise governance and management of information and technology, while ISO 27001 specifically addresses information security management",
+      "COBIT is only for small organizations, while ISO 27001 is only for large organizations",
+      "COBIT is an accounting standard, while ISO 27001 is a financial standard",
+      "There is no difference between them"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "COBIT provides broader enterprise governance and management of information and technology, while ISO 27001 focuses specifically on information security management."
+  },
+  {
+    "id": "w3-q45",
+    "question": "Which of the following best explains why cybersecurity should be treated as a strategic issue?",
+    "type": "single",
+    "options": [
+      "Cybersecurity can affect organizational assets, business operations, risk, and overall organizational objectives",
+      "Cybersecurity only affects computer hardware",
+      "Cybersecurity has no effect on business operations",
+      "Only cybersecurity employees are affected by cyber risks"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cyber risks can affect important organizational assets, operations, reputation, and the achievement of business objectives, making cybersecurity a strategic concern."
+  }
+]

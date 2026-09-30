@@ -1,1 +1,407 @@
-[]
+[
+  {
+    "id": "w4-q1",
+    "question": "A  is prepared by the organization to anticipate, react to, and recover from events that threaten the security of information and information assets in the organization.",
+    "type": "single",
+    "options": [
+      "Disaster Recovery Plan",
+      "Incident Response Plan",
+      "Contingency Plan",
+      "Business Continuity Plan"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A contingency plan prepares the organization to anticipate, respond to, and recover from events that threaten information and information assets."
+  },
+  {
+    "id": "w4-q2",
+    "question": "Business Resumption Planning (BRP) consists of the actions taken by senior management to develop and implement a combined recovery teams.",
+    "type": "single",
+    "options": [
+      "Disaster Recovery Plan, Business Continuity Plan",
+      "Incident Response Plan, Business Continuity Plan",
+      "Contingency Plan, Disaster Recovery Plan",
+      "Disaster Recovery Plan, Incident Response Plan"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The provided question text is partially garbled, but the intended answer is Disaster Recovery Plan and Business Continuity Plan."
+  },
+  {
+    "id": "w4-q3",
+    "question": "Which of the following statements is not true?",
+    "type": "single",
+    "options": [
+      "Tactical planning focuses on short-term undertakings that will be completed within one or two years.",
+      "An operational plan outlines the required tasks for all relevant departments, along with communication and reporting requirements, which may include weekly meetings, progress reports, and other related activities.",
+      "Strategic planning sets the long-term direction to be taken by the organization and each of its component parts.",
+      "Operational plans are used to create tactical plans, which in turn are used to develop strategic plans."
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The planning hierarchy proceeds from strategic planning to tactical planning and then operational planning, not the reverse."
+  },
+  {
+    "id": "w4-q4",
+    "question": "True or False: Incident response planning comprises four phases: incident planning, incident detection, incident reaction, and incident recovery.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Not applicable",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The lecture describes incident response planning in three broad phases: before, during, and after an incident."
+  },
+  {
+    "id": "w4-q5",
+    "question": "Which of the following statements are true? I. Business Impact Analysis (BIA) is an investigation and assessment of the various adverse events that can affect the organization, conducted as a preliminary phase of the contingency planning process, which includes a determination of how critical a system or set of information is to the organization's core processes and recovery priorities. II. After the contingency planning (CP) policy is developed, the next step in the CP process is conducting a business impact analysis. III. Business Impact Analysis is a preparatory activity common to both contingency planning (CP) and risk management that helps identify the business functions and information systems most critical to an organization's success. IV. The initial phase of the Business Impact Analysis (BIA) involves evaluating and prioritizing business processes within the organization according to their contribution to the organization's mission.",
+    "type": "single",
+    "options": [
+      "Only II and IV are true",
+      "Only I, II and III are true",
+      "Only II, III and IV are true",
+      "I, II, III and IV are true"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "All four statements describe the role and process of Business Impact Analysis as presented in the lecture."
+  },
+  {
+    "id": "w4-q6",
+    "question": "The total amount of time the system owner or authorizing official is willing to accept for a business process outage or disruption, including all impact considerations, is known as:",
+    "type": "single",
+    "options": [
+      "Work Recovery Time",
+      "Maximum Tolerable Downtime",
+      "Maximum Recovery Time",
+      "Recovery Point Objective"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Maximum Tolerable Downtime (MTD) is the total acceptable duration of a business process outage or disruption."
+  },
+  {
+    "id": "w4-q7",
+    "question": "Which of the following statements is not true?",
+    "type": "single",
+    "options": [
+      "The incident response plan (IR plan) focuses on immediate response, but if the attack escalates or is disastrous (for example, a fire, flood, earthquake, or total blackout), the process moves on to disaster recovery and the BC plan.",
+      "The disaster recovery plan (DR plan) typically focuses on restoring systems at the original site after disasters occur, and so is closely associated with the BC plan.",
+      "The business continuity plan (BC plan) occurs only when DR plan fails and requires more than simple restoration of information and information resources.",
+      "The BC plan establishes critical business functions at an alternate site."
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Business continuity planning is based on the impact and inability to continue operations at the current location; it does not occur only when disaster recovery fails."
+  },
+  {
+    "id": "w4-q8",
+    "question": "Which of the following events are Definite indicators of incidents?",
+    "type": "single",
+    "options": [
+      "Use of dormant accounts, Changes to logs, Presence of hacker tools, Notifications by partner or peer",
+      "Activities at unexpected times, Notifications by partner or peers, Unusual system crashes, Presence or execution of unknown programs or processes.",
+      "Notification from IDPS, Presence of new accounts, Unusual system crashes, Use of dormant accounts",
+      "Unusual consumption of computing resources, Changes to logs, Unusual system crashes, Presence of unfamiliar files"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "The lecture identifies changes to logs and other listed indicators in the first option as definite indicators of incidents."
+  },
+  {
+    "id": "w4-q9",
+    "question": "True or False: Incident classification is the process of examining an incident candidate and determining whether it constitutes an actual incident.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Not applicable",
+      "Cannot be determined"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Determining whether an incident candidate is an actual incident is identification or validation; classification categorizes an identified incident."
+  },
+  {
+    "id": "w4-q10",
+    "question": "A fully configured computing facility that includes all services, communications links, and physical plant operations, used for BC operations is known as:",
+    "type": "single",
+    "options": [
+      "Warm site",
+      "Cold Site",
+      "Hot Site",
+      "Service Bureau"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A hot site is a fully configured facility with the services and infrastructure required to support business continuity operations."
+  },
+  {
+    "id": "w4-q11",
+    "question": "Which of the following is true regarding contingency planning?",
+    "type": "single",
+    "options": [
+      "Faster recovery generally requires greater investment in redundancy and recovery capabilities",
+      "Recovery should always be delayed to reduce costs",
+      "Recovery has no financial cost",
+      "Organizations should always choose zero downtime regardless of cost"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Reducing recovery time generally requires greater investment in redundancy and recovery capabilities."
+  },
+  {
+    "id": "w4-q12",
+    "question": "Which of the following is an example of redundancy used to reduce recovery time?",
+    "type": "single",
+    "options": [
+      "Removing backup systems",
+      "Maintaining an additional system that can take over when the primary system fails",
+      "Disabling system logging",
+      "Reducing the number of security controls"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "An additional system that can take over when the primary system fails provides redundancy and can reduce recovery time."
+  },
+  {
+    "id": "w4-q13",
+    "question": "A fully operational alternative facility that can immediately take over business operations is called:",
+    "type": "single",
+    "options": [
+      "Cold site",
+      "Warm site",
+      "Hot site",
+      "Service bureau"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A hot site is a fully operational alternative facility that can immediately support business operations."
+  },
+  {
+    "id": "w4-q14",
+    "question": "Which of the following correctly describes a cold site?",
+    "type": "single",
+    "options": [
+      "A fully operational parallel facility",
+      "A partially prepared facility requiring some setup before use",
+      "A facility requiring significant preparation before it can support operations",
+      "A primary production facility with no backup"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "A cold site requires significant preparation and setup before it can support business operations."
+  },
+  {
+    "id": "w4-q15",
+    "question": "Which of the following correctly describes a warm site?",
+    "type": "single",
+    "options": [
+      "It is immediately ready to take over all operations",
+      "It requires some preparation before it can become operational",
+      "It has no equipment or infrastructure",
+      "It is used only for incident documentation"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A warm site is partially prepared and requires some preparation before becoming operational."
+  },
+  {
+    "id": "w4-q16",
+    "question": "Which of the following statements about Incident Response Planning is true?",
+    "type": "single",
+    "options": [
+      "It is purely preventive and never deals with actual incidents",
+      "It includes activities before, during, and after an incident",
+      "It applies only after a business moves to an alternate location",
+      "It is concerned only with financial losses"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Incident response planning includes activities before, during, and after an incident."
+  },
+  {
+    "id": "w4-q17",
+    "question": "A structured incident report should generally help answer which of the following?",
+    "type": "single",
+    "options": [
+      "Who earned the most revenue during the incident",
+      "What, when, where, why, and how the incident occurred",
+      "Which employee should be promoted",
+      "How much profit the organization expected that year"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Incident documentation should record what happened, when and where it happened, why it happened, and how it occurred."
+  },
+  {
+    "id": "w4-q18",
+    "question": "Which of the following is a definite indicator of a cybersecurity incident according to the lecture?",
+    "type": "single",
+    "options": [
+      "Activities occurring at unexpected times",
+      "Unusual system crashes",
+      "Changes to system logs",
+      "Unusual consumption of computing resources"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The lecture specifically identifies changes to system logs as a definite indicator of an incident."
+  },
+  {
+    "id": "w4-q19",
+    "question": "Which of the following is the correct distinction between a threat and an incident?",
+    "type": "single",
+    "options": [
+      "A threat has already occurred, while an incident might occur in the future",
+      "A threat is something that could happen, while an incident is something that has happened",
+      "Both terms mean exactly the same thing",
+      "An incident is always more severe than a threat"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A threat represents something that could happen, while an incident refers to an event that has occurred."
+  },
+  {
+    "id": "w4-q20",
+    "question": "An attacker uses a weakness in an organization's security system to gain unauthorized access. The weakness being exploited is known as:",
+    "type": "single",
+    "options": [
+      "Asset",
+      "Vulnerability",
+      "Recovery point",
+      "Business process"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A vulnerability is a weakness in a system or security control that can be exploited by a threat."
+  },
+  {
+    "id": "w4-q21",
+    "question": "Which of the following best describes the role of a CISO?",
+    "type": "single",
+    "options": [
+      "Managing only the organization's financial accounts",
+      "Developing and overseeing strategic information security plans and policies",
+      "Operating only the organization's physical facilities",
+      "Managing only employee recruitment"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The CISO has strategic responsibility for information security planning, policies, and cybersecurity activities."
+  },
+  {
+    "id": "w4-q22",
+    "question": "Which of the following statements about cybersecurity investment is most consistent with the lecture?",
+    "type": "single",
+    "options": [
+      "Cybersecurity investments always directly generate new revenue",
+      "Cybersecurity investments are primarily intended to reduce potential losses and risks",
+      "Cybersecurity investments have no measurable financial implications",
+      "Cybersecurity investments should be made without considering risk"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cybersecurity investment is primarily intended to reduce security risks and potential losses rather than directly generate revenue."
+  },
+  {
+    "id": "w4-q23",
+    "question": "Which of the following is the correct order from lower to higher impact?",
+    "type": "single",
+    "options": [
+      "BCP → DRP → IRP",
+      "DRP → IRP → BCP",
+      "IRP → DRP → BCP",
+      "IRP → BCP → DRP"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Incident Response Planning addresses lower-impact incidents, followed by Disaster Recovery Planning and then Business Continuity Planning for higher impacts."
+  },
+  {
+    "id": "w4-q24",
+    "question": "A company suffers an incident that stops major business operations, but it can recover without moving to another location. Which plan is most relevant?",
+    "type": "single",
+    "options": [
+      "Incident Response Plan",
+      "Disaster Recovery Plan",
+      "Business Continuity Plan",
+      "Strategic Plan"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The Disaster Recovery Plan is relevant when systems must be restored after a significant disruption but recovery can occur at the original site."
+  },
+  {
+    "id": "w4-q25",
+    "question": "A company can no longer continue its critical operations at its existing location and must shift operations elsewhere. Which plan becomes most relevant?",
+    "type": "single",
+    "options": [
+      "Incident Response Plan",
+      "Disaster Recovery Plan",
+      "Business Continuity Plan",
+      "Operational Plan"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Business Continuity Planning becomes relevant when critical operations cannot continue at the existing location and alternate operations are required."
+  },
+  {
+    "id": "w4-q26",
+    "question": "Which of the following statements about organizational cybersecurity planning is true?",
+    "type": "single",
+    "options": [
+      "Cybersecurity planning should be independent of organizational goals",
+      "Cybersecurity planning should align with the organization's strategic, tactical, and operational plans",
+      "Cybersecurity planning is required only after an incident",
+      "Cybersecurity planning is exclusively a technical department responsibility"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Cybersecurity planning should align with the organization's strategic, tactical, and operational planning."
+  },
+  {
+    "id": "w4-q27",
+    "question": "Which of the following correctly matches the planning level with its general time horizon?",
+    "type": "single",
+    "options": [
+      "Strategic — long-term; Tactical — medium-term; Operational — day-to-day",
+      "Strategic — day-to-day; Tactical — long-term; Operational — medium-term",
+      "Strategic — short-term; Tactical — day-to-day; Operational — long-term",
+      "Strategic — medium-term; Tactical — day-to-day; Operational — long-term"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Strategic planning is long-term, tactical planning is medium-term, and operational planning focuses on day-to-day activities."
+  }
+]
