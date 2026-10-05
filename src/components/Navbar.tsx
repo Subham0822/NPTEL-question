@@ -5,11 +5,12 @@ import {
   UploadCloud,
   Layers,
   FlaskConical,
+  FileText,
 } from 'lucide-react';
 
 interface NavbarProps {
   currentView: string;
-  onNavigate: (view: 'dashboard' | 'importer' | 'bank' | 'test_data') => void;
+  onNavigate: (view: 'dashboard' | 'importer' | 'bank' | 'test_data' | 'pdfs') => void;
   totalCourseQuestions: number;
 }
 
@@ -66,6 +67,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Layers className="w-4 h-4" />
               <span className="hidden sm:inline">Question Bank</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => onNavigate('pdfs')}
+              className={`px-3 py-2 rounded-lg transition-colors flex items-center space-x-1.5 cursor-pointer ${
+                currentView === 'pdfs'
+                  ? 'bg-white text-indigo-700 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <FileText className="w-4 h-4" />
+              <span className="hidden sm:inline">PDFs</span>
             </button>
 
             <button

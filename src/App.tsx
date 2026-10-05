@@ -19,11 +19,12 @@ import { QuizResult } from './components/QuizResult';
 import { QuizSetupModal } from './components/QuizSetupModal';
 import { ConfirmDialog } from './components/ConfirmDialog';
 import { TestDataSection } from './components/TestDataSection';
+import { WeeklyPdfs } from './components/WeeklyPdfs';
 
 export default function App() {
   // Navigation view state
   const [currentView, setCurrentView] = useState<
-    'dashboard' | 'importer' | 'bank' | 'test_data' | 'quiz' | 'result'
+    'dashboard' | 'importer' | 'bank' | 'test_data' | 'pdfs' | 'quiz' | 'result'
   >('dashboard');
   const [importerDefaultWeek, setImporterDefaultWeek] = useState<number | 'all'>('all');
 
@@ -407,6 +408,8 @@ export default function App() {
             }}
           />
         )}
+
+        {currentView === 'pdfs' && <WeeklyPdfs />}
 
         {currentView === 'quiz' && currentQ && (
           <QuizQuestion

@@ -7,10 +7,15 @@ const DATA_DIR = path.join(process.cwd(), 'data');
 const QUESTIONS_FILE = path.join(DATA_DIR, 'questions.json');
 const ATTEMPTS_FILE = path.join(DATA_DIR, 'attempts.json');
 const SESSIONS_FILE = path.join(DATA_DIR, 'sessions.json');
+const PDFS_DIR = path.join(DATA_DIR, 'pdfs');
+const PDFS_META_FILE = path.join(PDFS_DIR, 'metadata.json');
 
-// Ensure data directory exists
+// Ensure data and pdfs directory exists
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
+}
+if (!fs.existsSync(PDFS_DIR)) {
+  fs.mkdirSync(PDFS_DIR, { recursive: true });
 }
 
 function readJsonFile<T>(filePath: string, defaultValue: T): T {
@@ -52,6 +57,81 @@ async function startServer() {
     const attempts = readJsonFile(ATTEMPTS_FILE, []);
     const sessions = readJsonFile(SESSIONS_FILE, []);
     res.json({ questions, attempts, sessions });
+  });
+
+  // Get uploaded PDFs metadata
+  app.get('/api/pdfs', (_req, res) => {
+    const meta = readJsonFile<Record<string, any>>(PDFS_META_FILE, {});
+    res.json(meta);
+  });
+
+  // Upload PDF for a specific week (1-12)
+  app.post('/api/pdfs/:week', (req, res) => {
+    const week = parseInt(req.params.week, 10);
+    if (isNaN(week) || week < 1 || week > 12) {
+      res.status(400).json({ error: 'Week must be between 1 and 12' });
+      return;
+    }
+    const { fileName, fileData } = req.body;
+    if (!fileData || typeof fileData !== 'string') {
+      res.status(400).json({ error: 'fileData base64 is required' });
+      return;
+    }
+
+    try {
+      const base64Content = fileData.includes(',') ? fileData.split(',')[1] : fileData;
+      const buffer = Buffer.from(base64Content, 'base64');
+      const targetPath = path.join(PDFS_DIR, `week-${week}.pdf`);
+      fs.writeFileSync(targetPath, buffer);
+
+      const meta = readJsonFile<Record<string, any>>(PDFS_META_FILE, {});
+      meta[week] = {
+        week,
+        fileName: fileName || `Week-${week}.pdf`,
+        fileSize: buffer.length,
+        uploadedAt: new Date().toISOString(),
+      };
+      writeJsonFile(PDFS_META_FILE, meta);
+      res.json({ success: true, pdf: meta[week] });
+    } catch (err) {
+      console.error(`Error saving PDF for week ${week}:`, err);
+      res.status(500).json({ error: 'Failed to save PDF' });
+    }
+  });
+
+  // Get / View / Stream PDF for a week
+  app.get('/api/pdfs/:week', (req, res) => {
+    const week = parseInt(req.params.week, 10);
+    const targetPath = path.join(PDFS_DIR, `week-${week}.pdf`);
+    if (!fs.existsSync(targetPath)) {
+      res.status(404).json({ error: 'PDF not found' });
+      return;
+    }
+
+    const meta = readJsonFile<Record<string, any>>(PDFS_META_FILE, {});
+    const fileName = meta[week]?.fileName || `week-${week}.pdf`;
+    res.setHeader('Content-Type', 'application/pdf');
+    const disposition = req.query.download === '1' ? 'attachment' : 'inline';
+    res.setHeader('Content-Disposition', `${disposition}; filename="${encodeURIComponent(fileName)}"`);
+    res.sendFile(targetPath);
+  });
+
+  // Delete PDF for a week
+  app.delete('/api/pdfs/:week', (req, res) => {
+    const week = parseInt(req.params.week, 10);
+    const targetPath = path.join(PDFS_DIR, `week-${week}.pdf`);
+    if (fs.existsSync(targetPath)) {
+      try {
+        fs.unlinkSync(targetPath);
+      } catch (err) {
+        console.error(`Error deleting PDF for week ${week}:`, err);
+      }
+    }
+
+    const meta = readJsonFile<Record<string, any>>(PDFS_META_FILE, {});
+    delete meta[week];
+    writeJsonFile(PDFS_META_FILE, meta);
+    res.json({ success: true });
   });
 
   // Sync / save all data to directory files
