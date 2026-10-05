@@ -3,6 +3,7 @@ export interface WeeklyPdf {
   fileName: string;
   fileSize: number;
   uploadedAt: string;
+  url?: string;
   dataUrl?: string;
 }
 
@@ -82,30 +83,99 @@ async function idbDeletePdf(week: number): Promise<void> {
   }
 }
 
+/**
+ * Fetches PDFs from the repository (API endpoint, static repo files, or file detection)
+ * Works across any browser, device, or deployment.
+ */
 export async function fetchWeeklyPdfs(): Promise<Record<number, WeeklyPdf>> {
-  // Try server first
+  const result: Record<number, WeeklyPdf> = {};
+
+  // 1. Try server API endpoint
   try {
     const res = await fetch('/api/pdfs');
     if (res.ok) {
       const serverData = await res.json();
-      const result: Record<number, WeeklyPdf> = {};
-      for (let w = 1; w <= 12; w++) {
-        if (serverData[w]) {
-          result[w] = {
-            week: w,
-            fileName: serverData[w].fileName || `Week-${w}.pdf`,
-            fileSize: serverData[w].fileSize || 0,
-            uploadedAt: serverData[w].uploadedAt || new Date().toISOString(),
-          };
+      if (typeof serverData === 'object' && serverData !== null) {
+        for (let w = 1; w <= 12; w++) {
+          if (serverData[w]) {
+            result[w] = {
+              week: w,
+              fileName: serverData[w].fileName || `week-${w}.pdf`,
+              fileSize: serverData[w].fileSize || 0,
+              uploadedAt: serverData[w].uploadedAt || new Date().toISOString(),
+              url: serverData[w].url || `/pdfs/week-${w}.pdf`,
+            };
+          }
         }
       }
-      return result;
     }
   } catch {
-    // fallback to IndexedDB
+    // Server API not reachable
   }
 
-  return await idbGetPdfs();
+  // 2. Try repository static metadata file (/pdfs/metadata.json)
+  try {
+    const staticRes = await fetch('/pdfs/metadata.json');
+    if (staticRes.ok) {
+      const staticData = await staticRes.json();
+      if (typeof staticData === 'object' && staticData !== null) {
+        for (let w = 1; w <= 12; w++) {
+          if (staticData[w] && !result[w]) {
+            result[w] = {
+              week: w,
+              fileName: staticData[w].fileName || `week-${w}.pdf`,
+              fileSize: staticData[w].fileSize || 0,
+              uploadedAt: staticData[w].uploadedAt || new Date().toISOString(),
+              url: `/pdfs/week-${w}.pdf`,
+            };
+          }
+        }
+      }
+    }
+  } catch {
+    // static file not reachable
+  }
+
+  // 3. For any remaining weeks (1..12), check directly if /pdfs/week-X.pdf exists in the repo
+  const probePromises: Promise<void>[] = [];
+  for (let w = 1; w <= 12; w++) {
+    if (!result[w]) {
+      probePromises.push(
+        (async () => {
+          try {
+            const probeRes = await fetch(`/pdfs/week-${w}.pdf`, { method: 'HEAD' });
+            if (probeRes.ok) {
+              const contentType = probeRes.headers.get('content-type') || '';
+              if (!contentType.includes('text/html')) {
+                const contentLength = parseInt(probeRes.headers.get('content-length') || '0', 10);
+                result[w] = {
+                  week: w,
+                  fileName: `week-${w}.pdf`,
+                  fileSize: contentLength || 0,
+                  uploadedAt: new Date().toISOString(),
+                  url: `/pdfs/week-${w}.pdf`,
+                };
+              }
+            }
+          } catch {
+            // file not present in repo
+          }
+        })()
+      );
+    }
+  }
+  await Promise.all(probePromises);
+
+  // 4. Merge any local IndexedDB cache if empty on repo
+  const localPdfs = await idbGetPdfs();
+  Object.keys(localPdfs).forEach((wKey) => {
+    const w = parseInt(wKey, 10);
+    if (!result[w] && localPdfs[w]) {
+      result[w] = localPdfs[w];
+    }
+  });
+
+  return result;
 }
 
 export async function uploadWeeklyPdf(week: number, file: File): Promise<WeeklyPdf> {

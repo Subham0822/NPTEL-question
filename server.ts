@@ -7,15 +7,20 @@ const DATA_DIR = path.join(process.cwd(), 'data');
 const QUESTIONS_FILE = path.join(DATA_DIR, 'questions.json');
 const ATTEMPTS_FILE = path.join(DATA_DIR, 'attempts.json');
 const SESSIONS_FILE = path.join(DATA_DIR, 'sessions.json');
-const PDFS_DIR = path.join(DATA_DIR, 'pdfs');
-const PDFS_META_FILE = path.join(PDFS_DIR, 'metadata.json');
+const DATA_PDFS_DIR = path.join(DATA_DIR, 'pdfs');
+const DATA_PDFS_META = path.join(DATA_PDFS_DIR, 'metadata.json');
+const PUBLIC_PDFS_DIR = path.join(process.cwd(), 'public', 'pdfs');
+const PUBLIC_PDFS_META = path.join(PUBLIC_PDFS_DIR, 'metadata.json');
 
-// Ensure data and pdfs directory exists
+// Ensure directories exist
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
-if (!fs.existsSync(PDFS_DIR)) {
-  fs.mkdirSync(PDFS_DIR, { recursive: true });
+if (!fs.existsSync(DATA_PDFS_DIR)) {
+  fs.mkdirSync(DATA_PDFS_DIR, { recursive: true });
+}
+if (!fs.existsSync(PUBLIC_PDFS_DIR)) {
+  fs.mkdirSync(PUBLIC_PDFS_DIR, { recursive: true });
 }
 
 function readJsonFile<T>(filePath: string, defaultValue: T): T {
@@ -59,13 +64,36 @@ async function startServer() {
     res.json({ questions, attempts, sessions });
   });
 
-  // Get uploaded PDFs metadata
+  // Get uploaded PDFs metadata from repo (checks both public and data folders)
   app.get('/api/pdfs', (_req, res) => {
-    const meta = readJsonFile<Record<string, any>>(PDFS_META_FILE, {});
-    res.json(meta);
+    const dataMeta = readJsonFile<Record<string, any>>(DATA_PDFS_META, {});
+    const publicMeta = readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {});
+    const merged = { ...publicMeta, ...dataMeta };
+
+    // Also auto-detect any week-*.pdf directly on disk in repo
+    for (let w = 1; w <= 12; w++) {
+      const pubFile = path.join(PUBLIC_PDFS_DIR, `week-${w}.pdf`);
+      const dataFile = path.join(DATA_PDFS_DIR, `week-${w}.pdf`);
+      const filePath = fs.existsSync(pubFile) ? pubFile : fs.existsSync(dataFile) ? dataFile : null;
+      if (filePath) {
+        const stats = fs.statSync(filePath);
+        if (!merged[w]) {
+          merged[w] = {
+            week: w,
+            fileName: `week-${w}.pdf`,
+            fileSize: stats.size,
+            uploadedAt: stats.mtime.toISOString(),
+          };
+        } else {
+          merged[w].fileSize = stats.size;
+        }
+        merged[w].url = `/pdfs/week-${w}.pdf`;
+      }
+    }
+    res.json(merged);
   });
 
-  // Upload PDF for a specific week (1-12)
+  // Upload PDF for a specific week (1-12) - saves directly to repository
   app.post('/api/pdfs/:week', (req, res) => {
     const week = parseInt(req.params.week, 10);
     if (isNaN(week) || week < 1 || week > 12) {
@@ -81,18 +109,38 @@ async function startServer() {
     try {
       const base64Content = fileData.includes(',') ? fileData.split(',')[1] : fileData;
       const buffer = Buffer.from(base64Content, 'base64');
-      const targetPath = path.join(PDFS_DIR, `week-${week}.pdf`);
-      fs.writeFileSync(targetPath, buffer);
+      const targetFileName = `week-${week}.pdf`;
 
-      const meta = readJsonFile<Record<string, any>>(PDFS_META_FILE, {});
-      meta[week] = {
+      // Save to both repo data/pdfs and public/pdfs
+      fs.writeFileSync(path.join(DATA_PDFS_DIR, targetFileName), buffer);
+      fs.writeFileSync(path.join(PUBLIC_PDFS_DIR, targetFileName), buffer);
+
+      const distPdfsDir = path.join(process.cwd(), 'dist', 'pdfs');
+      if (fs.existsSync(distPdfsDir)) {
+        fs.writeFileSync(path.join(distPdfsDir, targetFileName), buffer);
+      }
+
+      const pdfInfo = {
         week,
         fileName: fileName || `Week-${week}.pdf`,
         fileSize: buffer.length,
         uploadedAt: new Date().toISOString(),
+        url: `/pdfs/week-${week}.pdf`,
       };
-      writeJsonFile(PDFS_META_FILE, meta);
-      res.json({ success: true, pdf: meta[week] });
+
+      const dataMeta = readJsonFile<Record<string, any>>(DATA_PDFS_META, {});
+      dataMeta[week] = pdfInfo;
+      writeJsonFile(DATA_PDFS_META, dataMeta);
+
+      const publicMeta = readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {});
+      publicMeta[week] = pdfInfo;
+      writeJsonFile(PUBLIC_PDFS_META, publicMeta);
+
+      if (fs.existsSync(distPdfsDir)) {
+        writeJsonFile(path.join(distPdfsDir, 'metadata.json'), publicMeta);
+      }
+
+      res.json({ success: true, pdf: pdfInfo });
     } catch (err) {
       console.error(`Error saving PDF for week ${week}:`, err);
       res.status(500).json({ error: 'Failed to save PDF' });
@@ -102,13 +150,23 @@ async function startServer() {
   // Get / View / Stream PDF for a week
   app.get('/api/pdfs/:week', (req, res) => {
     const week = parseInt(req.params.week, 10);
-    const targetPath = path.join(PDFS_DIR, `week-${week}.pdf`);
-    if (!fs.existsSync(targetPath)) {
+    const pubFile = path.join(PUBLIC_PDFS_DIR, `week-${week}.pdf`);
+    const dataFile = path.join(DATA_PDFS_DIR, `week-${week}.pdf`);
+    const distFile = path.join(process.cwd(), 'dist', 'pdfs', `week-${week}.pdf`);
+    const targetPath = fs.existsSync(pubFile)
+      ? pubFile
+      : fs.existsSync(dataFile)
+      ? dataFile
+      : fs.existsSync(distFile)
+      ? distFile
+      : null;
+
+    if (!targetPath) {
       res.status(404).json({ error: 'PDF not found' });
       return;
     }
 
-    const meta = readJsonFile<Record<string, any>>(PDFS_META_FILE, {});
+    const meta = readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {});
     const fileName = meta[week]?.fileName || `week-${week}.pdf`;
     res.setHeader('Content-Type', 'application/pdf');
     const disposition = req.query.download === '1' ? 'attachment' : 'inline';
@@ -119,18 +177,34 @@ async function startServer() {
   // Delete PDF for a week
   app.delete('/api/pdfs/:week', (req, res) => {
     const week = parseInt(req.params.week, 10);
-    const targetPath = path.join(PDFS_DIR, `week-${week}.pdf`);
-    if (fs.existsSync(targetPath)) {
-      try {
-        fs.unlinkSync(targetPath);
-      } catch (err) {
-        console.error(`Error deleting PDF for week ${week}:`, err);
+    const targetFileName = `week-${week}.pdf`;
+    [
+      path.join(DATA_PDFS_DIR, targetFileName),
+      path.join(PUBLIC_PDFS_DIR, targetFileName),
+      path.join(process.cwd(), 'dist', 'pdfs', targetFileName),
+    ].forEach((filePath) => {
+      if (fs.existsSync(filePath)) {
+        try {
+          fs.unlinkSync(filePath);
+        } catch (err) {
+          console.error(`Error deleting PDF ${filePath}:`, err);
+        }
       }
+    });
+
+    const dataMeta = readJsonFile<Record<string, any>>(DATA_PDFS_META, {});
+    delete dataMeta[week];
+    writeJsonFile(DATA_PDFS_META, dataMeta);
+
+    const publicMeta = readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {});
+    delete publicMeta[week];
+    writeJsonFile(PUBLIC_PDFS_META, publicMeta);
+
+    const distPdfsDir = path.join(process.cwd(), 'dist', 'pdfs');
+    if (fs.existsSync(distPdfsDir)) {
+      writeJsonFile(path.join(distPdfsDir, 'metadata.json'), publicMeta);
     }
 
-    const meta = readJsonFile<Record<string, any>>(PDFS_META_FILE, {});
-    delete meta[week];
-    writeJsonFile(PDFS_META_FILE, meta);
     res.json({ success: true });
   });
 
@@ -288,6 +362,14 @@ async function startServer() {
 
     res.json({ success: true });
   });
+
+  // Serve static public folder and repository PDFs
+  const publicDir = path.join(process.cwd(), 'public');
+  if (fs.existsSync(publicDir)) {
+    app.use(express.static(publicDir));
+  }
+  app.use('/pdfs', express.static(PUBLIC_PDFS_DIR));
+  app.use('/data/pdfs', express.static(DATA_PDFS_DIR));
 
   // Vite middleware in dev or static serving in production
   if (process.env.NODE_ENV !== 'production') {

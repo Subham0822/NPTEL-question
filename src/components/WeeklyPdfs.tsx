@@ -73,12 +73,18 @@ export const WeeklyPdfs: React.FC = () => {
     }
   };
 
+  const getViewerUrl = (week: number): string => {
+    const pdf = pdfs[week];
+    if (pdf?.url) return pdf.url;
+    return `/pdfs/week-${week}.pdf`;
+  };
+
   const handleDownload = (week: number) => {
     const pdf = pdfs[week];
     if (!pdf) return;
 
     const link = document.createElement('a');
-    link.href = pdf.dataUrl || `/api/pdfs/${week}?download=1`;
+    link.href = pdf.url || `/pdfs/week-${week}.pdf`;
     link.download = pdf.fileName || `Week-${week}.pdf`;
     document.body.appendChild(link);
     link.click();
@@ -249,12 +255,32 @@ export const WeeklyPdfs: React.FC = () => {
           </div>
 
           {/* Embedded Viewer */}
-          <div className="flex-1 bg-slate-200 p-2 sm:p-4">
-            <iframe
-              src={pdfs[activeViewWeek].dataUrl || `/api/pdfs/${activeViewWeek}`}
-              className="w-full h-full rounded-xl bg-white border border-slate-300 shadow-sm"
-              title={`Week ${activeViewWeek} PDF`}
-            />
+          <div className="flex-1 bg-slate-200 p-2 sm:p-4 flex flex-col">
+            <object
+              data={getViewerUrl(activeViewWeek)}
+              type="application/pdf"
+              className="w-full flex-1 rounded-xl bg-white border border-slate-300 shadow-sm"
+            >
+              <iframe
+                src={getViewerUrl(activeViewWeek)}
+                className="w-full h-full rounded-xl bg-white border-0"
+                title={`Week ${activeViewWeek} PDF`}
+              >
+                <div className="p-8 text-center bg-white rounded-xl h-full flex flex-col items-center justify-center">
+                  <p className="text-slate-700 font-medium mb-3">
+                    Unable to display PDF preview in this browser view.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => handleDownload(activeViewWeek)}
+                    className="inline-flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs font-semibold cursor-pointer"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download PDF</span>
+                  </button>
+                </div>
+              </iframe>
+            </object>
           </div>
         </div>
       )}
