@@ -7,8 +7,28 @@
     <meta name="description" content="A focused, completely stateless practice platform for NPTEL Cybersecurity questions stored directly as repository JSON files, featuring Practice Mode, Exam Mode, and bulk question import with JSON export." />
     <meta property="og:title" content="NPTEL Cybersecurity MCQ Practice" />
     <meta property="og:description" content="A focused, completely stateless practice platform for NPTEL Cybersecurity questions stored directly as repository JSON files, featuring Practice Mode, Exam Mode, and bulk question import with JSON export." />
-    <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Ignore WebSocket / Vite HMR connection errors in iframe environment
+      window.addEventListener('error', function(e) {
+        if (
+          e.message &&
+          (e.message.includes('WebSocket') ||
+           e.message.includes('createWebSocketModuleRunnerTransport') ||
+           (e.filename && e.filename.includes('@vite/client')))
+        ) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        var reason = e.reason ? String(e.reason.stack || e.reason) : '';
+        if (reason.includes('WebSocket') || reason.includes('@vite/client')) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      }, true);
+    </script>
   </head>
   <body>
     <div id="root"></div>

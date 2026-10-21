@@ -1,13 +1,15 @@
 export interface WeeklyPdf {
+  id: string;
   week: number;
   fileName: string;
   fileSize: number;
   uploadedAt: string;
+  storageName?: string;
   url?: string;
   dataUrl?: string;
 }
 
-const DB_NAME = 'NPTEL_PDF_STORAGE';
+const DB_NAME = 'NPTEL_PDF_STORAGE_V2';
 const DB_VERSION = 1;
 const STORE_NAME = 'pdfs';
 
@@ -20,7 +22,8 @@ function openPdfDb(): Promise<IDBDatabase> {
     request.onupgradeneeded = () => {
       const db = request.result;
       if (!db.objectStoreNames.contains(STORE_NAME)) {
-        db.createObjectStore(STORE_NAME, { keyPath: 'week' });
+        const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+        store.createIndex('week', 'week', { unique: false });
       }
     };
     request.onsuccess = () => resolve(request.result);
@@ -28,7 +31,7 @@ function openPdfDb(): Promise<IDBDatabase> {
   });
 }
 
-async function idbGetPdfs(): Promise<Record<number, WeeklyPdf>> {
+async function idbGetPdfs(): Promise<Record<number, WeeklyPdf[]>> {
   try {
     const db = await openPdfDb();
     return new Promise((resolve) => {
@@ -36,20 +39,32 @@ async function idbGetPdfs(): Promise<Record<number, WeeklyPdf>> {
       const store = tx.objectStore(STORE_NAME);
       const req = store.getAll();
       req.onsuccess = () => {
-        const result: Record<number, WeeklyPdf> = {};
+        const result: Record<number, WeeklyPdf[]> = {};
+        for (let w = 1; w <= 12; w++) {
+          result[w] = [];
+        }
         if (Array.isArray(req.result)) {
           req.result.forEach((item) => {
-            if (item && item.week) {
-              result[item.week] = item;
+            if (item && item.week >= 1 && item.week <= 12) {
+              if (!result[item.week]) {
+                result[item.week] = [];
+              }
+              result[item.week].push(item);
             }
           });
         }
         resolve(result);
       };
-      req.onerror = () => resolve({});
+      req.onerror = () => {
+        const empty: Record<number, WeeklyPdf[]> = {};
+        for (let w = 1; w <= 12; w++) empty[w] = [];
+        resolve(empty);
+      };
     });
   } catch {
-    return {};
+    const empty: Record<number, WeeklyPdf[]> = {};
+    for (let w = 1; w <= 12; w++) empty[w] = [];
+    return empty;
   }
 }
 
@@ -68,13 +83,13 @@ async function idbSavePdf(pdf: WeeklyPdf & { fileData?: string }): Promise<void>
   }
 }
 
-async function idbDeletePdf(week: number): Promise<void> {
+async function idbDeletePdf(fileId: string): Promise<void> {
   try {
     const db = await openPdfDb();
     return new Promise((resolve, reject) => {
       const tx = db.transaction(STORE_NAME, 'readwrite');
       const store = tx.objectStore(STORE_NAME);
-      const req = store.delete(week);
+      const req = store.delete(fileId);
       req.onsuccess = () => resolve();
       req.onerror = () => reject(req.error);
     });
@@ -83,12 +98,29 @@ async function idbDeletePdf(week: number): Promise<void> {
   }
 }
 
+function normalizeRawPdfItem(raw: any, week: number): WeeklyPdf {
+  const fileName = raw.fileName || `week-${week}.pdf`;
+  const storageName = raw.storageName || `week-${week}.pdf`;
+  return {
+    id: raw.id || `pdf-${week}-${storageName}`,
+    week,
+    fileName,
+    storageName,
+    fileSize: raw.fileSize || 0,
+    uploadedAt: raw.uploadedAt || new Date().toISOString(),
+    url: raw.url || `/pdfs/${storageName}`,
+    dataUrl: raw.dataUrl,
+  };
+}
+
 /**
- * Fetches PDFs from the repository (API endpoint, static repo files, or file detection)
- * Works across any browser, device, or deployment.
+ * Fetches all PDFs grouped by week (1–12), supporting multiple PDFs per week.
  */
-export async function fetchWeeklyPdfs(): Promise<Record<number, WeeklyPdf>> {
-  const result: Record<number, WeeklyPdf> = {};
+export async function fetchWeeklyPdfs(): Promise<Record<number, WeeklyPdf[]>> {
+  const result: Record<number, WeeklyPdf[]> = {};
+  for (let w = 1; w <= 12; w++) {
+    result[w] = [];
+  }
 
   // 1. Try server API endpoint
   try {
@@ -97,89 +129,90 @@ export async function fetchWeeklyPdfs(): Promise<Record<number, WeeklyPdf>> {
       const serverData = await res.json();
       if (typeof serverData === 'object' && serverData !== null) {
         for (let w = 1; w <= 12; w++) {
-          if (serverData[w]) {
-            result[w] = {
-              week: w,
-              fileName: serverData[w].fileName || `week-${w}.pdf`,
-              fileSize: serverData[w].fileSize || 0,
-              uploadedAt: serverData[w].uploadedAt || new Date().toISOString(),
-              url: serverData[w].url || `/pdfs/week-${w}.pdf`,
-            };
+          const entry = serverData[w];
+          if (Array.isArray(entry)) {
+            result[w] = entry.map((item) => normalizeRawPdfItem(item, w));
+          } else if (entry && typeof entry === 'object') {
+            result[w] = [normalizeRawPdfItem(entry, w)];
           }
         }
       }
     }
   } catch {
-    // Server API not reachable
+    // server API offline
   }
 
-  // 2. Try repository static metadata file (/pdfs/metadata.json)
+  // 2. Try static repo metadata (/pdfs/metadata.json)
   try {
     const staticRes = await fetch('/pdfs/metadata.json');
     if (staticRes.ok) {
       const staticData = await staticRes.json();
       if (typeof staticData === 'object' && staticData !== null) {
         for (let w = 1; w <= 12; w++) {
-          if (staticData[w] && !result[w]) {
-            result[w] = {
-              week: w,
-              fileName: staticData[w].fileName || `week-${w}.pdf`,
-              fileSize: staticData[w].fileSize || 0,
-              uploadedAt: staticData[w].uploadedAt || new Date().toISOString(),
-              url: `/pdfs/week-${w}.pdf`,
-            };
+          const entry = staticData[w];
+          const existingIds = new Set(result[w].map((p) => p.id || p.storageName));
+          const addIfNew = (item: any) => {
+            const normalized = normalizeRawPdfItem(item, w);
+            if (!existingIds.has(normalized.id) && !existingIds.has(normalized.storageName)) {
+              result[w].push(normalized);
+              existingIds.add(normalized.id);
+            }
+          };
+
+          if (Array.isArray(entry)) {
+            entry.forEach(addIfNew);
+          } else if (entry && typeof entry === 'object') {
+            addIfNew(entry);
           }
         }
       }
     }
   } catch {
-    // static file not reachable
+    // static file error
   }
 
-  // 3. For any remaining weeks (1..12), check directly if /pdfs/week-X.pdf exists in the repo
-  const probePromises: Promise<void>[] = [];
+  // 3. Backward compat check: if week-X.pdf exists directly in repo and not yet tracked
   for (let w = 1; w <= 12; w++) {
-    if (!result[w]) {
-      probePromises.push(
-        (async () => {
-          try {
-            const probeRes = await fetch(`/pdfs/week-${w}.pdf`, { method: 'HEAD' });
-            if (probeRes.ok) {
-              const contentType = probeRes.headers.get('content-type') || '';
-              if (!contentType.includes('text/html')) {
-                const contentLength = parseInt(probeRes.headers.get('content-length') || '0', 10);
-                result[w] = {
-                  week: w,
-                  fileName: `week-${w}.pdf`,
-                  fileSize: contentLength || 0,
-                  uploadedAt: new Date().toISOString(),
-                  url: `/pdfs/week-${w}.pdf`,
-                };
-              }
-            }
-          } catch {
-            // file not present in repo
+    if (result[w].length === 0) {
+      try {
+        const probeRes = await fetch(`/pdfs/week-${w}.pdf`, { method: 'HEAD' });
+        if (probeRes.ok) {
+          const contentType = probeRes.headers.get('content-type') || '';
+          if (!contentType.includes('text/html')) {
+            const contentLength = parseInt(probeRes.headers.get('content-length') || '0', 10);
+            result[w].push({
+              id: `w${w}-legacy`,
+              week: w,
+              fileName: `week-${w}.pdf`,
+              storageName: `week-${w}.pdf`,
+              fileSize: contentLength || 0,
+              uploadedAt: new Date().toISOString(),
+              url: `/pdfs/week-${w}.pdf`,
+            });
           }
-        })()
-      );
+        }
+      } catch {
+        // file not present
+      }
     }
   }
-  await Promise.all(probePromises);
 
-  // 4. Merge any local IndexedDB cache if empty on repo
-  const localPdfs = await idbGetPdfs();
-  Object.keys(localPdfs).forEach((wKey) => {
-    const w = parseInt(wKey, 10);
-    if (!result[w] && localPdfs[w]) {
-      result[w] = localPdfs[w];
-    }
-  });
+  // 4. Merge any local IndexedDB cache items
+  const localMap = await idbGetPdfs();
+  for (let w = 1; w <= 12; w++) {
+    const existingIds = new Set(result[w].map((p) => p.id || p.storageName));
+    (localMap[w] || []).forEach((item) => {
+      if (!existingIds.has(item.id) && !existingIds.has(item.storageName)) {
+        result[w].push(item);
+        existingIds.add(item.id);
+      }
+    });
+  }
 
   return result;
 }
 
 export async function uploadWeeklyPdf(week: number, file: File): Promise<WeeklyPdf> {
-  // Read file as base64 Data URL
   const base64Data = await new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => resolve(reader.result as string);
@@ -187,7 +220,9 @@ export async function uploadWeeklyPdf(week: number, file: File): Promise<WeeklyP
     reader.readAsDataURL(file);
   });
 
+  const tempId = `pdf-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
   const pdfRecord: WeeklyPdf = {
+    id: tempId,
     week,
     fileName: file.name,
     fileSize: file.size,
@@ -195,10 +230,8 @@ export async function uploadWeeklyPdf(week: number, file: File): Promise<WeeklyP
     dataUrl: base64Data,
   };
 
-  // Save to IndexedDB
   await idbSavePdf(pdfRecord);
 
-  // Send to server
   try {
     const res = await fetch(`/api/pdfs/${week}`, {
       method: 'POST',
@@ -211,10 +244,12 @@ export async function uploadWeeklyPdf(week: number, file: File): Promise<WeeklyP
     if (res.ok) {
       const data = await res.json();
       if (data && data.pdf) {
-        return {
+        const saved = {
           ...pdfRecord,
           ...data.pdf,
         };
+        await idbSavePdf(saved);
+        return saved;
       }
     }
   } catch (err) {
@@ -224,10 +259,12 @@ export async function uploadWeeklyPdf(week: number, file: File): Promise<WeeklyP
   return pdfRecord;
 }
 
-export async function removeWeeklyPdf(week: number): Promise<void> {
-  await idbDeletePdf(week);
+export async function removeWeeklyPdf(week: number, fileId: string): Promise<void> {
+  await idbDeletePdf(fileId);
   try {
-    await fetch(`/api/pdfs/${week}`, { method: 'DELETE' });
+    await fetch(`/api/pdfs/${week}?id=${encodeURIComponent(fileId)}`, {
+      method: 'DELETE',
+    });
   } catch {
     // ignore
   }

@@ -1,1 +1,752 @@
-[]
+[
+  {
+    "id": "w12-q1",
+    "question": "Under GDPR, which of the following are accurate requirements? (1) Transparency about the collection, use, and storage of personal data. (2) Consumer control over how their data is used.",
+    "type": "single",
+    "options": [
+      "Only (2) is true",
+      "Only (1) is true",
+      "(1) and (2) are true",
+      "(1) and (2) are false"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "GDPR requires transparency about personal data processing and provides individuals with rights and control over how their personal data is processed."
+  },
+  {
+    "id": "w12-q2",
+    "question": "Individuals demand a much higher price to give up their data (WTA) than they are willing to pay to protect it (WTP), a gap attributed to loss aversion. Which concept pairing explains this?",
+    "type": "single",
+    "options": [
+      "Privacy calculus and rational disclosure",
+      "Prospect Theory explains why WTA valuations exceed WTP valuations",
+      "Differential privacy and plausible deniability",
+      "Privacy as a reductionist, derivative right"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Prospect Theory explains why people experience losses more intensely than equivalent gains, potentially making WTA higher than WTP."
+  },
+  {
+    "id": "w12-q3",
+    "question": "Why does understanding users' valuation of personal data protection matter strategically for a business?",
+    "type": "single",
+    "options": [
+      "It helps develop privacy-enhancing initiatives that provide a competitive advantage",
+      "It allows mandating strict data policies without regard to consumer preference",
+      "It enables using personal data for maximum commercial gain",
+      "It facilitates markets where individuals monetize their own data"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Understanding privacy preferences helps businesses develop privacy-enhancing services that build trust and create competitive advantages."
+  },
+  {
+    "id": "w12-q4",
+    "question": "Before disclosing data, individuals weigh perceived risks against expected benefits. Which theory describes this process?",
+    "type": "single",
+    "options": [
+      "Individuals are motivated solely by potential benefits of disclosure",
+      "Individuals make irrational disclosure decisions",
+      "Privacy calculus: a cost-benefit analysis governs the decision to disclose",
+      "Individuals have no control over disclosure"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Privacy calculus describes how individuals weigh the perceived benefits of disclosure against its potential privacy risks."
+  },
+  {
+    "id": "w12-q5",
+    "question": "Which architectural approach minimizes personal data shared with any central authority (e.g., in contact-tracing system design)?",
+    "type": "single",
+    "options": [
+      "Mandatory participation to maximize effectiveness",
+      "Prioritizing public health benefit over privacy protection",
+      "Centralized architecture storing all data with a single authority",
+      "Decentralized, privacy-preserving architecture minimizing data sharing"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "A decentralized architecture can reduce the amount of personal data collected or accessed by a central authority."
+  },
+  {
+    "id": "w12-q6",
+    "question": "People become more risk-averse facing a potential privacy loss than facing an equivalent potential gain. Prospect theory predicts that:",
+    "type": "single",
+    "options": [
+      "Losses are felt more intensely than equivalent gains",
+      "People only maximize financial gains",
+      "Gains and losses are valued equally",
+      "Individuals are more risk-seeking for potential gains"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Prospect Theory describes loss aversion, where equivalent losses generally have a stronger psychological impact than gains."
+  },
+  {
+    "id": "w12-q7",
+    "question": "The same type of personal data is assigned very different worth by different individuals in different contexts. What does this indicate about privacy valuation?",
+    "type": "single",
+    "options": [
+      "It is consistent across individuals and contexts",
+      "It varies based on context and circumstance",
+      "It is influenced by external factors but remains stable over time",
+      "It is determined solely by economic/market factors"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Privacy valuation varies among individuals and depends on the circumstances and context in which data is used."
+  },
+  {
+    "id": "w12-q8",
+    "question": "Which of the following are valid components of responsible privacy protection in ML system design?",
+    "type": "single",
+    "options": [
+      "Safeguarding data privacy within the model itself, alongside responsible data collection and on-device processing where feasible",
+      "Collecting maximum data upfront to improve model accuracy, then restricting access post-training",
+      "Relying solely on legal disclaimers instead of technical safeguards",
+      "Treating privacy as a one-time compliance checkbox at deployment"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Responsible ML design incorporates privacy safeguards, data minimization, and on-device processing where feasible rather than relying only on policies or disclaimers."
+  },
+  {
+    "id": "w12-q9",
+    "question": "WTA valuations tend to be substantially higher than WTP valuations for the same privacy good.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Neither true nor false"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "WTA can exceed WTP because loss aversion and the endowment effect make people demand greater compensation for giving up something they possess."
+  },
+  {
+    "id": "w12-q10",
+    "question": "Under the Digital Personal Data Protection Bill, 2022, the individual whose personal data is processed, and who holds the right to give or withdraw consent, is termed:",
+    "type": "single",
+    "options": [
+      "Data Protection Officer",
+      "Data Processor",
+      "Data Fiduciary",
+      "Data Principal"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "The DPDP Bill, 2022, uses the term Data Principal for the individual to whom the personal data relates."
+  },
+  {
+    "id": "w12-q11",
+    "question": "A person claims that privacy is extremely important but refuses to pay even a small amount to protect it. This behaviour illustrates:",
+    "type": "single",
+    "options": [
+      "Endowment effect",
+      "Privacy paradox",
+      "Data minimization",
+      "Purpose limitation"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The privacy paradox describes the gap between people's stated concern for privacy and their actual disclosure behaviour."
+  },
+  {
+    "id": "w12-q12",
+    "question": "Which statement correctly distinguishes WTP from WTA?",
+    "type": "single",
+    "options": [
+      "WTP is compensation demanded; WTA is the amount paid for protection",
+      "WTP and WTA always have equal values",
+      "WTP is the amount someone will pay for protection; WTA is compensation they will accept for giving up privacy",
+      "WTP measures privacy awareness; WTA measures legal compliance"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "WTP measures willingness to pay to obtain or protect something, while WTA measures the compensation required to give it up."
+  },
+  {
+    "id": "w12-q13",
+    "question": "A person refuses to sell an old trophy for its material value because it has sentimental importance. Which concept explains this?",
+    "type": "single",
+    "options": [
+      "Loss aversion",
+      "Endowment effect",
+      "Privacy calculus",
+      "Stated preference"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The endowment effect occurs when people assign greater value to something simply because they own it."
+  },
+  {
+    "id": "w12-q14",
+    "question": "Why may a person demand ₹5,000 to surrender personal data but be willing to pay only ₹500 to protect it?",
+    "type": "single",
+    "options": [
+      "Privacy always has a fixed market price",
+      "Loss aversion and the endowment effect can increase the perceived cost of giving something up",
+      "WTP is legally required to be lower than WTA",
+      "Data minimization causes the difference"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Loss aversion and the endowment effect can make people demand more compensation for giving up something than they would pay to obtain or protect it."
+  },
+  {
+    "id": "w12-q15",
+    "question": "A survey respondent says privacy is very important but freely shares personal information for discounts. The survey answer is an example of:",
+    "type": "single",
+    "options": [
+      "Revealed preference",
+      "Stated preference",
+      "Endowment effect",
+      "Purpose limitation"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Stated preference refers to what people report in surveys or interviews, rather than what they actually do."
+  },
+  {
+    "id": "w12-q16",
+    "question": "Researchers observe actual purchasing and disclosure choices rather than asking people what they prefer. This measures:",
+    "type": "single",
+    "options": [
+      "Stated preference",
+      "Legal preference",
+      "Revealed preference",
+      "Data portability"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Revealed preference is inferred from people's actual decisions and observed behaviour."
+  },
+  {
+    "id": "w12-q17",
+    "question": "An individual chooses a guaranteed ₹400 rather than a 50% chance of receiving ₹1,000. Which behavioural tendency may explain this choice?",
+    "type": "single",
+    "options": [
+      "Loss aversion and preference for certainty",
+      "Endowment effect only",
+      "Data minimization",
+      "Perfect rationality in every situation"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "People may prefer a certain outcome over a risky alternative because of their attitudes toward risk and uncertainty."
+  },
+  {
+    "id": "w12-q18",
+    "question": "Which statement about privacy valuation is most accurate?",
+    "type": "single",
+    "options": [
+      "Privacy has an identical monetary value for everyone",
+      "Privacy value depends only on the number of records",
+      "Privacy value may change according to the individual and the context",
+      "Privacy can never be studied economically"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Privacy valuation depends on individual preferences, circumstances, perceived risks, and the context of data use."
+  },
+  {
+    "id": "w12-q19",
+    "question": "Before sharing location data, a user compares the benefits of navigation with the risks of being tracked. This is an example of:",
+    "type": "single",
+    "options": [
+      "Privacy calculus",
+      "Endowment effect",
+      "Key escrow",
+      "Data localization"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Privacy calculus involves weighing the expected benefits of sharing data against the associated privacy risks."
+  },
+  {
+    "id": "w12-q20",
+    "question": "Why is a universally accepted monetary valuation model for personal privacy difficult to develop?",
+    "type": "single",
+    "options": [
+      "Personal data has no economic value",
+      "Privacy is context-specific and people's preferences and behaviour differ",
+      "All privacy laws prohibit valuation",
+      "Companies never exchange personal data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Privacy has different values for different individuals and situations, making a universal monetary valuation difficult."
+  },
+  {
+    "id": "w12-q21",
+    "question": "Under the principle of purpose limitation, an organization should:",
+    "type": "single",
+    "options": [
+      "Use personal data for any profitable purpose",
+      "Use personal data only for specified, legitimate purposes",
+      "Store all personal data indefinitely",
+      "Share personal data with every business partner"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Purpose limitation requires personal data to be collected for specified, explicit, legitimate purposes and not used incompatibly with them."
+  },
+  {
+    "id": "w12-q22",
+    "question": "A company collects customers' medical details even though it only needs their email addresses to send receipts. Which principle is being violated?",
+    "type": "single",
+    "options": [
+      "Data minimization",
+      "Availability",
+      "Endowment effect",
+      "Non-repudiation"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Data minimization requires organizations to collect only the personal data necessary for the stated purpose."
+  },
+  {
+    "id": "w12-q23",
+    "question": "Which action best demonstrates transparency in data processing?",
+    "type": "single",
+    "options": [
+      "Hiding data-sharing practices in unclear terms",
+      "Informing customers about data collection, use, and sharing",
+      "Collecting data without informing customers",
+      "Selling data through confidential agreements only"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Transparency means providing clear information about how personal data is collected, used, and shared."
+  },
+  {
+    "id": "w12-q24",
+    "question": "Under the Digital Personal Data Protection Bill, 2022, who is the individual to whom personal data relates?",
+    "type": "single",
+    "options": [
+      "Data Fiduciary",
+      "Data Processor",
+      "Data Principal",
+      "Data Protection Officer"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "The Data Principal is the individual to whom the personal data relates."
+  },
+  {
+    "id": "w12-q25",
+    "question": "A company hires a cloud provider to process customer information on its behalf. Which arrangement is most appropriate?",
+    "type": "single",
+    "options": [
+      "No agreement is needed if the cloud provider is reputable",
+      "Appropriate contractual terms should define processing responsibilities and security obligations",
+      "The cloud provider automatically owns the customer data",
+      "The company no longer has any responsibility for the data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Clear contractual terms help establish the provider's processing responsibilities and the security measures required to protect personal data."
+  },
+  {
+    "id": "w12-q26",
+    "question": "Which statement best explains the difference between legal and ethical data processing?",
+    "type": "single",
+    "options": [
+      "Every legal action is automatically ethical",
+      "Ethical actions never require legal compliance",
+      "An action may be legally permitted but still violate customer trust or ethical expectations",
+      "Ethics applies only when a law has been broken"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Legal compliance does not always guarantee that a data practice is fair, transparent, or consistent with customer expectations."
+  },
+  {
+    "id": "w12-q27",
+    "question": "A company collects customer data for personalized shopping coupons and later shares it with an insurer to calculate premiums without clearly communicating this new use. Which principle is most directly at issue?",
+    "type": "single",
+    "options": [
+      "Purpose limitation",
+      "Availability",
+      "Endowment effect",
+      "Authentication"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Using data collected for coupons for a different purpose, such as insurance risk assessment, raises concerns about purpose limitation."
+  },
+  {
+    "id": "w12-q28",
+    "question": "Which of the following best represents responsible machine-learning privacy design?",
+    "type": "single",
+    "options": [
+      "Collect all available personal data before deciding how to use it",
+      "Depend entirely on privacy notices",
+      "Minimize collected data and implement appropriate technical safeguards",
+      "Ignore privacy risks if the model achieves high accuracy"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "Responsible ML design combines data minimization with appropriate technical and organizational privacy safeguards."
+  },
+  {
+    "id": "w12-q29",
+    "question": "True or False: Under GDPR, transparency and appropriate lawful grounds for processing are important requirements for handling personal data.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Neither true nor false"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "GDPR requires transparent processing and a valid lawful basis for processing personal data."
+  },
+  {
+    "id": "w12-q30",
+    "question": "True or False: Data minimization means collecting as much personal information as possible for potential future use.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Neither true nor false"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Data minimization means limiting collection to data that is adequate, relevant, and necessary for the intended purpose."
+  },
+  {
+    "id": "w12-q31",
+    "question": "What was the central conflict between Apple and the FBI in the San Bernardino case?",
+    "type": "single",
+    "options": [
+      "Apple refused to manufacture phones for government employees",
+      "Apple resisted creating software to bypass iPhone security protections sought for an investigation",
+      "The FBI wanted Apple to stop using smartphones",
+      "Apple refused to encrypt its customers' data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The FBI sought Apple's assistance in accessing a locked iPhone, while Apple argued that creating software to bypass security could threaten user security and privacy."
+  },
+  {
+    "id": "w12-q32",
+    "question": "What was the main concern about creating a permanent encryption backdoor?",
+    "type": "single",
+    "options": [
+      "It would make all devices cheaper",
+      "It could introduce a vulnerability exploitable by hackers or abusive authorities",
+      "It would eliminate the need for passwords",
+      "It would prevent all lawful investigations permanently"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A backdoor could be misused or discovered by unauthorized parties, potentially weakening security for many users."
+  },
+  {
+    "id": "w12-q33",
+    "question": "What does end-to-end encryption generally aim to achieve?",
+    "type": "single",
+    "options": [
+      "Allow every internet provider to read messages",
+      "Ensure that only intended communicating users can decrypt protected messages",
+      "Give governments a universal master key",
+      "Store every message in plaintext"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "End-to-end encryption is designed so that only the intended communicating parties hold the keys needed to read protected messages."
+  },
+  {
+    "id": "w12-q34",
+    "question": "In a key escrow arrangement, a trusted party:",
+    "type": "single",
+    "options": [
+      "Destroys every encryption key",
+      "Stores a copy of a decryption key for authorized access",
+      "Publishes the private key publicly",
+      "Removes encryption from all devices"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Key escrow involves retaining encryption keys with a trusted party so that access may be provided under specified conditions."
+  },
+  {
+    "id": "w12-q35",
+    "question": "What is a major risk of a compromised master key used to access many encrypted devices?",
+    "type": "single",
+    "options": [
+      "Only the key owner's device is affected in every case",
+      "The compromise could expose a large amount of protected information",
+      "Encryption automatically becomes stronger",
+      "All customer data is permanently deleted"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A compromised master key can create widespread exposure because it may provide access to many protected devices or records."
+  },
+  {
+    "id": "w12-q36",
+    "question": "Why did the Snowden revelations matter to technology companies?",
+    "type": "single",
+    "options": [
+      "They eliminated public concerns about surveillance",
+      "They increased concerns about government surveillance and damaged trust in some technology providers",
+      "They made encryption illegal worldwide",
+      "They eliminated competition in cloud services"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The revelations about surveillance programs increased public scrutiny of government access to data and technology companies' handling of user information."
+  },
+  {
+    "id": "w12-q37",
+    "question": "Which statement best describes the difference between targeted access and a permanent backdoor?",
+    "type": "single",
+    "options": [
+      "Both necessarily provide identical access to every device",
+      "Targeted access concerns a specific authorized investigation, while a permanent backdoor creates a broader access mechanism",
+      "A permanent backdoor can only be used by device owners",
+      "Targeted access never requires legal authorization"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Targeted access is limited to a specific case, while a persistent backdoor may create a reusable security weakness with broader consequences."
+  },
+  {
+    "id": "w12-q38",
+    "question": "Which statement best describes Apple's use of privacy as a business strategy?",
+    "type": "single",
+    "options": [
+      "Apple earns all its revenue by selling customer databases",
+      "Privacy can differentiate Apple products and strengthen customer trust",
+      "Apple does not collect any user information",
+      "Privacy has no relationship with customer purchasing decisions"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Privacy can help Apple differentiate its products and build customer trust, making it a potential competitive advantage."
+  },
+  {
+    "id": "w12-q39",
+    "question": "True or False: If a company creates a backdoor for a government, that backdoor is guaranteed to remain inaccessible to criminals and other governments.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Neither true nor false"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "A backdoor may be discovered, stolen, or misused by unauthorized parties, so exclusive access cannot be guaranteed."
+  },
+  {
+    "id": "w12-q40",
+    "question": "True or False: A technology company's privacy policy may be influenced by its business model, regulatory obligations, and competitive interests.",
+    "type": "single",
+    "options": [
+      "True",
+      "False",
+      "Both true and false",
+      "Neither true nor false"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Business incentives, applicable laws, and competitive positioning can all influence a company's privacy decisions."
+  },
+  {
+    "id": "w12-q41",
+    "question": "What was the main privacy-preserving feature of the Apple–Google COVID-19 exposure-notification system?",
+    "type": "single",
+    "options": [
+      "It continuously uploaded every user's GPS location",
+      "It used Bluetooth-based, changing identifiers to detect possible exposure without requiring centralized location tracking",
+      "It published the identities of infected individuals",
+      "It required every user to disclose their medical history publicly"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The system used changing Bluetooth identifiers to detect possible exposure while avoiding the need for centralized GPS location tracking."
+  },
+  {
+    "id": "w12-q42",
+    "question": "Why might a decentralized contact-tracing system improve privacy?",
+    "type": "single",
+    "options": [
+      "It minimizes the personal information that needs to be shared with a central authority",
+      "It makes all users' identities publicly available",
+      "It removes the need for consent or safeguards",
+      "It guarantees that every exposure is detected"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "A decentralized design can reduce the amount of personal information collected or processed by a central authority."
+  },
+  {
+    "id": "w12-q43",
+    "question": "What was a major challenge for the COVID-19 exposure-notification approach?",
+    "type": "single",
+    "options": [
+      "Bluetooth cannot detect nearby devices under any circumstances",
+      "Its effectiveness depended partly on participation and reliable reporting of positive tests",
+      "It required all users to share their exact GPS coordinates",
+      "It automatically diagnosed every infected user"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "The system's usefulness depended on sufficient participation and reliable reporting of positive test results."
+  },
+  {
+    "id": "w12-q44",
+    "question": "What does Apple's App Tracking Transparency feature allow users to do?",
+    "type": "single",
+    "options": [
+      "Prevent every app from collecting any data whatsoever",
+      "Control whether apps can track their activity across other companies' apps and websites for covered tracking purposes",
+      "Automatically delete every online account",
+      "Disable all internet advertising worldwide"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "App Tracking Transparency lets users decide whether to permit covered cross-app and cross-website tracking."
+  },
+  {
+    "id": "w12-q45",
+    "question": "Why did some advertising-dependent companies criticize App Tracking Transparency?",
+    "type": "single",
+    "options": [
+      "It required them to sell Apple devices",
+      "It reduced their ability to track users and measure or personalize advertising",
+      "It made their websites inaccessible",
+      "It prohibited all forms of advertising"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Restrictions on cross-app tracking can limit user profiling, targeted advertising, and advertising measurement."
+  },
+  {
+    "id": "w12-q46",
+    "question": "What is the main purpose of hashing in a CSAM detection system?",
+    "type": "single",
+    "options": [
+      "To convert every image into a publicly readable file",
+      "To create a representation that can help identify known material through matching",
+      "To decrypt every image on a device",
+      "To reveal the identity of every person in an image"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Hashing creates a representation that can be compared against known material to identify potential matches."
+  },
+  {
+    "id": "w12-q47",
+    "question": "How does perceptual or neural hashing differ from a typical cryptographic file hash?",
+    "type": "single",
+    "options": [
+      "It is designed to identify visually similar images despite some changes in their file representation",
+      "It always produces a different result for every visually similar image",
+      "It removes the need for an image database",
+      "It automatically proves that an image is illegal"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Perceptual hashing is designed to recognize visual similarity despite certain image changes, whereas a cryptographic hash is sensitive to changes in the file's contents."
+  },
+  {
+    "id": "w12-q48",
+    "question": "Why are thresholds and human review important in a sensitive content-detection system?",
+    "type": "single",
+    "options": [
+      "They guarantee that false positives are impossible",
+      "They can reduce the risk of incorrect automated reports and provide an additional check before escalation",
+      "They eliminate all privacy concerns",
+      "They allow every image to be reported automatically"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Thresholds and human review can help reduce false positives and provide an additional safeguard before action is taken."
+  },
+  {
+    "id": "w12-q49",
+    "question": "ShopSense sells customer purchasing data to IFA, an insurance company. What is a major ethical concern?",
+    "type": "single",
+    "options": [
+      "Supermarkets cannot use analytics for coupons",
+      "Customers' purchasing data may influence insurance decisions in ways they do not expect or consider fair",
+      "Insurance companies never use data for risk assessment",
+      "Personal data has no commercial value"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Using purchasing histories for insurance decisions may create unexpected consequences for customers and raise concerns about fairness, transparency, and consent."
+  },
+  {
+    "id": "w12-q50",
+    "question": "IFA develops a successful personalized insurance product using data purchased from ShopSense. What is its main strategic vulnerability?",
+    "type": "single",
+    "options": [
+      "Insurance premiums can never be personalized",
+      "It depends on an external data supplier that may increase prices or sell similar data to competitors",
+      "Data can never generate business insights",
+      "It automatically owns all of ShopSense's historical data"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Dependence on an external supplier creates a strategic vulnerability because the supplier controls access to the data and may provide it to competitors."
+  }
+]

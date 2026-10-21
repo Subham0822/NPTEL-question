@@ -64,36 +64,77 @@ async function startServer() {
     res.json({ questions, attempts, sessions });
   });
 
-  // Get uploaded PDFs metadata from repo (checks both public and data folders)
+  // Helper to normalize metadata into Record<number, any[]>
+  function normalizePdfsMetadata(raw: Record<string, any>): Record<number, any[]> {
+    const normalized: Record<number, any[]> = {};
+    for (let w = 1; w <= 12; w++) {
+      const entry = raw[w];
+      if (Array.isArray(entry)) {
+        normalized[w] = entry;
+      } else if (entry && typeof entry === 'object') {
+        normalized[w] = [
+          {
+            ...entry,
+            id: entry.id || `w${w}-${entry.fileName || 'pdf'}`,
+            storageName: entry.storageName || `week-${w}.pdf`,
+            url: entry.url || `/pdfs/${entry.storageName || `week-${w}.pdf`}`,
+          },
+        ];
+      } else {
+        normalized[w] = [];
+      }
+    }
+    return normalized;
+  }
+
+  // Get uploaded PDFs metadata from repo (supports multiple PDFs per week)
   app.get('/api/pdfs', (_req, res) => {
     const dataMeta = readJsonFile<Record<string, any>>(DATA_PDFS_META, {});
     const publicMeta = readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {});
-    const merged = { ...publicMeta, ...dataMeta };
+    const normData = normalizePdfsMetadata(dataMeta);
+    const normPublic = normalizePdfsMetadata(publicMeta);
 
-    // Also auto-detect any week-*.pdf directly on disk in repo
+    // Merge lists by ID/storageName
+    const merged: Record<number, any[]> = {};
     for (let w = 1; w <= 12; w++) {
+      const map = new Map<string, any>();
+      (normPublic[w] || []).forEach((item) => {
+        const key = item.id || item.storageName || item.fileName;
+        map.set(key, item);
+      });
+      (normData[w] || []).forEach((item) => {
+        const key = item.id || item.storageName || item.fileName;
+        if (!map.has(key)) {
+          map.set(key, item);
+        }
+      });
+
+      // Also detect legacy week-{w}.pdf directly on disk if not tracked
       const pubFile = path.join(PUBLIC_PDFS_DIR, `week-${w}.pdf`);
       const dataFile = path.join(DATA_PDFS_DIR, `week-${w}.pdf`);
-      const filePath = fs.existsSync(pubFile) ? pubFile : fs.existsSync(dataFile) ? dataFile : null;
-      if (filePath) {
-        const stats = fs.statSync(filePath);
-        if (!merged[w]) {
-          merged[w] = {
-            week: w,
-            fileName: `week-${w}.pdf`,
-            fileSize: stats.size,
-            uploadedAt: stats.mtime.toISOString(),
-          };
-        } else {
-          merged[w].fileSize = stats.size;
-        }
-        merged[w].url = `/pdfs/week-${w}.pdf`;
+      const legacyPath = fs.existsSync(pubFile) ? pubFile : fs.existsSync(dataFile) ? dataFile : null;
+      const alreadyHasFile = Array.from(map.values()).some(
+        (item) => item.storageName === `week-${w}.pdf`
+      );
+      if (legacyPath && !alreadyHasFile) {
+        const stats = fs.statSync(legacyPath);
+        map.set(`week-${w}.pdf`, {
+          id: `w${w}-legacy`,
+          week: w,
+          fileName: `week-${w}.pdf`,
+          storageName: `week-${w}.pdf`,
+          fileSize: stats.size,
+          uploadedAt: stats.mtime.toISOString(),
+          url: `/pdfs/week-${w}.pdf`,
+        });
       }
+
+      merged[w] = Array.from(map.values());
     }
     res.json(merged);
   });
 
-  // Upload PDF for a specific week (1-12) - saves directly to repository
+  // Upload PDF for a specific week (1-12) - supports adding multiple PDFs
   app.post('/api/pdfs/:week', (req, res) => {
     const week = parseInt(req.params.week, 10);
     if (isNaN(week) || week < 1 || week > 12) {
@@ -109,38 +150,45 @@ async function startServer() {
     try {
       const base64Content = fileData.includes(',') ? fileData.split(',')[1] : fileData;
       const buffer = Buffer.from(base64Content, 'base64');
-      const targetFileName = `week-${week}.pdf`;
 
-      // Save to both repo data/pdfs and public/pdfs
-      fs.writeFileSync(path.join(DATA_PDFS_DIR, targetFileName), buffer);
-      fs.writeFileSync(path.join(PUBLIC_PDFS_DIR, targetFileName), buffer);
+      const safeBase = (fileName || 'document.pdf')
+        .replace(/[^a-zA-Z0-9._-]/g, '_')
+        .replace(/\.pdf$/i, '');
+      const uniqueStorageName = `week-${week}-${Date.now()}-${safeBase}.pdf`;
+
+      // Save to repo data/pdfs and public/pdfs
+      fs.writeFileSync(path.join(DATA_PDFS_DIR, uniqueStorageName), buffer);
+      fs.writeFileSync(path.join(PUBLIC_PDFS_DIR, uniqueStorageName), buffer);
 
       const distPdfsDir = path.join(process.cwd(), 'dist', 'pdfs');
       if (fs.existsSync(distPdfsDir)) {
-        fs.writeFileSync(path.join(distPdfsDir, targetFileName), buffer);
+        fs.writeFileSync(path.join(distPdfsDir, uniqueStorageName), buffer);
       }
 
       const pdfInfo = {
+        id: `pdf-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
         week,
         fileName: fileName || `Week-${week}.pdf`,
+        storageName: uniqueStorageName,
         fileSize: buffer.length,
         uploadedAt: new Date().toISOString(),
-        url: `/pdfs/week-${week}.pdf`,
+        url: `/pdfs/${uniqueStorageName}`,
       };
 
-      const dataMeta = readJsonFile<Record<string, any>>(DATA_PDFS_META, {});
-      dataMeta[week] = pdfInfo;
+      // Update metadata in data/pdfs and public/pdfs
+      const dataMeta = normalizePdfsMetadata(readJsonFile<Record<string, any>>(DATA_PDFS_META, {}));
+      dataMeta[week] = [...(dataMeta[week] || []), pdfInfo];
       writeJsonFile(DATA_PDFS_META, dataMeta);
 
-      const publicMeta = readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {});
-      publicMeta[week] = pdfInfo;
+      const publicMeta = normalizePdfsMetadata(readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {}));
+      publicMeta[week] = [...(publicMeta[week] || []), pdfInfo];
       writeJsonFile(PUBLIC_PDFS_META, publicMeta);
 
       if (fs.existsSync(distPdfsDir)) {
         writeJsonFile(path.join(distPdfsDir, 'metadata.json'), publicMeta);
       }
 
-      res.json({ success: true, pdf: pdfInfo });
+      res.json({ success: true, pdf: pdfInfo, pdfs: publicMeta[week] });
     } catch (err) {
       console.error(`Error saving PDF for week ${week}:`, err);
       res.status(500).json({ error: 'Failed to save PDF' });
@@ -150,9 +198,24 @@ async function startServer() {
   // Get / View / Stream PDF for a week
   app.get('/api/pdfs/:week', (req, res) => {
     const week = parseInt(req.params.week, 10);
-    const pubFile = path.join(PUBLIC_PDFS_DIR, `week-${week}.pdf`);
-    const dataFile = path.join(DATA_PDFS_DIR, `week-${week}.pdf`);
-    const distFile = path.join(process.cwd(), 'dist', 'pdfs', `week-${week}.pdf`);
+    const { id, storageName } = req.query;
+
+    const publicMeta = normalizePdfsMetadata(readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {}));
+    const weekList = publicMeta[week] || [];
+
+    let targetItem = null;
+    if (id) {
+      targetItem = weekList.find((p) => p.id === id);
+    } else if (storageName) {
+      targetItem = weekList.find((p) => p.storageName === storageName);
+    } else if (weekList.length > 0) {
+      targetItem = weekList[0];
+    }
+
+    const fileNameToServe = targetItem ? targetItem.storageName : `week-${week}.pdf`;
+    const pubFile = path.join(PUBLIC_PDFS_DIR, fileNameToServe);
+    const dataFile = path.join(DATA_PDFS_DIR, fileNameToServe);
+    const distFile = path.join(process.cwd(), 'dist', 'pdfs', fileNameToServe);
     const targetPath = fs.existsSync(pubFile)
       ? pubFile
       : fs.existsSync(dataFile)
@@ -166,22 +229,32 @@ async function startServer() {
       return;
     }
 
-    const meta = readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {});
-    const fileName = meta[week]?.fileName || `week-${week}.pdf`;
+    const downloadName = targetItem?.fileName || fileNameToServe;
     res.setHeader('Content-Type', 'application/pdf');
     const disposition = req.query.download === '1' ? 'attachment' : 'inline';
-    res.setHeader('Content-Disposition', `${disposition}; filename="${encodeURIComponent(fileName)}"`);
+    res.setHeader('Content-Disposition', `${disposition}; filename="${encodeURIComponent(downloadName)}"`);
     res.sendFile(targetPath);
   });
 
-  // Delete PDF for a week
+  // Delete a specific PDF for a week
   app.delete('/api/pdfs/:week', (req, res) => {
     const week = parseInt(req.params.week, 10);
-    const targetFileName = `week-${week}.pdf`;
+    const fileId = (req.query.id as string) || (req.body && req.body.id);
+
+    const publicMeta = normalizePdfsMetadata(readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {}));
+    const dataMeta = normalizePdfsMetadata(readJsonFile<Record<string, any>>(DATA_PDFS_META, {}));
+
+    const currentList = publicMeta[week] || [];
+    const itemToDelete = fileId
+      ? currentList.find((p) => p.id === fileId || p.storageName === fileId)
+      : currentList[0];
+
+    const storageNameToDelete = itemToDelete?.storageName || fileId || `week-${week}.pdf`;
+
     [
-      path.join(DATA_PDFS_DIR, targetFileName),
-      path.join(PUBLIC_PDFS_DIR, targetFileName),
-      path.join(process.cwd(), 'dist', 'pdfs', targetFileName),
+      path.join(DATA_PDFS_DIR, storageNameToDelete),
+      path.join(PUBLIC_PDFS_DIR, storageNameToDelete),
+      path.join(process.cwd(), 'dist', 'pdfs', storageNameToDelete),
     ].forEach((filePath) => {
       if (fs.existsSync(filePath)) {
         try {
@@ -192,20 +265,27 @@ async function startServer() {
       }
     });
 
-    const dataMeta = readJsonFile<Record<string, any>>(DATA_PDFS_META, {});
-    delete dataMeta[week];
-    writeJsonFile(DATA_PDFS_META, dataMeta);
+    if (fileId) {
+      publicMeta[week] = (publicMeta[week] || []).filter(
+        (p) => p.id !== fileId && p.storageName !== fileId
+      );
+      dataMeta[week] = (dataMeta[week] || []).filter(
+        (p) => p.id !== fileId && p.storageName !== fileId
+      );
+    } else {
+      publicMeta[week] = [];
+      dataMeta[week] = [];
+    }
 
-    const publicMeta = readJsonFile<Record<string, any>>(PUBLIC_PDFS_META, {});
-    delete publicMeta[week];
     writeJsonFile(PUBLIC_PDFS_META, publicMeta);
+    writeJsonFile(DATA_PDFS_META, dataMeta);
 
     const distPdfsDir = path.join(process.cwd(), 'dist', 'pdfs');
     if (fs.existsSync(distPdfsDir)) {
       writeJsonFile(path.join(distPdfsDir, 'metadata.json'), publicMeta);
     }
 
-    res.json({ success: true });
+    res.json({ success: true, remaining: publicMeta[week] });
   });
 
   // Sync / save all data to directory files
@@ -374,7 +454,10 @@ async function startServer() {
   // Vite middleware in dev or static serving in production
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: false,
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
