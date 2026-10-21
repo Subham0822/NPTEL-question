@@ -58,26 +58,26 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs"
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200 dark:border-slate-800 animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800 mb-5">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-100">
+            <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-0.5 rounded-full border border-indigo-100 dark:border-indigo-800/60">
               Configure Practice
             </span>
-            <h2 className="text-lg font-bold text-slate-900 mt-1">{getTargetTitle()}</h2>
-            <p className="text-xs text-slate-500">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white mt-1">{getTargetTitle()}</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               {availableCount} question{availableCount > 1 ? 's' : ''} available in this pool
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+            className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -86,7 +86,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
         <div className="space-y-5">
           {/* Mode Selection */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Practice Mode
             </label>
             <div className="grid grid-cols-2 gap-3">
@@ -95,15 +95,15 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                 onClick={() => setMode('practice')}
                 className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
                   mode === 'practice'
-                    ? 'border-indigo-600 bg-indigo-50/60 ring-2 ring-indigo-500/20'
-                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                    ? 'border-indigo-600 dark:border-indigo-500 bg-indigo-50/60 dark:bg-indigo-950/40 ring-2 ring-indigo-500/20'
+                    : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-800/50'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-bold text-slate-900">Practice Mode</span>
-                  <BookOpen className="w-4 h-4 text-indigo-600" />
+                  <span className="text-sm font-bold text-slate-900 dark:text-white">Practice Mode</span>
+                  <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 </div>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                   Immediate feedback after each question with explanations.
                 </p>
               </button>
@@ -113,15 +113,15 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                 onClick={() => setMode('exam')}
                 className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
                   mode === 'exam'
-                    ? 'border-indigo-600 bg-indigo-50/60 ring-2 ring-indigo-500/20'
-                    : 'border-slate-200 hover:border-slate-300 bg-white'
+                    ? 'border-indigo-600 dark:border-indigo-500 bg-indigo-50/60 dark:bg-indigo-950/40 ring-2 ring-indigo-500/20'
+                    : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-800/50'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-bold text-slate-900">Exam Mode</span>
-                  <Clock className="w-4 h-4 text-indigo-600" />
+                  <span className="text-sm font-bold text-slate-900 dark:text-white">Exam Mode</span>
+                  <Clock className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                 </div>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                   Simulate test conditions. Full review at the end.
                 </p>
               </button>
@@ -130,7 +130,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
 
           {/* Question Type Filter */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Question Type
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -140,7 +140,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                 className={`py-2 px-1 text-center rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   typeFilter === 'all'
                     ? 'bg-indigo-600 text-white border-indigo-600'
-                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
                 }`}
               >
                 All Types
@@ -151,7 +151,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                 className={`py-2 px-1 text-center rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   typeFilter === 'single'
                     ? 'bg-indigo-600 text-white border-indigo-600'
-                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
                 }`}
               >
                 Single Only
@@ -162,7 +162,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                 className={`py-2 px-1 text-center rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   typeFilter === 'multiple'
                     ? 'bg-indigo-600 text-white border-indigo-600'
-                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
                 }`}
               >
                 Multiple Only
@@ -172,7 +172,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
 
           {/* Number of Questions */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Number of Questions
             </label>
             <div className="grid grid-cols-5 gap-2">
@@ -184,7 +184,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                   className={`py-2 px-1 text-center rounded-xl border text-xs font-semibold transition-colors cursor-pointer capitalize ${
                     questionCountType === opt
                       ? 'bg-indigo-600 text-white border-indigo-600'
-                      : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                      : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
                   }`}
                 >
                   {opt === 'all' ? `All (${availableCount})` : opt}
@@ -194,23 +194,23 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
 
             {questionCountType === 'custom' && (
               <div className="mt-2.5 flex items-center space-x-2">
-                <span className="text-xs text-slate-600">Enter count:</span>
+                <span className="text-xs text-slate-600 dark:text-slate-400">Enter count:</span>
                 <input
                   type="number"
                   min={1}
                   max={availableCount}
                   value={customCount}
                   onChange={(e) => setCustomCount(Math.max(1, parseInt(e.target.value, 10) || 1))}
-                  className="w-24 px-2.5 py-1 text-xs rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500"
+                  className="w-24 px-2.5 py-1 text-xs rounded-lg border border-slate-300 dark:border-slate-700 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500"
                 />
-                <span className="text-xs text-slate-400">max {availableCount}</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500">max {availableCount}</span>
               </div>
             )}
           </div>
 
           {/* Question Order & Randomization */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Question Order
             </label>
             <div className="grid grid-cols-2 gap-3">
@@ -220,7 +220,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                 className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer flex items-center justify-center space-x-1.5 ${
                   order === 'sequential'
                     ? 'bg-indigo-600 text-white border-indigo-600'
-                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
                 }`}
               >
                 <span>Sequential</span>
@@ -232,7 +232,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                 className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer flex items-center justify-center space-x-1.5 ${
                   order === 'random'
                     ? 'bg-indigo-600 text-white border-indigo-600'
-                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
                 }`}
               >
                 <Shuffle className="w-3.5 h-3.5" />
@@ -246,9 +246,9 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                 type="checkbox"
                 checked={shuffleOptions}
                 onChange={(e) => setShuffleOptions(e.target.checked)}
-                className="w-4 h-4 rounded text-indigo-600 border-slate-300 focus:ring-indigo-500 cursor-pointer"
+                className="w-4 h-4 rounded text-indigo-600 border-slate-300 dark:border-slate-700 dark:bg-slate-800 focus:ring-indigo-500 cursor-pointer"
               />
-              <span className="text-xs text-slate-700 font-medium">
+              <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
                 Randomize answer choices inside each question
               </span>
             </label>
@@ -256,8 +256,8 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
 
           {/* Timer (Exam Mode only) */}
           {mode === 'exam' && (
-            <div className="pt-2 border-t border-slate-100">
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+            <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Time Limit (Exam Mode)
               </label>
               <div className="grid grid-cols-4 gap-2">
@@ -274,7 +274,7 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
                     className={`py-2 px-1 text-center rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                       timerMinutes === t.val
                         ? 'bg-indigo-600 text-white border-indigo-600'
-                        : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                        : 'bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
                     }`}
                   >
                     {t.label}
@@ -286,11 +286,11 @@ export const QuizSetupModal: React.FC<QuizSetupModalProps> = ({
         </div>
 
         {/* Action Button */}
-        <div className="mt-7 pt-4 border-t border-slate-100 flex items-center justify-end space-x-3">
+        <div className="mt-7 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-end space-x-3">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+            className="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             Cancel
           </button>

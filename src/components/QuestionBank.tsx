@@ -215,11 +215,11 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 flex items-center space-x-2.5">
-            <Layers className="w-7 h-7 text-indigo-600" />
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center space-x-2.5">
+            <Layers className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />
             <span>Question Bank</span>
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
             Browse, search, and practice questions from the repository JSON files.
           </p>
         </div>
@@ -239,7 +239,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
               <button
                 type="button"
                 onClick={handleExportJson}
-                className="px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 rounded-xl text-xs font-semibold flex items-center space-x-1.5 cursor-pointer shadow-xs transition-colors"
+                className="px-3 py-2 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 rounded-xl text-xs font-semibold flex items-center space-x-1.5 cursor-pointer shadow-xs transition-colors"
                 title="Download current filtered questions as JSON"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -251,7 +251,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
       </div>
 
       {/* Filters Bar */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-4 shadow-xs mb-4 space-y-3">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-4 shadow-xs mb-4 space-y-3">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
           {/* Search Input */}
           <div className="md:col-span-6 relative">
@@ -261,7 +261,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search question statement, options, or explanation..."
-              className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-hidden bg-slate-50/50"
+              className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-hidden bg-slate-50/50 dark:bg-slate-800/60 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
             />
           </div>
 
@@ -270,7 +270,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
             <select
               value={selectedSection}
               onChange={(e) => setSelectedSection(e.target.value)}
-              className="w-full py-2 px-3 text-xs font-semibold rounded-xl border border-slate-300 bg-slate-50/50 text-slate-700 focus:ring-2 focus:ring-indigo-500 outline-hidden cursor-pointer"
+              className="w-full py-2 px-3 text-xs font-semibold rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 outline-hidden cursor-pointer"
             >
               <option value="all">All Questions Section (all-questions.json)</option>
               <option value="combined_weeks">Combined Course Weeks (Weeks 1–12)</option>
@@ -289,7 +289,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value as 'all' | 'single' | 'multiple')}
-              className="w-full py-2 px-3 text-xs font-semibold rounded-xl border border-slate-300 bg-slate-50/50 text-slate-700 focus:ring-2 focus:ring-indigo-500 outline-hidden cursor-pointer"
+              className="w-full py-2 px-3 text-xs font-semibold rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/60 text-slate-700 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 outline-hidden cursor-pointer"
             >
               <option value="all">All Question Types</option>
               <option value="single">Single Answer Only</option>
@@ -299,18 +299,18 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
         </div>
 
         {/* Selection & Count Summary Toolbar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-2.5 border-t border-slate-100 text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-2.5 border-t border-slate-100 dark:border-slate-800 text-xs">
           <div className="flex items-center space-x-3">
             <button
               type="button"
               onClick={handleToggleSelectAllFiltered}
               disabled={filteredQuestions.length === 0}
-              className="flex items-center space-x-2 text-slate-700 hover:text-indigo-600 font-semibold cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed select-none transition-colors"
+              className="flex items-center space-x-2 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-semibold cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed select-none transition-colors"
             >
               {isAllFilteredSelected ? (
-                <CheckSquare className="w-4 h-4 text-indigo-600" />
+                <CheckSquare className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
               ) : isSomeFilteredSelected ? (
-                <MinusSquare className="w-4 h-4 text-indigo-600" />
+                <MinusSquare className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
               ) : (
                 <Square className="w-4 h-4 text-slate-400" />
               )}
@@ -323,11 +323,11 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
 
             {selectedIds.size > 0 && (
               <>
-                <span className="text-slate-300">|</span>
+                <span className="text-slate-300 dark:text-slate-700">|</span>
                 <button
                   type="button"
                   onClick={handleDeselectAll}
-                  className="text-slate-500 hover:text-slate-800 underline cursor-pointer"
+                  className="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 underline cursor-pointer"
                 >
                   Clear selection ({selectedIds.size})
                 </button>
@@ -335,11 +335,11 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
             )}
           </div>
 
-          <div className="flex items-center space-x-3 text-slate-500">
+          <div className="flex items-center space-x-3 text-slate-500 dark:text-slate-400">
             <div>
-              Showing <span className="font-bold text-slate-800">{filteredQuestions.length}</span> question{filteredQuestions.length !== 1 ? 's' : ''}
+              Showing <span className="font-bold text-slate-800 dark:text-slate-200">{filteredQuestions.length}</span> question{filteredQuestions.length !== 1 ? 's' : ''}
               {selectedIds.size > 0 && (
-                <span className="ml-2 font-bold text-indigo-700 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-md">
+                <span className="ml-2 font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-100 dark:border-indigo-800/60 px-2 py-0.5 rounded-md">
                   {selectedIds.size} selected
                 </span>
               )}
@@ -348,7 +348,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
               <button
                 type="button"
                 onClick={() => setSearchTerm('')}
-                className="text-indigo-600 hover:text-indigo-800 font-medium cursor-pointer"
+                className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium cursor-pointer"
               >
                 Clear search
               </button>
@@ -426,10 +426,10 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
 
       {/* Questions List */}
       {filteredQuestions.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center shadow-xs">
-          <Filter className="w-10 h-10 text-slate-300 mx-auto mb-3" />
-          <h3 className="text-sm font-bold text-slate-700">No Questions Found</h3>
-          <p className="text-xs text-slate-400 mt-1">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-12 text-center shadow-xs">
+          <Filter className="w-10 h-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+          <h3 className="text-sm font-bold text-slate-700 dark:text-slate-200">No Questions Found</h3>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
             Try adjusting your search criteria or selecting a different week module.
           </p>
         </div>
@@ -444,10 +444,10 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
               <div
                 key={q.id || idx}
                 id={`question-item-${q.id}`}
-                className={`bg-white rounded-2xl border p-5 shadow-xs transition-all ${
+                className={`bg-white dark:bg-slate-900 rounded-2xl border p-5 shadow-xs transition-all ${
                   isSelected
-                    ? 'border-indigo-400 bg-indigo-50/15 ring-1 ring-indigo-400/40 shadow-sm'
-                    : 'border-slate-200 hover:border-slate-300'
+                    ? 'border-indigo-400 bg-indigo-50/15 dark:bg-indigo-950/20 ring-1 ring-indigo-400/40 shadow-sm'
+                    : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 {/* Card Header */}
@@ -460,27 +460,27 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
                         id={`checkbox-q-${q.id}`}
                         checked={isSelected}
                         onChange={() => toggleSelect(q.id)}
-                        className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 cursor-pointer accent-indigo-600"
+                        className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 dark:border-slate-700 dark:bg-slate-800 cursor-pointer accent-indigo-600"
                         aria-label={`Select question ${idx + 1}`}
                       />
                       <label
                         htmlFor={`checkbox-q-${q.id}`}
-                        className="text-xs font-bold text-slate-400 cursor-pointer select-none"
+                        className="text-xs font-bold text-slate-400 dark:text-slate-500 cursor-pointer select-none"
                       >
                         #{idx + 1}
                       </label>
                     </div>
 
                     {typeof q.week === 'number' ? (
-                      <span className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                      <span className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800/60">
                         Week {q.week}
                       </span>
                     ) : q.id?.startsWith('all-') || q.week === 'all' ? (
-                      <span className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 text-indigo-800 border border-indigo-200">
+                      <span className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-800 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60">
                         All Questions Section
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                      <span className="px-2 py-0.5 rounded-md text-[11px] font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60">
                         Test Data
                       </span>
                     )}
@@ -488,18 +488,18 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
                     <span
                       className={`text-[11px] font-semibold px-2 py-0.5 rounded-md border flex items-center space-x-1 ${
                         isMultiple
-                          ? 'bg-amber-50/70 text-amber-800 border-amber-200'
-                          : 'bg-slate-100 text-slate-700 border-slate-200'
+                          ? 'bg-amber-50/70 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-800/60'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700'
                       }`}
                     >
                       {isMultiple ? (
                         <>
-                          <CheckSquare className="w-3 h-3 text-amber-600" />
+                          <CheckSquare className="w-3 h-3 text-amber-600 dark:text-amber-400" />
                           <span>Multiple Answer</span>
                         </>
                       ) : (
                         <>
-                          <Circle className="w-3 h-3 text-slate-500" />
+                          <Circle className="w-3 h-3 text-slate-500 dark:text-slate-400" />
                           <span>Single Answer</span>
                         </>
                       )}
@@ -510,7 +510,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
                     <button
                       type="button"
                       onClick={() => onPracticeSingle(q)}
-                      className="px-2.5 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 rounded-lg text-xs font-semibold flex items-center space-x-1 cursor-pointer transition-colors"
+                      className="px-2.5 py-1 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 rounded-lg text-xs font-semibold flex items-center space-x-1 cursor-pointer transition-colors"
                       title="Practice this question"
                     >
                       <Play className="w-3 h-3 fill-current" />
@@ -521,7 +521,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
                     <button
                       type="button"
                       onClick={() => handleRequestDeleteSingle(q)}
-                      className="p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                      className="p-1 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50 rounded-lg transition-colors cursor-pointer"
                       title="Delete this question"
                       aria-label="Delete question"
                     >
@@ -531,7 +531,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
                     <button
                       type="button"
                       onClick={() => setExpandedId(isExpanded ? null : q.id)}
-                      className="p-1 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 cursor-pointer"
+                      className="p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
                       title={isExpanded ? 'Collapse' : 'Expand'}
                     >
                       {isExpanded ? (
@@ -544,7 +544,7 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
                 </div>
 
                 {/* Question Statement */}
-                <h3 className="text-sm font-medium text-slate-900 leading-relaxed mb-3">
+                <h3 className="text-sm font-medium text-slate-900 dark:text-white leading-relaxed mb-3">
                   {q.question}
                 </h3>
 
@@ -561,16 +561,16 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
                         key={optIdx}
                         className={`p-2.5 rounded-xl border flex items-start space-x-2 transition-colors ${
                           isCorrect
-                            ? 'bg-emerald-50/70 border-emerald-300 text-emerald-950 font-medium'
-                            : 'bg-slate-50 border-slate-200 text-slate-700'
+                            ? 'bg-emerald-50/70 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800/60 text-emerald-950 dark:text-emerald-200 font-medium'
+                            : 'bg-slate-50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300'
                         }`}
                       >
-                        <span className="font-bold text-slate-400 shrink-0">
+                        <span className="font-bold text-slate-400 dark:text-slate-500 shrink-0">
                           {letter}.
                         </span>
                         <span className="flex-1">{opt}</span>
                         {isCorrect && (
-                          <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/70 px-1.5 py-0.5 rounded shrink-0">
+                          <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100/70 dark:bg-emerald-900/60 px-1.5 py-0.5 rounded shrink-0">
                             Correct
                           </span>
                         )}
@@ -581,10 +581,10 @@ export const QuestionBank: React.FC<QuestionBankProps> = ({
 
                 {/* Explanation */}
                 {q.explanation && (isExpanded || true) && (
-                  <div className="mt-3 p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 flex items-start space-x-2">
+                  <div className="mt-3 p-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 rounded-xl text-xs text-slate-700 dark:text-slate-300 flex items-start space-x-2">
                     <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
                     <div className="leading-relaxed">
-                      <span className="font-bold text-slate-800 mr-1">Explanation:</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200 mr-1">Explanation:</span>
                       {q.explanation}
                     </div>
                   </div>

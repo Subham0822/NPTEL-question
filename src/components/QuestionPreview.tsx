@@ -222,28 +222,28 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
 
   return (
     <div
-      className={`bg-white rounded-2xl border p-5 transition-all shadow-xs relative ${
-        isDuplicate ? 'border-amber-300 bg-amber-50/20' : 'border-slate-200'
+      className={`bg-white dark:bg-slate-900 rounded-2xl border p-5 transition-all shadow-xs relative ${
+        isDuplicate ? 'border-amber-300 dark:border-amber-700/60 bg-amber-50/20 dark:bg-amber-950/20' : 'border-slate-200 dark:border-slate-800'
       }`}
     >
       <div className="flex items-start justify-between gap-3 mb-2">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="px-2 py-0.5 bg-slate-100 text-slate-700 text-xs font-bold rounded-md">
+          <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-md">
             #{index + 1}
           </span>
 
           <span
             className={`px-2 py-0.5 text-xs font-semibold rounded-md border ${
               isMultiple
-                ? 'bg-amber-50 text-amber-800 border-amber-200'
-                : 'bg-indigo-50 text-indigo-700 border-indigo-100'
+                ? 'bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-800/60'
+                : 'bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border-indigo-100 dark:border-indigo-800/60'
             }`}
           >
             {isMultiple ? 'Multiple Answer' : 'Single Answer'}
           </span>
 
           {isDuplicate && (
-            <span className="px-2 py-0.5 bg-amber-100 text-amber-800 text-[11px] font-semibold rounded-md">
+            <span className="px-2 py-0.5 bg-amber-100 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200 text-[11px] font-semibold rounded-md">
               Duplicate Question
             </span>
           )}
@@ -253,7 +253,7 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
           <button
             type="button"
             onClick={() => setIsEditing(true)}
-            className="p-1.5 text-slate-400 hover:text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors cursor-pointer"
+            className="p-1.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-950/60 transition-colors cursor-pointer"
             title="Edit Question"
           >
             <Edit2 className="w-3.5 h-3.5" />
@@ -261,7 +261,7 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
           <button
             type="button"
             onClick={onDelete}
-            className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
+            className="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/60 transition-colors cursor-pointer"
             title="Delete from preview"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -270,13 +270,13 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
       </div>
 
       {/* Question Body */}
-      <h4 className="text-sm font-medium text-slate-900 leading-relaxed mb-3">
+      <h4 className="text-sm font-medium text-slate-900 dark:text-white leading-relaxed mb-3">
         {question.question}
       </h4>
 
       {isMultiple && (
-        <div className="mb-2 text-[11px] font-semibold text-amber-700 flex items-center space-x-1">
-          <CheckSquare className="w-3 h-3 text-amber-600" />
+        <div className="mb-2 text-[11px] font-semibold text-amber-700 dark:text-amber-400 flex items-center space-x-1">
+          <CheckSquare className="w-3 h-3 text-amber-600 dark:text-amber-400" />
           <span>Select all that apply.</span>
         </div>
       )}
@@ -294,15 +294,15 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
               key={oIdx}
               className={`p-2.5 rounded-xl border flex items-center space-x-2 transition-colors ${
                 isCorrect
-                  ? 'border-emerald-300 bg-emerald-50/70 text-emerald-950 font-medium'
-                  : 'border-slate-200 bg-slate-50 text-slate-600'
+                  ? 'border-emerald-300 dark:border-emerald-800/60 bg-emerald-50/70 dark:bg-emerald-950/40 text-emerald-950 dark:text-emerald-100 font-medium'
+                  : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300'
               }`}
             >
               <div className="shrink-0">
                 {isMultiple ? (
                   <div
                     className={`w-4 h-4 rounded border flex items-center justify-center text-[10px] ${
-                      isCorrect ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-slate-300 bg-white'
+                      isCorrect ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800'
                     }`}
                   >
                     {isCorrect && <Check className="w-3 h-3 stroke-[3]" />}
@@ -310,7 +310,7 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
                 ) : (
                   <div
                     className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                      isCorrect ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-slate-300 bg-white'
+                      isCorrect ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800'
                     }`}
                   >
                     {isCorrect && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
@@ -318,11 +318,11 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
                 )}
               </div>
 
-              <span className="font-bold text-[11px] text-slate-400 w-3">{letter}.</span>
+              <span className="font-bold text-[11px] text-slate-400 dark:text-slate-500 w-3">{letter}.</span>
               <span className="truncate flex-1">{opt}</span>
 
               {isCorrect && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/80 px-1.5 py-0.5 rounded shrink-0">
+                <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100/80 dark:bg-emerald-900/60 px-1.5 py-0.5 rounded shrink-0">
                   Correct
                 </span>
               )}
@@ -333,10 +333,10 @@ export const QuestionPreview: React.FC<QuestionPreviewProps> = ({
 
       {/* Explanation */}
       {question.explanation && (
-        <div className="mt-3 p-2.5 bg-amber-50/60 border border-amber-200/80 rounded-xl text-xs text-amber-950 flex items-start space-x-2">
-          <Lightbulb className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+        <div className="mt-3 p-2.5 bg-amber-50/60 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60 rounded-xl text-xs text-amber-950 dark:text-amber-200 flex items-start space-x-2">
+          <Lightbulb className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
           <div className="leading-relaxed">
-            <span className="font-semibold text-amber-900 mr-1">Explanation:</span>
+            <span className="font-semibold text-amber-900 dark:text-amber-300 mr-1">Explanation:</span>
             {question.explanation}
           </div>
         </div>

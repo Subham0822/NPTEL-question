@@ -24,9 +24,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Practice Modules</h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Browse and practice from the dedicated <span className="font-semibold text-slate-700">All Questions</span> section or any of the 12 weekly course modules.
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Practice Modules</h1>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Browse and practice from the dedicated <span className="font-semibold text-slate-700 dark:text-slate-300">All Questions</span> section or any of the 12 weekly course modules.
           </p>
         </div>
 
@@ -45,9 +45,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <button
             type="button"
             onClick={() => onImportForWeek('all')}
-            className="px-4 py-2.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-semibold rounded-xl shadow-xs transition-colors flex items-center space-x-1.5 cursor-pointer"
+            className="px-4 py-2.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 text-xs font-semibold rounded-xl shadow-xs transition-colors flex items-center space-x-1.5 cursor-pointer"
           >
-            <UploadCloud className="w-3.5 h-3.5 text-indigo-600" />
+            <UploadCloud className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
             <span>Import</span>
           </button>
         </div>

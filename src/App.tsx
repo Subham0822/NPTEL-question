@@ -20,8 +20,11 @@ import { QuizSetupModal } from './components/QuizSetupModal';
 import { ConfirmDialog } from './components/ConfirmDialog';
 import { TestDataSection } from './components/TestDataSection';
 import { WeeklyPdfs } from './components/WeeklyPdfs';
+import { useTheme } from './lib/theme';
 
 export default function App() {
+  const { isDark, toggleTheme } = useTheme();
+
   // Navigation view state
   const [currentView, setCurrentView] = useState<
     'dashboard' | 'importer' | 'bank' | 'test_data' | 'pdfs' | 'quiz' | 'result'
@@ -328,7 +331,7 @@ export default function App() {
   const currentQ = activeQuizQuestions[currentQuestionIndex];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col font-sans text-slate-900 dark:text-slate-100 transition-colors duration-150">
       {/* Top Navigation */}
       <Navbar
         currentView={
@@ -336,6 +339,8 @@ export default function App() {
         }
         onNavigate={(view) => setCurrentView(view)}
         totalCourseQuestions={allQuestionsCount + totalWeeklyQuestions}
+        isDark={isDark}
+        onToggleTheme={toggleTheme}
       />
 
       {/* Main Content Area */}

@@ -96,13 +96,13 @@ export const WeeklyPdfs: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
           Weekly PDFs
         </h1>
       </div>
 
       {loading ? (
-        <div className="py-12 text-center text-slate-500 text-sm">
+        <div className="py-12 text-center text-slate-500 dark:text-slate-400 text-sm">
           Loading PDFs...
         </div>
       ) : (
@@ -114,17 +114,17 @@ export const WeeklyPdfs: React.FC = () => {
             return (
               <div
                 key={week}
-                className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-xs transition-shadow hover:shadow-sm"
+                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between shadow-xs transition-shadow hover:shadow-sm"
               >
                 <div>
                   {/* Week Card Header */}
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-2">
-                      <span className="font-semibold text-slate-900 text-base">
+                      <span className="font-semibold text-slate-900 dark:text-white text-base">
                         Week {week}
                       </span>
                       {weekPdfs.length > 0 && (
-                        <span className="px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">
+                        <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
                           {weekPdfs.length} {weekPdfs.length === 1 ? 'PDF' : 'PDFs'}
                         </span>
                       )}
@@ -134,7 +134,7 @@ export const WeeklyPdfs: React.FC = () => {
                       type="button"
                       disabled={isUploading}
                       onClick={() => fileInputRefs.current[week]?.click()}
-                      className="inline-flex items-center space-x-1 px-2.5 py-1 text-xs font-medium text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50 rounded-lg cursor-pointer transition-colors disabled:opacity-50"
+                      className="inline-flex items-center space-x-1 px-2.5 py-1 text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 rounded-lg cursor-pointer transition-colors disabled:opacity-50"
                       title="Add PDF"
                     >
                       <Plus className="w-3.5 h-3.5" />
@@ -160,18 +160,18 @@ export const WeeklyPdfs: React.FC = () => {
                       {weekPdfs.map((pdf) => (
                         <div
                           key={pdf.id}
-                          className="flex items-center justify-between p-3 bg-slate-50 border border-slate-100 rounded-xl hover:border-slate-200 transition-colors"
+                          className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 rounded-xl hover:border-slate-200 dark:hover:border-slate-700 transition-colors"
                         >
                           <div className="flex items-center space-x-2.5 min-w-0 flex-1 mr-2">
                             <FileText className="w-5 h-5 text-rose-500 shrink-0" />
                             <div className="min-w-0 flex-1">
                               <p
-                                className="text-xs font-medium text-slate-800 truncate"
+                                className="text-xs font-medium text-slate-800 dark:text-slate-200 truncate"
                                 title={pdf.fileName}
                               >
                                 {pdf.fileName}
                               </p>
-                              <p className="text-[11px] text-slate-400">
+                              <p className="text-[11px] text-slate-400 dark:text-slate-500">
                                 {formatFileSize(pdf.fileSize)}
                               </p>
                             </div>
@@ -181,7 +181,7 @@ export const WeeklyPdfs: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => setActiveViewPdf(pdf)}
-                              className="px-2 py-1 text-xs font-semibold text-indigo-600 hover:bg-indigo-50 rounded-lg cursor-pointer transition-colors inline-flex items-center space-x-1"
+                              className="px-2 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 rounded-lg cursor-pointer transition-colors inline-flex items-center space-x-1"
                               title="View PDF"
                             >
                               <Eye className="w-3.5 h-3.5" />
@@ -191,7 +191,7 @@ export const WeeklyPdfs: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => handleDownload(pdf)}
-                              className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-200 rounded-lg cursor-pointer transition-colors"
+                              className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg cursor-pointer transition-colors"
                               title="Download PDF"
                             >
                               <Download className="w-3.5 h-3.5" />
@@ -200,7 +200,7 @@ export const WeeklyPdfs: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => handleDelete(week, pdf.id)}
-                              className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg cursor-pointer transition-colors"
+                              className="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50 rounded-lg cursor-pointer transition-colors"
                               title="Delete PDF"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
@@ -210,8 +210,8 @@ export const WeeklyPdfs: React.FC = () => {
                       ))}
                     </div>
                   ) : (
-                    <div className="p-4 bg-slate-50 border border-dashed border-slate-200 rounded-xl text-center">
-                      <p className="text-xs text-slate-500">
+                    <div className="p-4 bg-slate-50 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl text-center">
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
                         {isUploading ? 'Uploading...' : 'No PDFs added yet'}
                       </p>
                     </div>
@@ -227,13 +227,13 @@ export const WeeklyPdfs: React.FC = () => {
       {activeViewPdf !== null && (
         <div className="fixed inset-0 z-50 flex flex-col bg-slate-900/80 backdrop-blur-xs">
           {/* Viewer Toolbar */}
-          <div className="bg-white border-b border-slate-200 px-4 sm:px-6 py-3 flex items-center justify-between">
+          <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-3 flex items-center justify-between">
             <div className="flex items-center space-x-3 min-w-0">
-              <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
                 <FileText className="w-5 h-5" />
               </div>
               <div className="min-w-0">
-                <h2 className="text-sm font-bold text-slate-900 truncate">
+                <h2 className="text-sm font-bold text-slate-900 dark:text-white truncate">
                   Week {activeViewPdf.week} — {activeViewPdf.fileName}
                 </h2>
               </div>
@@ -243,7 +243,7 @@ export const WeeklyPdfs: React.FC = () => {
               <button
                 type="button"
                 onClick={() => handleDownload(activeViewPdf)}
-                className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold cursor-pointer transition-colors"
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-semibold cursor-pointer transition-colors"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download</span>
@@ -251,7 +251,7 @@ export const WeeklyPdfs: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setActiveViewPdf(null)}
-                className="p-1.5 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg cursor-pointer transition-colors"
+                className="p-1.5 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer transition-colors"
                 title="Close"
               >
                 <X className="w-5 h-5" />
@@ -260,19 +260,19 @@ export const WeeklyPdfs: React.FC = () => {
           </div>
 
           {/* Embedded Viewer */}
-          <div className="flex-1 bg-slate-200 p-2 sm:p-4 flex flex-col">
+          <div className="flex-1 bg-slate-200 dark:bg-slate-950 p-2 sm:p-4 flex flex-col">
             <object
               data={getViewerUrl(activeViewPdf)}
               type="application/pdf"
-              className="w-full flex-1 rounded-xl bg-white border border-slate-300 shadow-sm"
+              className="w-full flex-1 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 shadow-sm"
             >
               <iframe
                 src={getViewerUrl(activeViewPdf)}
-                className="w-full h-full rounded-xl bg-white border-0"
+                className="w-full h-full rounded-xl bg-white dark:bg-slate-900 border-0"
                 title={`Week ${activeViewPdf.week} PDF`}
               >
-                <div className="p-8 text-center bg-white rounded-xl h-full flex flex-col items-center justify-center">
-                  <p className="text-slate-700 font-medium mb-3">
+                <div className="p-8 text-center bg-white dark:bg-slate-900 rounded-xl h-full flex flex-col items-center justify-center">
+                  <p className="text-slate-700 dark:text-slate-300 font-medium mb-3">
                     Unable to display PDF preview directly in this browser view.
                   </p>
                   <button

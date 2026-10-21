@@ -115,17 +115,17 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
   return (
     <div id="quiz-question-container" className="max-w-3xl mx-auto w-full px-4 py-8">
       {/* Top Session Bar */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-6 shadow-xs">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 mb-6 shadow-xs">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">
+            <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-100 dark:border-indigo-800/60">
               {weekLabel}
             </span>
             <span
               className={`text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${
                 isPracticeMode
-                  ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                  : 'bg-amber-50 text-amber-800 border-amber-200'
+                  ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60'
+                  : 'bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-800/60'
               }`}
             >
               {mode} mode
@@ -137,8 +137,8 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
             <div
               className={`flex items-center space-x-1.5 px-3 py-1 rounded-xl font-mono text-xs font-bold border ${
                 timerSecondsRemaining < 300
-                  ? 'bg-rose-50 text-rose-700 border-rose-200 animate-pulse'
-                  : 'bg-slate-100 text-slate-700 border-slate-200'
+                  ? 'bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800/60 animate-pulse'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700'
               }`}
             >
               <Clock className="w-3.5 h-3.5" />
@@ -150,7 +150,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
           <button
             type="button"
             onClick={onExitQuiz}
-            className="flex items-center space-x-1 text-xs font-semibold text-slate-500 hover:text-rose-600 px-2.5 py-1 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
+            className="flex items-center space-x-1 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 px-2.5 py-1 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
             title="Exit Practice"
           >
             <LogOut className="w-3.5 h-3.5" />
@@ -160,7 +160,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
 
         {/* Progress bar */}
         <div className="mt-4">
-          <div className="flex items-center justify-between text-xs text-slate-500 mb-1.5 font-medium">
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1.5 font-medium">
             <span>
               Question {currentIndex + 1} of {totalQuestions}
             </span>
@@ -171,29 +171,29 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
       </div>
 
       {/* Main Question Card */}
-      <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-xs mb-6">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xs mb-6">
         {/* Question Type & Instruction Banner */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-100">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-100 dark:border-slate-800">
           <div className="flex items-center space-x-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
               Question {currentIndex + 1}
             </span>
-            <span className="text-slate-300">•</span>
-            <span className="text-xs font-semibold text-indigo-700 bg-indigo-50/80 px-2 py-0.5 rounded-md border border-indigo-100">
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <span className="text-xs font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-50/80 dark:bg-indigo-950/60 px-2 py-0.5 rounded-md border border-indigo-100 dark:border-indigo-800/60">
               {isMultiple ? 'Multiple Answer' : 'Single Answer'}
             </span>
           </div>
 
           {isMultiple && (
-            <div className="flex items-center space-x-1 text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
-              <CheckSquare className="w-3.5 h-3.5 text-amber-600" />
+            <div className="flex items-center space-x-1 text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 px-2.5 py-0.5 rounded-md border border-amber-200 dark:border-amber-800/60">
+              <CheckSquare className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span>Select all that apply.</span>
             </div>
           )}
         </div>
 
         {/* Question Text */}
-        <h2 className="text-base sm:text-lg md:text-xl font-medium text-slate-900 leading-relaxed mb-6">
+        <h2 className="text-base sm:text-lg md:text-xl font-medium text-slate-900 dark:text-white leading-relaxed mb-6">
           {question.question}
         </h2>
 
@@ -229,14 +229,14 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
             <div
               className={`p-4 rounded-2xl border flex items-start space-x-3 ${
                 isCorrect
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-950'
-                  : 'bg-rose-50 border-rose-200 text-rose-950'
+                  ? 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-200 dark:border-emerald-800/60 text-emerald-950 dark:text-emerald-100'
+                  : 'bg-rose-50 dark:bg-rose-950/50 border-rose-200 dark:border-rose-800/60 text-rose-950 dark:text-rose-100'
               }`}
             >
               {isCorrect ? (
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
               ) : (
-                <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+                <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
               )}
               <div className="flex-1 text-xs sm:text-sm">
                 <span className="font-bold block text-sm">
@@ -250,11 +250,11 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
                 </span>
 
                 {!isCorrect && (
-                  <div className="mt-2 text-xs font-semibold text-rose-900">
+                  <div className="mt-2 text-xs font-semibold text-rose-900 dark:text-rose-200">
                     Correct answer{correctLabels.length > 1 ? 's' : ''}:
                     <ul className="list-disc list-inside mt-1 space-y-0.5 font-normal">
                       {correctLabels.map((ca, idx) => (
-                        <li key={idx} className="font-semibold text-emerald-800">
+                        <li key={idx} className="font-semibold text-emerald-800 dark:text-emerald-300">
                           {ca}
                         </li>
                       ))}
@@ -266,12 +266,12 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
 
             {/* Explanation box */}
             {question.explanation && (
-              <div className="p-4 bg-amber-50/80 border border-amber-200 rounded-2xl text-xs sm:text-sm text-amber-950">
-                <div className="flex items-center space-x-1.5 font-bold text-amber-900 mb-1">
-                  <Lightbulb className="w-4 h-4 text-amber-600" />
+              <div className="p-4 bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 rounded-2xl text-xs sm:text-sm text-amber-950 dark:text-amber-200">
+                <div className="flex items-center space-x-1.5 font-bold text-amber-900 dark:text-amber-300 mb-1">
+                  <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                   <span>Explanation:</span>
                 </div>
-                <p className="leading-relaxed text-amber-900">{question.explanation}</p>
+                <p className="leading-relaxed text-amber-900 dark:text-amber-200">{question.explanation}</p>
               </div>
             )}
           </div>
@@ -286,7 +286,7 @@ export const QuizQuestion: React.FC<QuizQuestionProps> = ({
             type="button"
             onClick={onPreviousQuestion}
             disabled={currentIndex === 0}
-            className="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 bg-white hover:bg-slate-50 text-xs font-semibold transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center space-x-1 cursor-pointer"
+            className="px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-semibold transition-colors disabled:opacity-30 disabled:cursor-not-allowed flex items-center space-x-1 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Previous</span>
