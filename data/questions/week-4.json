@@ -130,7 +130,7 @@
       "Cannot be determined"
     ],
     "correctAnswers": [
-      "B"
+      "A"
     ],
     "explanation": "Determining whether an incident candidate is an actual incident is identification or validation; classification categorizes an identified incident."
   },
